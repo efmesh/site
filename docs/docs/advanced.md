@@ -16,6 +16,8 @@ For folks who want to roll their own hardware, push more power, or experiment wi
 
 The most powerful consumer Meshtastic radio available. Most handhelds put out ~0.25–0.5 watts. The Station G2 puts out **1 watt**, so it reaches dramatically further. Fantastic base station / static node.
 
+![B&Q Station G2 with a whip antenna attached, sitting upright on a desk](../assets/img/advanced/station-g2.jpg){ .ef-advanced-img }
+
 |  |  |
 |:--|:--|
 | **Pros** | 1W transmit power (vs ~0.5W for most) &middot; Modular — can add GPS, etc. &middot; Wifi (accessible over your local network) &middot; Excellent for a base station |
@@ -29,6 +31,8 @@ The most powerful consumer Meshtastic radio available. Most handhelds put out ~0
 ### Heltec V4
 
 Newer and more available than the Station G2. Same 1W output. Open-source friendly.
+
+![Heltec WiFi LoRa 32 V4 board with built-in OLED display and USB-C](../assets/img/advanced/heltec-v4.jpg){ .ef-advanced-img }
 
 |  |  |
 |:--|:--|
@@ -45,6 +49,8 @@ Newer and more available than the Station G2. Same 1W output. Open-source friend
 
 Most flexible DIY option. Pick your case, battery, antenna, modules. Super power-efficient — great base for solar nodes.
 
+![RAK Wireless WisBlock Starter Kit — base board with RAK4631 core module unsocketed alongside](../assets/img/advanced/rak-wisblock-starter.jpg){ .ef-advanced-img }
+
 |  |  |
 |:--|:--|
 | **Pros** | Cheaper than a pre-built &middot; Massively customizable &middot; Super power-efficient (great for solar) |
@@ -59,6 +65,8 @@ Most flexible DIY option. Pick your case, battery, antenna, modules. Super power
 ### LILYGO TTGO T-Beam
 
 Cheaper than a pre-built, classic DIY option. Pairs well with an 18650 battery.
+
+![How to identify your T-Beam model — NEO-6M uses SMA antenna connector, NEO-M8N uses u.FL connector, model number printed on the GPS module](../assets/img/advanced/t-beam-models.jpg){ .ef-advanced-img }
 
 |  |  |
 |:--|:--|
@@ -102,6 +110,8 @@ Tips:
 - For base stations, use quality SMA or N-type cable. **Keep the cable short** — every foot adds signal loss.
 - **More dB ≠ more coverage.** A directional high-dB antenna in the wrong orientation has less useful coverage than a modest omni.
 
+![Antenna gain explanation — diagram showing how higher-dBi antennas flatten the radiation pattern, trading vertical reach for a longer but thinner horizontal beam](../assets/img/advanced/antenna-gain-pattern.png){ .ef-advanced-img }
+
 ---
 
 ## Example Setups
@@ -112,6 +122,8 @@ Folks in the community have shared their builds. Drop yours in the [EF Discord](
 
 A T-Echo mounted to a [3D-printed bracket](https://makerworld.com/en/models/519487-lilygo-t-echo-bracket-with-1-4-tripod-mount#profileId-435876){ target=_blank } with a tripod-cheese-board adapter, riding on top of a Hyper Cube totem. Visible from across camp and high enough to push range significantly.
 
+![Underside view of a Hyper Cube totem with a T-Echo mounted on a 3D-printed bracket and tripod adapter, antenna pointing up](../assets/img/advanced/cube-totem-mount.jpg){ .ef-advanced-img }
+
 ### G2 Mobile Setup
 
 A Station G2 powered via USB-C, with an SMA cable running out to a roof-mounted antenna on a vehicle. Functions as a mobile base station that follows you to and from camp.
@@ -119,6 +131,10 @@ A Station G2 powered via USB-C, with an SMA cable running out to a roof-mounted 
 ### Test Setup (T-Echo + T-Beam)
 
 1× T-Echo handheld + 1× T-Beam base station = easily 1+ mile range hip-height. Dead spots at sharp elevation drops or through dense tree cover. Two-node minimum to start seeing real benefit.
+
+![Tall fiberglass antenna pole erected in a backyard garden serving as the test base station](../assets/img/advanced/test-setup-pole.jpg){ .ef-advanced-img }
+
+![Screenshot of the Meshtastic app showing the portable T-Beam node "Prize Cart Router" mapped 0.955 miles away from base — clean signal through suburban terrain](../assets/img/advanced/test-setup-range-map.jpg){ .ef-advanced-img }
 
 ---
 
