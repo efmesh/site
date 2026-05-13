@@ -43,10 +43,9 @@ This is the community guide for using it at Electric Forest.
 </div>
 
 <div class="stats-row" markdown>
-<div class="stat"><span class="stat-num">100+</span><span class="stat-label">nodes last year</span></div>
-<div class="stat"><span class="stat-num">1,000+</span><span class="stat-label">messages last year</span></div>
+<div class="stat"><span class="stat-num">120+</span><span class="stat-label">nodes last year</span></div>
+<div class="stat"><span class="stat-num">15,000+</span><span class="stat-label">messages last year</span></div>
 <div class="stat"><span class="stat-num">4</span><span class="stat-label">days of Forest</span></div>
-<div class="stat"><span class="stat-num">0</span><span class="stat-label">cell towers needed</span></div>
 </div>
 
 <span style="display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; margin: 1.5rem 0;">
