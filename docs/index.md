@@ -15,6 +15,40 @@ This is the community guide for using it at Electric Forest.
 **Heads up — this is unofficial.** This site is run by Forest fam, not by Electric Forest, Insomniac, or Madison House Presents. It's just a friendly guide to help you and your squad stay connected on-grounds. Everything here is community knowledge, shared in good faith.
 </div>
 
+<div class="mesh-animation" aria-hidden="true">
+<svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mesh network animation showing a message hopping between phone nodes">
+  <defs>
+    <symbol id="phone" viewBox="0 0 24 36">
+      <rect x="2" y="2" width="20" height="32" rx="3" ry="3" fill="#2e1d4d" stroke="#a78bfa" stroke-width="1.5"/>
+      <rect x="4" y="6" width="16" height="22" rx="1" fill="#7dd87a"/>
+      <circle cx="12" cy="31" r="1.3" fill="#a78bfa"/>
+    </symbol>
+  </defs>
+  <g class="mesh-links" stroke="#7dd87a" stroke-width="1" stroke-dasharray="3 3" opacity="0.35" fill="none">
+    <line x1="50" y1="150" x2="140" y2="60"/>
+    <line x1="140" y1="60" x2="230" y2="140"/>
+    <line x1="230" y1="140" x2="330" y2="55"/>
+    <line x1="50" y1="150" x2="230" y2="140"/>
+    <line x1="140" y1="60" x2="330" y2="55"/>
+  </g>
+  <g class="mesh-nodes">
+    <use href="#phone" x="38" y="132" width="24" height="36"/>
+    <use href="#phone" x="128" y="42" width="24" height="36"/>
+    <use href="#phone" x="218" y="122" width="24" height="36"/>
+    <use href="#phone" x="318" y="37" width="24" height="36"/>
+  </g>
+  <circle class="mesh-msg" r="5" fill="#ffb84d" stroke="#fff" stroke-width="1.5"/>
+</svg>
+<p class="mesh-caption">Each phone hops messages to the next — no cell tower needed.</p>
+</div>
+
+<div class="stats-row" markdown>
+<div class="stat"><span class="stat-num">100+</span><span class="stat-label">nodes last year</span></div>
+<div class="stat"><span class="stat-num">1,000+</span><span class="stat-label">messages last year</span></div>
+<div class="stat"><span class="stat-num">4</span><span class="stat-label">days of Forest</span></div>
+<div class="stat"><span class="stat-num">0</span><span class="stat-label">cell towers needed</span></div>
+</div>
+
 <span style="display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; margin: 1.5rem 0;">
     [:fontawesome-brands-discord: Join EF Meshtastic on Discord](https://discord.com/channels/260909643574935553/1111482301730271232){ .md-button .md-button--primary target="_blank"}
     [:material-information-outline: New here? Start with How to Connect](docs/how-to-connect.md){ .md-button }
@@ -60,28 +94,7 @@ The little device connects via Bluetooth to your phone and lets you send message
 
     Scan the official EF channels QR, then set up your private squad channel. Then start texting.
 
-    [Recommended Settings](docs/recommended-settings.md){ .md-button }
-
 </div>
-
----
-
-## The Official EF Meshtastic Channels
-
-These are **shared openly** for the EF community. Scan or click below and your device will be loaded with the right primary settings and the public `forest-chat` channel.
-
-<div class="ef-qr-block" markdown>
-**[Click here to add the EF channels to your device :material-arrow-right-bold:](https://meshtastic.org/e/#CgMSAQEKNBIggr0KuFkTIM9Lp2hj5qlw41jNe9Trl3cJPzSVWlUkwMUaC2NoZ21lLXNxdWFkJQEAAAAKNBIgoU03W9b8s0vpL0IjhBIIHZtuW_sHui3QDhmlaOLflkkaC2ZvcmVzdC1jaGF0JQIAAAAKERIBWxoHV2VhdGhlciUDAAAAEhUIARAEGPoBIAsoBTgBQANIAVAeaAE){ target="_blank" }**
-
-![QR code for EF Mesh channels](assets/img/channel-qr.png){ width="240" .channel-qr }
-
-*Scan this from a second phone to bring it into the mesh.*
-
-Or, in the Meshtastic app on your phone, hit **Settings → Channels → Scan QR** and point it at the QR on your laptop. Full step-by-step is in [How to Connect](docs/how-to-connect.md).
-</div>
-
-!!! info "What this link does"
-    Loads three channels to your radio on the **Medium Range - Fast** preset: a **placeholder squad channel** (`chgme-squad`) for you to customize with your crew as the primary, the **forest-chat** public chat channel, and the **Weather** channel. Preset is already set — no manual flip needed.
 
 ---
 

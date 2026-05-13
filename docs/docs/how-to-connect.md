@@ -140,11 +140,12 @@ Hit **Save** in the app. Your radio **will reboot every time you save**. Wait fo
 
 ## Step 7: Check Your Channels
 
-You should now see three channels in the Channels tab:
+You should now see four channels in the Channels tab:
 
 1. **Primary Channel** — leave it alone, this is the default Meshtastic channel
 2. **chgme-squad** — placeholder for your squad (you'll customize in Step 8)
 3. **forest-chat** — public EF community chat — leave it alone
+4. **Weather** — posts the current weather every hour and a forecast at the beginning of every day. Major weather warnings go to the Primary channel.
 
 ---
 
@@ -166,7 +167,7 @@ Hit **Save**. Wait for the radio to reboot and reconnect.
 
 In the Meshtastic app: **Settings → Share Channel QR Code**.
 
-- Make sure all 3 channels are selected (Primary, your squad channel, forest-chat).
+- Make sure all 4 channels are selected (Primary, your squad channel, forest-chat, Weather).
 - Double-check your squad channel name is right.
 - Click **Share QR Code** and send the QR (or link) to everyone in your crew.
 

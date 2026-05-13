@@ -86,6 +86,19 @@ This loads three channels on the **Medium Range - Fast** preset: a `chgme-squad`
 
 ---
 
+### Channel 3 — Weather
+
+| Setting | Value | Notes |
+|:--|:--|:--|
+| Name | `Weather` | Comes preset via the QR |
+| Key | *(preset via QR)* | Comes preset via the QR |
+| Channel Role | `Secondary` | Don't change |
+| MQTT Uplink / Downlink | `Disabled` | Don't change |
+
+Posts the current weather every hour and a forecast at the beginning of every day. Major weather warnings go to the Primary channel.
+
+---
+
 ## Device
 
 | Setting | Value | Why |
