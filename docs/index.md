@@ -2,8 +2,27 @@
 title: Home
 hide:
   - toc
-  - navigation
 ---
+
+<style>
+/* v1.9.1: Suppress the auto-injected page-section TOC inside the mobile drawer
+   for the home page only. Material lifts each page's H2 section list into the
+   primary drawer under the active page item AND exposes a chevron toggle (label
+   for="__toc") that reveals "Table of contents → What is Meshtastic / Get
+   Started / ..." on tap. Will reported this as junk UX on Home. Fix: hide the
+   toggle label + chevron + secondary nav, and force the plain anchor (normally
+   hidden on mobile when the toggle is present) back into view so the active
+   "Home" row still renders. Scoped to Home only via inline <style> in
+   docs/index.md — other pages retain their default in-drawer TOC chevron. */
+.md-nav--primary .md-nav__item--active > label.md-nav__link[for="__toc"],
+.md-nav--primary .md-nav__item--active > nav.md-nav--secondary,
+.md-nav--primary .md-nav__item--active > input#__toc {
+  display: none !important;
+}
+.md-nav--primary .md-nav__item--active > a.md-nav__link {
+  display: flex !important;
+}
+</style>
 
 <h1>Find Your Squad at Electric Forest — Without Cell Service.</h1>
 
