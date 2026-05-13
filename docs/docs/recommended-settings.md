@@ -29,6 +29,21 @@ This loads three channels on the **Medium Range - Fast** preset: a `chgme-squad`
 
 ---
 
+## Channel Keys
+
+These are the PSKs (pre-shared keys) for each EF Mesh channel. If you scanned the QR or tapped the link above, your device should already have these loaded — but you can verify them in **Settings → Channels → [channel] → Encryption Key**.
+
+| Channel | Name | Key |
+|:--|:--|:--|
+| 0 | Primary (Meshtastic default) | `AQ==` |
+| 1 | Your Squad | *[generate your own](#channel-1-your-squad)* |
+| 2 | forest-chat | `oU03W9b8s0vpL0IjhBIIHZtuW/sHui3QDhmlaOLflkk=` |
+| 3 | Weather | `Ww==` |
+
+These are channel PSKs, not device keys — they're already embedded in the public QR / Meshtastic share link above, so seeing them here doesn't reveal anything that isn't already shared with anyone who joins the mesh. The Squad channel is the one you keep unique to your crew.
+
+---
+
 ## LoRa Settings
 
 | Setting | Value | Why |
@@ -52,6 +67,8 @@ This loads three channels on the **Medium Range - Fast** preset: a `chgme-squad`
 | Channel Role | `Primary` | Don't change |
 | **Position** | `Disabled` | **Important** — see note below |
 | MQTT Uplink / Downlink | `Disabled` | Don't change |
+
+**Encryption Key:** `AQ==`
 
 !!! info "Why turn off position on Channel 0?"
     On Meshtastic firmware 2.7+, your radio shares your GPS position from whatever channel is **first in the list**. By disabling position on Channel 0 (the public default), your precise location only goes to your **squad channel** — not the world.
@@ -78,11 +95,13 @@ This loads three channels on the **Medium Range - Fast** preset: a `chgme-squad`
 | Setting | Value | Notes |
 |:--|:--|:--|
 | Name | `forest-chat` | Comes preset via the QR |
-| Key | *(preset via QR)* | Comes preset via the QR |
+| Key | `oU03W9b8s0vpL0IjhBIIHZtuW/sHui3QDhmlaOLflkk=` | Comes preset via the QR |
 | Channel Role | `Secondary` | Don't change |
 | **Allow Position Requests** | `Enabled` | Optional — enable if you want broader Forest folks to see your location |
 | **Precise Location** | `Enabled` | Optional |
 | MQTT Uplink / Downlink | `Disabled` | Don't change |
+
+**Encryption Key:** `oU03W9b8s0vpL0IjhBIIHZtuW/sHui3QDhmlaOLflkk=`
 
 ---
 
@@ -91,9 +110,13 @@ This loads three channels on the **Medium Range - Fast** preset: a `chgme-squad`
 | Setting | Value | Notes |
 |:--|:--|:--|
 | Name | `Weather` | Comes preset via the QR |
-| Key | *(preset via QR)* | Comes preset via the QR |
+| Key | `Ww==` | Comes preset via the QR |
 | Channel Role | `Secondary` | Don't change |
+| **Allow Position Requests** | `Enabled` | Optional — enable if you want broader Forest folks to see your location |
+| **Precise Location** | `Enabled` | Optional |
 | MQTT Uplink / Downlink | `Disabled` | Don't change |
+
+**Encryption Key:** `Ww==`
 
 Posts the current weather every hour and a forecast at the beginning of every day. Major weather warnings go to the Primary channel.
 
