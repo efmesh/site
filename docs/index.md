@@ -11,10 +11,6 @@ Meshtastic is a tiny radio that clips to your pack and lets you text your friend
 
 This is the community guide for using it at Electric Forest.
 
-<div class="ef-disclaimer" markdown>
-**Heads up — this is unofficial.** This site is run by Forest fam, not by Electric Forest, Insomniac, or Madison House Presents. It's just a friendly guide to help you and your squad stay connected on-grounds. Everything here is community knowledge, shared in good faith.
-</div>
-
 <div class="mesh-animation" aria-hidden="true">
 <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mesh network animation showing a message hopping between phone nodes">
   <defs>
@@ -116,3 +112,9 @@ Bebop'n around the Forest solo (and a little lost) is part of the magic. But the
 We had real success bringing these little radios to Forest last year. Setup is easier than it looks. And once you have one, you have it for every festival, backpacking trip, and emergency for years.
 
 These devices **mesh** — every additional radio in the Forest makes the whole network stronger for everyone. Bring one. Bring two. Get your squad on.
+
+---
+
+<div class="ef-disclaimer" markdown>
+**Heads up — this is unofficial.** This site is run by Forest fam, not by Electric Forest, Insomniac, or Madison House Presents. It's just a friendly guide to help you and your squad stay connected on-grounds. Everything here is community knowledge, shared in good faith.
+</div>
