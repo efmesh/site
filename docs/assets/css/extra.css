@@ -45,3 +45,15 @@
   border-radius: 8px;
   max-width: 480px;
 }
+
+/* Channel-config QR image: centered, capped width, breathing room */
+.channel-qr {
+  display: block;
+  margin: 1rem auto 0.5rem auto;
+  max-width: 240px;
+  height: auto;
+  border-radius: 6px;
+  background: white;
+  padding: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+}

@@ -18,7 +18,11 @@ These are the settings the EF Meshtastic community uses. They keep the network h
 Unlike some Meshtastic communities, the EF community shares its channel settings **openly**. Anyone with this QR can load the Forest channels onto their radio.
 
 <div class="ef-qr-block" markdown>
-**[Load EF Channels :material-arrow-right-bold:](https://meshtastic.org/e/#CgMSAQEKNBIggr0KuFkTIM9Lp2hj5qlw41jNe9Trl3cJPzSVWlUkwMUaC2NoZ21lLXNxdWFkJQEAAAAKNBIgoU03W9b8s0vpL0IjhBIIHZtuW_sHui3QDhmlaOLflkkaC2ZvcmVzdC1jaGF0JQIAAAAKERIBWxoHV2VhdGhlciUDAAAAEhcIARAEGPoBIAsoBTgBQANIAVAeWAJoAQ){ target="_blank" }**
+**[Load EF Channels :material-arrow-right-bold:](https://meshtastic.org/e/#CgMSAQEKNBIggr0KuFkTIM9Lp2hj5qlw41jNe9Trl3cJPzSVWlUkwMUaC2NoZ21lLXNxdWFkJQEAAAAKNBIgoU03W9b8s0vpL0IjhBIIHZtuW_sHui3QDhmlaOLflkkaC2ZvcmVzdC1jaGF0JQIAAAAKERIBWxoHV2VhdGhlciUDAAAAEhUIARAEGPoBIAsoBTgBQANIAVAeaAE){ target="_blank" }**
+
+![QR code for EF Mesh channels](../assets/img/channel-qr.png){ width="240" .channel-qr }
+
+*Or scan this from a second phone to bring it into the mesh.*
 
 This loads three channels on the **Medium Range - Fast** preset: a `chgme-squad` placeholder primary (you'll customize), the public `forest-chat`, and the `Weather` channel.
 </div>

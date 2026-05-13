@@ -63,7 +63,11 @@ You should now see your node in the app. If not, restart the radio and try again
 This is the easy way to load all the Forest-compatible settings to your radio at once. **Only one person in your squad needs to do this** — they'll then generate a new QR and share it with the rest of you.
 
 <div class="ef-qr-block" markdown>
-**[Click here to load EF channels onto your radio :material-arrow-right-bold:](https://meshtastic.org/e/#CgMSAQEKNBIggr0KuFkTIM9Lp2hj5qlw41jNe9Trl3cJPzSVWlUkwMUaC2NoZ21lLXNxdWFkJQEAAAAKNBIgoU03W9b8s0vpL0IjhBIIHZtuW_sHui3QDhmlaOLflkkaC2ZvcmVzdC1jaGF0JQIAAAAKERIBWxoHV2VhdGhlciUDAAAAEhcIARAEGPoBIAsoBTgBQANIAVAeWAJoAQ){ target="_blank" }**
+**[Click here to load EF channels onto your radio :material-arrow-right-bold:](https://meshtastic.org/e/#CgMSAQEKNBIggr0KuFkTIM9Lp2hj5qlw41jNe9Trl3cJPzSVWlUkwMUaC2NoZ21lLXNxdWFkJQEAAAAKNBIgoU03W9b8s0vpL0IjhBIIHZtuW_sHui3QDhmlaOLflkkaC2ZvcmVzdC1jaGF0JQIAAAAKERIBWxoHV2VhdGhlciUDAAAAEhUIARAEGPoBIAsoBTgBQANIAVAeaAE){ target="_blank" }**
+
+![QR code for EF Mesh channels](../assets/img/channel-qr.png){ width="240" .channel-qr }
+
+*Or scan this from a second phone to bring it into the mesh.*
 
 Open this link on the phone that's paired to your radio. It loads a placeholder squad channel (you'll customize this in Step 8) as your primary, the public `forest-chat` channel, and the `Weather` channel — all on the **Medium Range - Fast** preset.
 </div>

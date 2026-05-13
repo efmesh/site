@@ -71,7 +71,11 @@ The little device connects via Bluetooth to your phone and lets you send message
 These are **shared openly** for the EF community. Scan or click below and your device will be loaded with the right primary settings and the public `forest-chat` channel.
 
 <div class="ef-qr-block" markdown>
-**[Click here to add the EF channels to your device :material-arrow-right-bold:](https://meshtastic.org/e/#CgMSAQEKNBIggr0KuFkTIM9Lp2hj5qlw41jNe9Trl3cJPzSVWlUkwMUaC2NoZ21lLXNxdWFkJQEAAAAKNBIgoU03W9b8s0vpL0IjhBIIHZtuW_sHui3QDhmlaOLflkkaC2ZvcmVzdC1jaGF0JQIAAAAKERIBWxoHV2VhdGhlciUDAAAAEhcIARAEGPoBIAsoBTgBQANIAVAeWAJoAQ){ target="_blank" }**
+**[Click here to add the EF channels to your device :material-arrow-right-bold:](https://meshtastic.org/e/#CgMSAQEKNBIggr0KuFkTIM9Lp2hj5qlw41jNe9Trl3cJPzSVWlUkwMUaC2NoZ21lLXNxdWFkJQEAAAAKNBIgoU03W9b8s0vpL0IjhBIIHZtuW_sHui3QDhmlaOLflkkaC2ZvcmVzdC1jaGF0JQIAAAAKERIBWxoHV2VhdGhlciUDAAAAEhUIARAEGPoBIAsoBTgBQANIAVAeaAE){ target="_blank" }**
+
+![QR code for EF Mesh channels](assets/img/channel-qr.png){ width="240" .channel-qr }
+
+*Scan this from a second phone to bring it into the mesh.*
 
 Or, in the Meshtastic app on your phone, hit **Settings → Channels → Scan QR** and point it at the QR on your laptop. Full step-by-step is in [How to Connect](docs/how-to-connect.md).
 </div>
