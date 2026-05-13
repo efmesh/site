@@ -24,7 +24,7 @@ Unlike some Meshtastic communities, the EF community shares its channel settings
 
 *Or scan this from a second phone to bring it into the mesh.*
 
-This loads three channels on the **Medium Range - Fast** preset: a `chgme-squad` placeholder primary (you'll customize), the public `forest-chat`, and the `Weather` channel.
+This loads four channels on the **Medium Range - Fast** preset: the Meshtastic default `Primary`, a `chgme-squad` placeholder for your squad (you'll customize), the public `forest-chat`, and the `Weather` channel.
 </div>
 
 ---
@@ -81,7 +81,7 @@ These are channel PSKs, not device keys — they're already embedded in the publ
 
 | Setting | Value | Notes |
 |:--|:--|:--|
-| Name | *(your squad name)* | Customize in [Step 7](how-to-connect.md#step-8-set-up-your-squads-encrypted-channel) |
+| Name | *(your squad name)* | Customize in [Step 8](how-to-connect.md#step-8-set-up-your-squads-encrypted-channel) |
 | Key | *(unique — tap blue lock to generate)* | **CRITICAL** — tap the blue lock to generate a unique key. Don't skip this. |
 | Channel Role | `Secondary` | Don't change |
 | **Allow Position Requests** | `Enabled` | So your squad can ping your location |

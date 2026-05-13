@@ -99,9 +99,9 @@ For camp nodes, your antenna is **more important than the radio itself**. A $400
 
 The EF Meshtastic community has drafted an open letter to Electric Forest staff requesting permission to host a single, high-elevation Meshtastic node at the **Observatory Stage** — a backbone repeater that would give the entire grounds line-of-sight coverage.
 
-It's community-led, not endorsed by EF, and we're collecting co-signers from attendees.
+It's a community-led ask, not endorsed by EF.
 
-[:material-pine-tree: Read the letter &amp; co-sign](wish-machine-request.md){ .md-button }
+[:material-pine-tree: Read the letter](wish-machine-request.md){ .md-button }
 
 ---
 

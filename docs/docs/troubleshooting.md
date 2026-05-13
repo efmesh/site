@@ -96,7 +96,7 @@ Drop into the [EF Discord Meshtastic thread](https://discord.com/channels/260909
 
 ## More Resources
 
-- **[Meshtastic official docs — Introduction](https://meshtastic.com/docs/introduction){ target=_blank }** — the canonical Meshtastic reference
+- **[Meshtastic official docs — Introduction](https://meshtastic.org/docs/introduction/){ target=_blank }** — the canonical Meshtastic reference
 - **[Best Meshtastic Nodes of 2025 — Ham Radio Crash Course](https://www.youtube.com/watch?v=VGiNDgdkyhs){ target=_blank }** — great hardware comparison video
 - **[Find your local Meshtastic community](https://meshtastic.org/docs/community/local-groups/){ target=_blank }** — test your setup with locals before Forest
 

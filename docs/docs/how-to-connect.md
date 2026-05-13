@@ -69,7 +69,7 @@ This is the easy way to load all the Forest-compatible settings to your radio at
 
 *Or scan this from a second phone to bring it into the mesh.*
 
-Open this link on the phone that's paired to your radio. It loads a placeholder squad channel (you'll customize this in Step 8) as your primary, the public `forest-chat` channel, and the `Weather` channel — all on the **Medium Range - Fast** preset.
+Open this link on the phone that's paired to your radio. It loads four channels — the Meshtastic default Primary, a `chgme-squad` placeholder for your squad (customize in Step 8), the public `forest-chat`, and `Weather` — all on the **Medium Range - Fast** preset.
 </div>
 
 !!! info "Stuck? Ask in Discord"
