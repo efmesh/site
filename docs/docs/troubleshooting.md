@@ -55,9 +55,9 @@ The most common breakage points:
 - **Device Role changed to anything other than Client.** Set it back to `Client`. Save. Wait for reboot.
 - **Region changed off United States.** Set it back to `United States`. (Required for legal 915 MHz operation in the US.)
 - **Frequency Slot changed from 0.** Set it back to `0`.
-- **Preset changed from Long Range - Fast.** Set it back to `Long Range - Fast`.
+- **Preset changed from Medium Range - Fast.** Set it back to `Medium Range - Fast`. (Note: the Meshtastic default is `Long Range - Fast` — the Forest community runs Medium Fast instead because we're packed close together. See [Recommended Settings](recommended-settings.md#lora-settings) for the reasoning.)
 
-If you really borked things, factory-reset the radio (long-press button or via the app), then re-scan the [EF channels QR](https://meshtastic.org/e/#CgMSAQEKNBIgoU03W9b8s0vpL0IjhBIIHZtuW_sHui3QDhmlaOLflkkaC2NoZ21lLXNxdWFkJQEAAAAKNBIgoU03W9b8s0vpL0IjhBIIHZtuW_sHui3QDhmlaOLflkkaC2ZvcmVzdC1jaGF0JQIAAAASCggBOAFAA0gBUB4){ target="_blank" } from scratch. Five-minute fix.
+If you really borked things, factory-reset the radio (long-press button or via the app), then re-scan the [EF channels QR](https://meshtastic.org/e/#CgMSAQEKNBIgoU03W9b8s0vpL0IjhBIIHZtuW_sHui3QDhmlaOLflkkaC2NoZ21lLXNxdWFkJQEAAAAKNBIgoU03W9b8s0vpL0IjhBIIHZtuW_sHui3QDhmlaOLflkkaC2ZvcmVzdC1jaGF0JQIAAAASCggBOAFAA0gBUB4){ target="_blank" } from scratch. Five-minute fix — then flip the preset to `Medium Range - Fast` manually until we publish the regenerated QR.
 
 ---
 

@@ -79,6 +79,9 @@ Or, in the Meshtastic app on your phone, hit **Settings → Channels → Scan QR
 !!! info "What this link does"
     Loads three things to your radio: the standard **primary channel** (so you can hear everyone), a **placeholder squad channel** for you to customize with your crew, and the **forest-chat** public chat channel.
 
+!!! warning "QR being regenerated for Medium Fast"
+    The link above still encodes the old **Long Range - Fast** preset. We're regenerating it for **Medium Range - Fast** (faster + less congested for dense Forest crowds). Until the new link drops, scan this one as-is, then flip the preset manually: **Settings → LoRa → Modem Preset → Medium Range - Fast**. Walkthrough in [How to Connect](docs/how-to-connect.md).
+
 ---
 
 ## Need Help?

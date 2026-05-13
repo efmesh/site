@@ -68,6 +68,9 @@ This is the easy way to load all the Forest-compatible settings to your radio at
 Open this link on the phone that's paired to your radio. It loads the primary channel, a placeholder squad channel (you'll customize this in Step 8), and the public `forest-chat` channel.
 </div>
 
+!!! warning "QR being regenerated for Medium Fast"
+    The QR linked above still encodes the old **Long Range - Fast** preset. We're regenerating it. Until the new QR drops, scan this one as-is, then **manually flip the preset** in Step 5: **Settings → LoRa → Modem Preset → Medium Range - Fast**. Five-second fix and you'll be on the right preset.
+
 !!! info "Stuck? Ask in Discord"
     Post in the [EF Meshtastic Discord thread](https://discord.com/channels/260909643574935553/1111482301730271232){ target=_blank } — someone in the community is usually around and happy to walk you through it on a quick voice chat.
 
@@ -82,7 +85,7 @@ Here's exactly what to change. Anything not mentioned, leave alone.
 ### LoRa
 
 - **Region:** `United States` ← change this if it's not already set
-- Use Preset: `Long Range - Fast` *(default — leave it)*
+- **Set Preset: `Medium Range - Fast`** ← this is **not** the default. Change it from `Long Range - Fast` to `Medium Range - Fast`. Why: the Forest is a *dense* crowd — hundreds of nodes packed into a few square miles. Medium Fast trades a little range for faster message delivery, lower latency, and way less channel congestion. Better network for everyone when we're all on top of each other.
 - Transmit Enabled: `On` *(default — leave it)*
 - Number of Hops: `3` *(default — leave it)*
 - Frequency Slot: `0` *(default — leave it)*

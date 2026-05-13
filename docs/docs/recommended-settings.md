@@ -23,6 +23,9 @@ Unlike some Meshtastic communities, the EF community shares its channel settings
 This loads three channels: the standard primary, a `chgme-squad` placeholder (you'll customize), and the public `forest-chat`.
 </div>
 
+!!! warning "QR being regenerated for Medium Fast"
+    The QR above still encodes the old **Long Range - Fast** preset (the payload is hashed into the link, so we can't just edit the text). We're regenerating it. Until the new QR drops, scan this one to load the channels, then **manually set the preset** under **Settings → LoRa → Modem Preset → Medium Range - Fast**. Takes five seconds.
+
 ---
 
 ## LoRa Settings
@@ -30,7 +33,7 @@ This loads three channels: the standard primary, a `chgme-squad` placeholder (yo
 | Setting | Value | Why |
 |:--|:--|:--|
 | **Region** | `United States` | Meshtastic uses 915 MHz in the US — required for legal operation |
-| **Preset** | `Long Range - Fast` | This is the default and the right choice for the Forest. Don't change it. |
+| **Preset** | `Medium Range - Fast` | **Change this from the default.** The Forest is a dense crowd — hundreds of nodes in close proximity. Medium Fast gives faster message delivery, lower latency for quick-coordination pings, and way less channel congestion than Long Fast. We trade a bit of range (which we don't really need at festival distances) for a much healthier network when everyone's piled into Sherwood. |
 | **Number of Hops** | `3` | Default. More hops = more network flood. Less = shorter reach. 3 is the sweet spot. |
 | **Frequency Slot** | `0` | Default. Everyone needs to be on the same slot. |
 | **Transmit Enabled** | `On` | Default. If this is off, you can't send anything. |
