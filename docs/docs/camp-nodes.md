@@ -95,11 +95,13 @@ For camp nodes, your antenna is **more important than the radio itself**. A $400
 
 ---
 
-## A Note on the Observatory Stage
+## The Observatory Stage Letter
 
-The EF Meshtastic community has a standing request to Electric Forest staff to host a single, high-elevation node at the **Observatory Stage**. From that height the node would provide line-of-sight across the entire Forest grounds and would dramatically improve the mesh for everyone.
+The EF Meshtastic community has drafted an open letter to Electric Forest staff requesting permission to host a single, high-elevation Meshtastic node at the **Observatory Stage** — a backbone repeater that would give the entire grounds line-of-sight coverage.
 
-If you're EF staff (or know someone who is) and you can help make this happen, please reach out in the [EF Discord](https://discord.com/channels/260909643574935553/1111482301730271232){ target=_blank }. We'll handle the rest.
+It's community-led, not endorsed by EF, and we're collecting co-signers from attendees.
+
+[:material-pine-tree: Read the letter &amp; co-sign](wish-machine-request.md){ .md-button }
 
 ---
 

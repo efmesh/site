@@ -69,7 +69,7 @@ Open this link on the phone that's paired to your radio. It loads the primary ch
 </div>
 
 !!! info "Stuck? Ask in Discord"
-    DM `@k1n6b0b` or post in the [EF Meshtastic Discord thread](https://discord.com/channels/260909643574935553/1111482301730271232){ target=_blank } — happy to walk you through it on a quick voice chat.
+    Post in the [EF Meshtastic Discord thread](https://discord.com/channels/260909643574935553/1111482301730271232){ target=_blank } — someone in the community is usually around and happy to walk you through it on a quick voice chat.
 
 ---
 
