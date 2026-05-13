@@ -8,9 +8,7 @@ title: Wish Machine Request — Letter to Electric Forest
 
 This is a community-led open letter from Forest attendees to the staff of Electric Forest. We're asking for permission and support to expand Meshtastic infrastructure on-grounds — specifically, a single high-elevation repeater node at the **Observatory Stage** that would provide line-of-sight coverage across the entire Forest site.
 
-This letter is **not affiliated with or endorsed by Electric Forest, Insomniac, or Madison House Presents**. It is signed by attendees, organized through the [EF Meshtastic Discord thread](https://discord.com/channels/260909643574935553/1111482301730271232){ target=_blank }, and represents a community request — not an official partnership.
-
-If you're an EF attendee and you'd like to add your name as a co-signer, drop a note in the Discord thread and we'll add you.
+This letter is **not affiliated with or endorsed by Electric Forest, Insomniac, or Madison House Presents**. It is sent on behalf of attendees organized through the [EF Meshtastic Discord thread](https://discord.com/channels/260909643574935553/1111482301730271232){ target=_blank } and represents a community request — not an official partnership.
 
 ---
 
@@ -35,15 +33,6 @@ Thank you for your time and for continuing to make Electric Forest an amazing pl
 Sincerely,
 
 **The Electric Forest Meshtastic Community**
-
----
-
-## Co-Signers
-
-This letter is signed by the following attendees of Electric Forest:
-
-- Will Curran (@flash)
-- *[Add your name to co-sign — post in the [EF Meshtastic Discord thread](https://discord.com/channels/260909643574935553/1111482301730271232){ target=_blank } and we'll add you here.]*
 
 ---
 
@@ -72,7 +61,6 @@ We bring our own hardware. We handle setup and tear-down. We follow whatever pla
 
 ## Want to Help?
 
-- **Co-sign the letter** — drop your name in the [EF Discord thread](https://discord.com/channels/260909643574935553/1111482301730271232){ target=_blank }.
 - **Bring a camp node.** Every node added to the network strengthens it. See the [Camp Nodes](camp-nodes.md) page for pre-built options.
 - **Spread the word.** Share this page with your Forest friends.
 
