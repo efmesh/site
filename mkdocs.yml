@@ -1,9 +1,11 @@
-site_name: EF Meshtastic Community
+site_name: EF Meshtastic
 site_description: An unofficial community guide for using Meshtastic at Electric Forest. Find your squad without cell service.
-site_url: https://efmesh.com
+site_url: https://efmesh.com/
 
 theme:
   name: material
+  custom_dir: overrides
+  favicon: assets/img/favicon/favicon.svg
   icon:
     logo: material/pine-tree
   features:

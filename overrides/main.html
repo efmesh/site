@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{#
+  v1.10 overrides:
+  - htmltitle: home page uses full tagline ("EF Meshtastic - Talk & find your
+    squad without cell service"); sub-pages keep Material default
+    ("{page} - {site_name}").
+  - extrahead: site-wide Open Graph + Twitter Card meta tags backed by the
+    1200x630 og-image.jpg, plus full favicon/apple-touch-icon link set.
+#}
+
+{% block htmltitle %}
+  {% if page.is_homepage %}
+    <title>EF Meshtastic - Talk &amp; find your squad without cell service</title>
+  {% elif page.meta and page.meta.title %}
+    <title>{{ page.meta.title }} - {{ config.site_name }}</title>
+  {% elif page.title and not page.is_homepage %}
+    <title>{{ page.title | striptags }} - {{ config.site_name }}</title>
+  {% else %}
+    <title>{{ config.site_name }}</title>
+  {% endif %}
+{% endblock %}
+
+{% block extrahead %}
+  {{ super() }}
+
+  {# --- Resolve og:title + og:description per page --- #}
+  {% if page.is_homepage %}
+    {% set og_title = "EF Meshtastic - Talk & find your squad without cell service" %}
+  {% elif page.meta and page.meta.title %}
+    {% set og_title = page.meta.title ~ " - " ~ config.site_name %}
+  {% elif page.title and not page.is_homepage %}
+    {% set og_title = (page.title | striptags) ~ " - " ~ config.site_name %}
+  {% else %}
+    {% set og_title = config.site_name %}
+  {% endif %}
+
+  {% if page.meta and page.meta.description %}
+    {% set og_desc = page.meta.description %}
+  {% else %}
+    {% set og_desc = config.site_description %}
+  {% endif %}
+
+  {% set og_image_url = config.site_url ~ "assets/img/social/og-image.jpg" %}
+  {% set og_page_url = page.canonical_url or config.site_url %}
+
+  {# --- Open Graph --- #}
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ config.site_name }}">
+  <meta property="og:title" content="{{ og_title }}">
+  <meta property="og:description" content="{{ og_desc }}">
+  <meta property="og:url" content="{{ og_page_url }}">
+  <meta property="og:image" content="{{ og_image_url }}">
+  <meta property="og:image:secure_url" content="{{ og_image_url }}">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Electric Forest illuminated heart-shaped floral entrance arch at night">
+
+  {# --- Twitter Card --- #}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ og_title }}">
+  <meta name="twitter:description" content="{{ og_desc }}">
+  <meta name="twitter:image" content="{{ og_image_url }}">
+  <meta name="twitter:image:alt" content="Electric Forest illuminated heart-shaped floral entrance arch at night">
+
+  {# --- Favicon set --- #}
+  <link rel="icon" type="image/svg+xml" href="{{ 'assets/img/favicon/favicon.svg' | url }}">
+  <link rel="alternate icon" type="image/x-icon" href="{{ 'assets/img/favicon/favicon.ico' | url }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ 'assets/img/favicon/apple-touch-icon.png' | url }}">
+  <link rel="icon" type="image/png" sizes="192x192" href="{{ 'assets/img/favicon/favicon-192.png' | url }}">
+  <link rel="icon" type="image/png" sizes="512x512" href="{{ 'assets/img/favicon/favicon-512.png' | url }}">
+  <link rel="manifest" href="{{ 'manifest.webmanifest' | url }}">
+  <meta name="theme-color" content="#5E35B1">
+{% endblock %}
