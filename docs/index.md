@@ -7,7 +7,7 @@ hide:
 
 <h1>Find Your Squad at Electric Forest — Without Cell Service.</h1>
 
-Meshtastic is a tiny radio that clips to your pack and lets you text your friends across the Forest **even when cell service is dead**. No subscription. No SIM card. No monthly fee. About $30–$90 to get on the mesh.
+Meshtastic is a tiny radio that clips to your pack and lets you text your friends across the Forest **even when cell service is dead**. No subscription. No SIM card. No monthly fee. About $30 to get on the mesh.
 
 This is the community guide for using it at Electric Forest.
 
