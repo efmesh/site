@@ -71,16 +71,13 @@ The little device connects via Bluetooth to your phone and lets you send message
 These are **shared openly** for the EF community. Scan or click below and your device will be loaded with the right primary settings and the public `forest-chat` channel.
 
 <div class="ef-qr-block" markdown>
-**[Click here to add the EF channels to your device :material-arrow-right-bold:](https://meshtastic.org/e/#CgMSAQEKNBIgoU03W9b8s0vpL0IjhBIIHZtuW_sHui3QDhmlaOLflkkaC2NoZ21lLXNxdWFkJQEAAAAKNBIgoU03W9b8s0vpL0IjhBIIHZtuW_sHui3QDhmlaOLflkkaC2ZvcmVzdC1jaGF0JQIAAAASCggBOAFAA0gBUB4){ target="_blank" }**
+**[Click here to add the EF channels to your device :material-arrow-right-bold:](https://meshtastic.org/e/#CgMSAQEKNBIggr0KuFkTIM9Lp2hj5qlw41jNe9Trl3cJPzSVWlUkwMUaC2NoZ21lLXNxdWFkJQEAAAAKNBIgoU03W9b8s0vpL0IjhBIIHZtuW_sHui3QDhmlaOLflkkaC2ZvcmVzdC1jaGF0JQIAAAAKERIBWxoHV2VhdGhlciUDAAAAEhcIARAEGPoBIAsoBTgBQANIAVAeWAJoAQ){ target="_blank" }**
 
 Or, in the Meshtastic app on your phone, hit **Settings → Channels → Scan QR** and point it at the QR on your laptop. Full step-by-step is in [How to Connect](docs/how-to-connect.md).
 </div>
 
 !!! info "What this link does"
-    Loads three things to your radio: the standard **primary channel** (so you can hear everyone), a **placeholder squad channel** for you to customize with your crew, and the **forest-chat** public chat channel.
-
-!!! warning "QR being regenerated for Medium Fast"
-    The link above still encodes the old **Long Range - Fast** preset. We're regenerating it for **Medium Range - Fast** (faster + less congested for dense Forest crowds). Until the new link drops, scan this one as-is, then flip the preset manually: **Settings → LoRa → Modem Preset → Medium Range - Fast**. Walkthrough in [How to Connect](docs/how-to-connect.md).
+    Loads three channels to your radio on the **Medium Range - Fast** preset: a **placeholder squad channel** (`chgme-squad`) for you to customize with your crew as the primary, the **forest-chat** public chat channel, and the **Weather** channel. Preset is already set — no manual flip needed.
 
 ---
 

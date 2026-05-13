@@ -57,7 +57,7 @@ The most common breakage points:
 - **Frequency Slot changed from 0.** Set it back to `0`.
 - **Preset changed from Medium Range - Fast.** Set it back to `Medium Range - Fast`. (Note: the Meshtastic default is `Long Range - Fast` — the Forest community runs Medium Fast instead because we're packed close together. See [Recommended Settings](recommended-settings.md#lora-settings) for the reasoning.)
 
-If you really borked things, factory-reset the radio (long-press button or via the app), then re-scan the [EF channels QR](https://meshtastic.org/e/#CgMSAQEKNBIgoU03W9b8s0vpL0IjhBIIHZtuW_sHui3QDhmlaOLflkkaC2NoZ21lLXNxdWFkJQEAAAAKNBIgoU03W9b8s0vpL0IjhBIIHZtuW_sHui3QDhmlaOLflkkaC2ZvcmVzdC1jaGF0JQIAAAASCggBOAFAA0gBUB4){ target="_blank" } from scratch. Five-minute fix — then flip the preset to `Medium Range - Fast` manually until we publish the regenerated QR.
+If you really borked things, factory-reset the radio (long-press button or via the app), then re-scan the [EF channels QR](https://meshtastic.org/e/#CgMSAQEKNBIggr0KuFkTIM9Lp2hj5qlw41jNe9Trl3cJPzSVWlUkwMUaC2NoZ21lLXNxdWFkJQEAAAAKNBIgoU03W9b8s0vpL0IjhBIIHZtuW_sHui3QDhmlaOLflkkaC2ZvcmVzdC1jaGF0JQIAAAAKERIBWxoHV2VhdGhlciUDAAAAEhcIARAEGPoBIAsoBTgBQANIAVAeWAJoAQ){ target="_blank" } from scratch. Five-minute fix — preset is baked into the QR, so no manual flip needed.
 
 ---
 

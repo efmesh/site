@@ -63,13 +63,10 @@ You should now see your node in the app. If not, restart the radio and try again
 This is the easy way to load all the Forest-compatible settings to your radio at once. **Only one person in your squad needs to do this** — they'll then generate a new QR and share it with the rest of you.
 
 <div class="ef-qr-block" markdown>
-**[Click here to load EF channels onto your radio :material-arrow-right-bold:](https://meshtastic.org/e/#CgMSAQEKNBIgoU03W9b8s0vpL0IjhBIIHZtuW_sHui3QDhmlaOLflkkaC2NoZ21lLXNxdWFkJQEAAAAKNBIgoU03W9b8s0vpL0IjhBIIHZtuW_sHui3QDhmlaOLflkkaC2ZvcmVzdC1jaGF0JQIAAAASCggBOAFAA0gBUB4){ target="_blank" }**
+**[Click here to load EF channels onto your radio :material-arrow-right-bold:](https://meshtastic.org/e/#CgMSAQEKNBIggr0KuFkTIM9Lp2hj5qlw41jNe9Trl3cJPzSVWlUkwMUaC2NoZ21lLXNxdWFkJQEAAAAKNBIgoU03W9b8s0vpL0IjhBIIHZtuW_sHui3QDhmlaOLflkkaC2ZvcmVzdC1jaGF0JQIAAAAKERIBWxoHV2VhdGhlciUDAAAAEhcIARAEGPoBIAsoBTgBQANIAVAeWAJoAQ){ target="_blank" }**
 
-Open this link on the phone that's paired to your radio. It loads the primary channel, a placeholder squad channel (you'll customize this in Step 8), and the public `forest-chat` channel.
+Open this link on the phone that's paired to your radio. It loads a placeholder squad channel (you'll customize this in Step 8) as your primary, the public `forest-chat` channel, and the `Weather` channel — all on the **Medium Range - Fast** preset.
 </div>
-
-!!! warning "QR being regenerated for Medium Fast"
-    The QR linked above still encodes the old **Long Range - Fast** preset. We're regenerating it. Until the new QR drops, scan this one as-is, then **manually flip the preset** in Step 5: **Settings → LoRa → Modem Preset → Medium Range - Fast**. Five-second fix and you'll be on the right preset.
 
 !!! info "Stuck? Ask in Discord"
     Post in the [EF Meshtastic Discord thread](https://discord.com/channels/260909643574935553/1111482301730271232){ target=_blank } — someone in the community is usually around and happy to walk you through it on a quick voice chat.

@@ -18,13 +18,10 @@ These are the settings the EF Meshtastic community uses. They keep the network h
 Unlike some Meshtastic communities, the EF community shares its channel settings **openly**. Anyone with this QR can load the Forest channels onto their radio.
 
 <div class="ef-qr-block" markdown>
-**[Load EF Channels :material-arrow-right-bold:](https://meshtastic.org/e/#CgMSAQEKNBIgoU03W9b8s0vpL0IjhBIIHZtuW_sHui3QDhmlaOLflkkaC2NoZ21lLXNxdWFkJQEAAAAKNBIgoU03W9b8s0vpL0IjhBIIHZtuW_sHui3QDhmlaOLflkkaC2ZvcmVzdC1jaGF0JQIAAAASCggBOAFAA0gBUB4){ target="_blank" }**
+**[Load EF Channels :material-arrow-right-bold:](https://meshtastic.org/e/#CgMSAQEKNBIggr0KuFkTIM9Lp2hj5qlw41jNe9Trl3cJPzSVWlUkwMUaC2NoZ21lLXNxdWFkJQEAAAAKNBIgoU03W9b8s0vpL0IjhBIIHZtuW_sHui3QDhmlaOLflkkaC2ZvcmVzdC1jaGF0JQIAAAAKERIBWxoHV2VhdGhlciUDAAAAEhcIARAEGPoBIAsoBTgBQANIAVAeWAJoAQ){ target="_blank" }**
 
-This loads three channels: the standard primary, a `chgme-squad` placeholder (you'll customize), and the public `forest-chat`.
+This loads three channels on the **Medium Range - Fast** preset: a `chgme-squad` placeholder primary (you'll customize), the public `forest-chat`, and the `Weather` channel.
 </div>
-
-!!! warning "QR being regenerated for Medium Fast"
-    The QR above still encodes the old **Long Range - Fast** preset (the payload is hashed into the link, so we can't just edit the text). We're regenerating it. Until the new QR drops, scan this one to load the channels, then **manually set the preset** under **Settings → LoRa → Modem Preset → Medium Range - Fast**. Takes five seconds.
 
 ---
 
