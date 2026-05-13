@@ -10,9 +10,14 @@ theme:
     - search.suggest
     - search.highlight
     - search.share
-    - navigation.instant
-    - navigation.instant.prefetch
-    - navigation.instant.progress
+    # navigation.instant disabled v1.7.1 — Safari iOS bug where post-scroll
+    # link taps register but page state doesn't update visually (refresh "lands"
+    # on the silently-loaded target). XHR + history.pushState race with
+    # iOS Safari's scroll/click event ordering. Re-enable when Material ships
+    # a fix or we have a service-worker-based alternative.
+    # - navigation.instant
+    # - navigation.instant.prefetch
+    # - navigation.instant.progress
     - navigation.tabs
     - navigation.tabs.sticky
   palette:
