@@ -1,0 +1,70 @@
+site_name: EF Meshtastic Community
+site_description: An unofficial community guide for using Meshtastic at Electric Forest. Find your squad without cell service.
+site_url: https://efmesh.com
+
+theme:
+  name: material
+  icon:
+    logo: material/pine-tree
+  features:
+    - search.suggest
+    - search.highlight
+    - search.share
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.tabs
+    - navigation.tabs.sticky
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
+      accent: light green
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      accent: light green
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+
+repo_name: efmesh
+repo_url: https://github.com/rancur/efmesh
+
+nav:
+  - Home: index.md
+  - How to Connect: docs/how-to-connect.md
+  - Recommended Hardware: docs/recommended-hardware.md
+  - Recommended Settings: docs/recommended-settings.md
+  - Camp Nodes: docs/camp-nodes.md
+  - Advanced Options: docs/advanced.md
+  - Troubleshooting: docs/troubleshooting.md
+
+plugins:
+  - offline
+  - search
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - tables
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+extra_css:
+  - assets/css/extra.css
+
+copyright: Copyright &copy; 2026 EF Meshtastic Community &middot; Not affiliated with or endorsed by Electric Forest, Insomniac, or Madison House Presents.
+extra:
+  social:
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/electricforest
+    - icon: fontawesome/brands/github
+      link: https://github.com/rancur/efmesh
