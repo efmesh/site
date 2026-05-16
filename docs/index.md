@@ -124,8 +124,6 @@ The EF Meshtastic crew lives in the official Electric Forest Discord, in the ded
 
 *Not in the Discord? Join at [discord.gg/electricforest](https://discord.gg/electricforest){ target=_blank } first.*{ .discord-helper }
 
-Don't have the EF Discord yet? Get the invite: <https://discord.gg/electricforest>
-
 ---
 
 ## Why Bring Meshtastic to the Forest?
