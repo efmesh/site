@@ -106,3 +106,5 @@ Drop a message in the EF Discord Meshtastic thread — we're happy to talk throu
 <span style="display: flex; justify-content: center; margin: 1.5rem 0;">
     [:fontawesome-brands-discord: Ask the EF Discord](https://discord.com/channels/260909643574935553/1111482301730271232){ .md-button .md-button--primary target="_blank"}
 </span>
+
+*Not in the Discord? Join at [discord.gg/electricforest](https://discord.gg/electricforest){ target=_blank } first.*{ .discord-helper }

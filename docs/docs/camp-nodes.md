@@ -9,7 +9,7 @@ title: Camp Nodes
 Want to go big? A high-up node at your camp helps everyone — especially folks with smaller, less-powerful handhelds. **Height is might.** The higher you can mount your antenna, the more of the Forest gets reliable mesh coverage.
 
 !!! warning "Stick to Client role unless you've been told otherwise"
-    Even if your node is up high and powered all weekend, **do not set it to Repeater or Router** unless someone in the [EF Discord](https://discord.com/channels/260909643574935553/1111482301730271232){ target=_blank } has explicitly given you the OK. Misconfigured Router/Repeater nodes break the mesh for the entire Forest. Default `Client` mode still helps a ton at elevation.
+    Even if your node is up high and powered all weekend, **do not set it to Repeater or Router** unless someone in the [EF Discord](https://discord.com/channels/260909643574935553/1111482301730271232){ target=_blank } (not in the Discord? join at [discord.gg/electricforest](https://discord.gg/electricforest){ target=_blank } first) has explicitly given you the OK. Misconfigured Router/Repeater nodes break the mesh for the entire Forest. Default `Client` mode still helps a ton at elevation.
 
 ---
 
@@ -116,3 +116,5 @@ If you want to roll your own — pick your own boards, antennas, batteries, case
 <span style="display: flex; justify-content: center; margin: 1.5rem 0;">
     [:fontawesome-brands-discord: Ask in the EF Discord](https://discord.com/channels/260909643574935553/1111482301730271232){ .md-button .md-button--primary target="_blank"}
 </span>
+
+*Not in the Discord? Join at [discord.gg/electricforest](https://discord.gg/electricforest){ target=_blank } first.*{ .discord-helper }

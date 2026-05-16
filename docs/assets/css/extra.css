@@ -140,3 +140,13 @@
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
+
+/* Helper note paired with each EF Discord Meshtastic thread link */
+.discord-helper {
+  display: block;
+  text-align: center;
+  font-size: 0.85em;
+  opacity: 0.8;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+}

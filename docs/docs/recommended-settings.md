@@ -130,7 +130,7 @@ Posts the current weather every hour and a forecast at the beginning of every da
 | **Rebroadcast Mode** | `ALL` | Default. Helps relay messages across the mesh. |
 
 !!! warning "About Router and Repeater roles"
-    Unless someone in the EF Discord has explicitly given you the green light, **stick to Client**. Mobile Router/Repeater nodes cause routing chaos, congest the network, and make everyone's experience worse — even (especially) yours. If you've got an awesome high-elevation node at your camp and think it'd benefit the community as a repeater, message the [EF Discord](https://discord.com/channels/260909643574935553/1111482301730271232){ target=_blank } first.
+    Unless someone in the EF Discord has explicitly given you the green light, **stick to Client**. Mobile Router/Repeater nodes cause routing chaos, congest the network, and make everyone's experience worse — even (especially) yours. If you've got an awesome high-elevation node at your camp and think it'd benefit the community as a repeater, message the [EF Discord](https://discord.com/channels/260909643574935553/1111482301730271232){ target=_blank } first (not in the Discord? join at [discord.gg/electricforest](https://discord.gg/electricforest){ target=_blank } before tapping the link).
 
 ---
 
@@ -176,7 +176,7 @@ You can also turn off the new-node-discovery notification in your phone's notifi
 
 MQTT lets nodes upload metadata to a shared cloud server. We don't have a dedicated EF MQTT bridge set up for 2026 yet, so **leave MQTT disabled on every channel** — uplink off, downlink off.
 
-If we stand one up before the festival, we'll update this page and post in the [EF Discord](https://discord.com/channels/260909643574935553/1111482301730271232){ target=_blank }.
+If we stand one up before the festival, we'll update this page and post in the [EF Discord](https://discord.com/channels/260909643574935553/1111482301730271232){ target=_blank } (not in the Discord? join at [discord.gg/electricforest](https://discord.gg/electricforest){ target=_blank } first).
 
 ---
 
@@ -187,3 +187,5 @@ The EF Meshtastic crew lives in the official Electric Forest Discord — we love
 <span style="display: flex; justify-content: center; margin: 1.5rem 0;">
     [:fontawesome-brands-discord: Ask in the EF Discord](https://discord.com/channels/260909643574935553/1111482301730271232){ .md-button .md-button--primary target="_blank"}
 </span>
+
+*Not in the Discord? Join at [discord.gg/electricforest](https://discord.gg/electricforest){ target=_blank } first.*{ .discord-helper }
