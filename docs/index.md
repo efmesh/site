@@ -40,7 +40,7 @@ This is the community guide for using it at Electric Forest.
     <div class="ef-phone-screen">
       <div class="ef-statusbar">
         <span class="ef-time">10:42</span>
-        <span class="ef-carrier">EFMesh</span>
+        <span class="ef-carrier">Meshtastic</span>
         <span class="ef-battery" aria-hidden="true">
           <svg viewBox="0 0 22 10" width="22" height="10"><rect x="0.5" y="0.5" width="18" height="9" rx="2" fill="none" stroke="#bda7f5" stroke-width="1"/><rect x="2" y="2" width="13" height="6" rx="1" fill="#b6f0a8"/><rect x="19.5" y="3" width="2" height="4" rx="0.5" fill="#bda7f5"/></svg>
         </span>
@@ -49,7 +49,7 @@ This is the community guide for using it at Electric Forest.
         <span class="ef-meshicon" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#b6f0a8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><line x1="5" y1="6" x2="19" y2="6"/><line x1="5" y1="6" x2="12" y2="18"/><line x1="19" y1="6" x2="12" y2="18"/></svg>
         </span>
-        <span class="ef-chattitle">EF Mesh &mdash; Squad Chat</span>
+        <span class="ef-chattitle">Squad Chat</span>
       </div>
       <div class="ef-chatbody">
         <div class="ef-msg ef-msg--in ef-msg--1"><span class="ef-name">alex</span><span class="ef-bubble">happy forest &#127795; made it through the gate!</span></div>
