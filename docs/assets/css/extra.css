@@ -182,7 +182,7 @@
   justify-content: flex-end;
   gap: 0.35rem;
   overflow: hidden;
-  animation: ef-chat-loop 40s linear infinite;
+  animation: ef-chat-loop 63s linear infinite;
 }
 .ef-msg {
   display: flex;
@@ -195,7 +195,7 @@
   max-height: 0;
   overflow: hidden;
   transform: translateY(14px);
-  animation: ef-msg-in 40s linear infinite;
+  animation: ef-msg-in 63s linear infinite;
 }
 .ef-msg--in { align-self: flex-start; align-items: flex-start; }
 .ef-msg--out { align-self: flex-end; align-items: flex-end; }
@@ -226,37 +226,62 @@
   border-bottom-right-radius: 3px;
 }
 
-/* Per-message slide-in delays: 16 messages over ~33s on a 40s loop, then ~7s
-   breath before restart. ~2.2s cadence per message — typical chat pace.
-   Each msg animation runs the same 40s loop with its own negative delay so
-   its "in" window aligns at the right moment. */
+/* Per-message slide-in delays: 40 messages over 60s on a 63s loop, then ~3s
+   breath before restart. 1.5s cadence per message — brisk Forest chat pace
+   spanning all 4 days. Each msg animation runs the same 63s loop with its
+   own negative delay so its "in" window aligns at the right moment. */
 .ef-msg--1  { animation-delay: 0s; }
-.ef-msg--2  { animation-delay: -37.8s; }  /* +2.2s */
-.ef-msg--3  { animation-delay: -35.6s; }  /* +4.4s */
-.ef-msg--4  { animation-delay: -33.4s; }  /* +6.6s */
-.ef-msg--5  { animation-delay: -31.2s; }  /* +8.8s */
-.ef-msg--6  { animation-delay: -29s; }    /* +11s */
-.ef-msg--7  { animation-delay: -26.8s; }  /* +13.2s */
-.ef-msg--8  { animation-delay: -24.6s; }  /* +15.4s */
-.ef-msg--9  { animation-delay: -22.4s; }  /* +17.6s */
-.ef-msg--10 { animation-delay: -20.2s; }  /* +19.8s */
-.ef-msg--11 { animation-delay: -18s; }    /* +22s */
-.ef-msg--12 { animation-delay: -15.8s; }  /* +24.2s */
-.ef-msg--13 { animation-delay: -13.6s; }  /* +26.4s */
-.ef-msg--14 { animation-delay: -11.4s; }  /* +28.6s */
-.ef-msg--15 { animation-delay: -9.2s; }   /* +30.8s */
-.ef-msg--16 { animation-delay: -7s; }     /* +33s */
+.ef-msg--2  { animation-delay: -61.5s; }  /* +1.5s */
+.ef-msg--3  { animation-delay: -60s; }    /* +3s */
+.ef-msg--4  { animation-delay: -58.5s; }  /* +4.5s */
+.ef-msg--5  { animation-delay: -57s; }    /* +6s */
+.ef-msg--6  { animation-delay: -55.5s; }  /* +7.5s */
+.ef-msg--7  { animation-delay: -54s; }    /* +9s */
+.ef-msg--8  { animation-delay: -52.5s; }  /* +10.5s */
+.ef-msg--9  { animation-delay: -51s; }    /* +12s */
+.ef-msg--10 { animation-delay: -49.5s; }  /* +13.5s */
+.ef-msg--11 { animation-delay: -48s; }    /* +15s */
+.ef-msg--12 { animation-delay: -46.5s; }  /* +16.5s */
+.ef-msg--13 { animation-delay: -45s; }    /* +18s */
+.ef-msg--14 { animation-delay: -43.5s; }  /* +19.5s */
+.ef-msg--15 { animation-delay: -42s; }    /* +21s */
+.ef-msg--16 { animation-delay: -40.5s; }  /* +22.5s */
+.ef-msg--17 { animation-delay: -39s; }    /* +24s */
+.ef-msg--18 { animation-delay: -37.5s; }  /* +25.5s */
+.ef-msg--19 { animation-delay: -36s; }    /* +27s */
+.ef-msg--20 { animation-delay: -34.5s; }  /* +28.5s */
+.ef-msg--21 { animation-delay: -33s; }    /* +30s */
+.ef-msg--22 { animation-delay: -31.5s; }  /* +31.5s */
+.ef-msg--23 { animation-delay: -30s; }    /* +33s */
+.ef-msg--24 { animation-delay: -28.5s; }  /* +34.5s */
+.ef-msg--25 { animation-delay: -27s; }    /* +36s */
+.ef-msg--26 { animation-delay: -25.5s; }  /* +37.5s */
+.ef-msg--27 { animation-delay: -24s; }    /* +39s */
+.ef-msg--28 { animation-delay: -22.5s; }  /* +40.5s */
+.ef-msg--29 { animation-delay: -21s; }    /* +42s */
+.ef-msg--30 { animation-delay: -19.5s; }  /* +43.5s */
+.ef-msg--31 { animation-delay: -18s; }    /* +45s */
+.ef-msg--32 { animation-delay: -16.5s; }  /* +46.5s */
+.ef-msg--33 { animation-delay: -15s; }    /* +48s */
+.ef-msg--34 { animation-delay: -13.5s; }  /* +49.5s */
+.ef-msg--35 { animation-delay: -12s; }    /* +51s */
+.ef-msg--36 { animation-delay: -10.5s; }  /* +52.5s */
+.ef-msg--37 { animation-delay: -9s; }     /* +54s */
+.ef-msg--38 { animation-delay: -7.5s; }   /* +55.5s */
+.ef-msg--39 { animation-delay: -6s; }     /* +57s */
+.ef-msg--40 { animation-delay: -4.5s; }   /* +58.5s */
 
 @keyframes ef-msg-in {
   /* Slide IN FROM BELOW (translateY +14 → 0) + animate max-height 0 → 60px
      so newcomers push older messages UP the stack. With flex-end on the
      body, the newest msg lands at the BOTTOM and the stack grows upward.
      Brief fade-out at the end-of-loop syncs with the chat-body breath
-     for a clean restart. */
+     for a clean restart. Tightened slide window for 1.5s cadence on 63s
+     loop: each msg pops in over ~1s (0.5%-2%) then holds until 95%. */
   0%   { opacity: 0; max-height: 0;    transform: translateY(14px); }
-  1%   { opacity: 0; max-height: 0;    transform: translateY(14px); }
-  3%   { opacity: 1; max-height: 60px; transform: translateY(2px); }
-  5%   { opacity: 1; max-height: 60px; transform: translateY(0); }
+  0.5% { opacity: 0; max-height: 0;    transform: translateY(14px); }
+  2%   { opacity: 1; max-height: 60px; transform: translateY(2px); }
+  3.5% { opacity: 1; max-height: 60px; transform: translateY(0); }
   95%  { opacity: 1; max-height: 60px; transform: translateY(0); }
   98%  { opacity: 0; max-height: 60px; transform: translateY(-4px); }
   100% { opacity: 0; max-height: 0;    transform: translateY(14px); }
