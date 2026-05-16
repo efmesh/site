@@ -65,17 +65,17 @@ Similar form factor to the WisMesh Tag. Most of us prefer the WisMesh Tag — be
 
 ---
 
-### LILYGO T-Deck (~$80)
+### LILYGO T-Deck Plus (~$70)
 
-![LILYGO T-Deck](../assets/img/hardware/lilygo-t-deck.png){ .product-image }
+![LILYGO T-Deck Plus](../assets/img/hardware/lilygo-t-deck-plus.png){ .product-image }
 
-Want to leave your phone in your tent? The T-Deck has a full physical keyboard and runs standalone. Niche but cool.
+If you want a phone-shaped Meshtastic device with no extra parts to source, T-Deck Plus is it. Same 2.8" color screen and physical QWERTY keyboard as the original T-Deck — but now with an **on-board GPS module** and a **built-in 18650 battery slot + charger**. No external GPS dongle, no external battery pack, no cable jungle. Pop in a cell and head to Forest.
 
 |  |  |
 |:--|:--|
-| **Pros** | Cheap for what it is &middot; Physical keyboard &middot; Bluetooth + GPS + Wifi &middot; Available on Amazon |
-| **Cons** | Needs a big battery &middot; No external antenna &middot; Map setup is fiddly (you have to upload your own map files) — if GPS-on-the-device matters to you, skip this |
-| **Where to buy** | [Rokland](https://store.rokland.com/products/lilygo-t-deck-portable-microcontroller-programmer-lora-915-mhz-h642){ target=_blank } &middot; [Amazon](https://www.amazon.com/LILYGO-ESP32-S3-LORA-89-2-8-inch-Development/dp/B0FBGX1VP5){ target=_blank } |
+| **Pros** | Physical QWERTY keyboard &middot; 2.8" color touchscreen &middot; **On-board GPS** (no external module needed) &middot; **Built-in 18650 battery slot + charger** &middot; ESP32-S3 + LoRa SX1262 &middot; Bluetooth + Wifi &middot; Runs standalone without your phone |
+| **Cons** | No external antenna &middot; Bigger and heavier than a card-style tracker &middot; Map setup is fiddly (you upload your own map files) |
+| **Where to buy** | [LILYGO (manufacturer)](https://lilygo.cc/en-us/products/t-deck-plus-1){ target=_blank } &middot; [Amazon](https://amzn.to/4nz0EUF){ target=_blank } |
 
 ---
 
