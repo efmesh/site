@@ -181,18 +181,28 @@
   flex: 1;
   padding: 0.5rem 0.55rem 0.55rem 0.55rem;
   display: flex;
+  /* Bottom-up chat stacking — newest message anchors at the bottom, older
+     messages push UP as new ones arrive (standard chat-app feel).
+     overflow:hidden + flex-end clips older messages off the TOP of the
+     visible area as the stack grows. */
   flex-direction: column;
+  justify-content: flex-end;
   gap: 0.35rem;
   overflow: hidden;
-  animation: ef-chat-loop 27s linear infinite;
+  animation: ef-chat-loop 40s linear infinite;
 }
 .ef-msg {
   display: flex;
   flex-direction: column;
   max-width: 78%;
   opacity: 0;
-  transform: translateY(8px);
-  animation: ef-msg-in 27s linear infinite;
+  /* max-height + margin animate together with opacity so that earlier
+     messages get visually pushed UP when a new one arrives (true chat-app
+     stacking, not just an opacity reveal in fixed slots). */
+  max-height: 0;
+  overflow: hidden;
+  transform: translateY(14px);
+  animation: ef-msg-in 40s linear infinite;
 }
 .ef-msg--in { align-self: flex-start; align-items: flex-start; }
 .ef-msg--out { align-self: flex-end; align-items: flex-end; }
@@ -223,33 +233,46 @@
   border-bottom-right-radius: 3px;
 }
 
-/* Per-message slide-in delays: 8 messages over ~22s, then hold + fade-clear.
-   Each msg animation runs the same 27s loop with its own delay shift so its
-   "in" window aligns. Trick: use negative animation-delay to phase-shift. */
-.ef-msg--1 { animation-delay: 0s; }
-.ef-msg--2 { animation-delay: -24.4s; }  /* visible starting +2.6s */
-.ef-msg--3 { animation-delay: -21.8s; }  /* +5.2s */
-.ef-msg--4 { animation-delay: -19.2s; }  /* +7.8s */
-.ef-msg--5 { animation-delay: -16.6s; }  /* +10.4s */
-.ef-msg--6 { animation-delay: -14s; }    /* +13s */
-.ef-msg--7 { animation-delay: -11.4s; }  /* +15.6s */
-.ef-msg--8 { animation-delay: -8.8s; }   /* +18.2s */
+/* Per-message slide-in delays: 16 messages over ~33s on a 40s loop, then ~7s
+   breath before restart. ~2.2s cadence per message — typical chat pace.
+   Each msg animation runs the same 40s loop with its own negative delay so
+   its "in" window aligns at the right moment. */
+.ef-msg--1  { animation-delay: 0s; }
+.ef-msg--2  { animation-delay: -37.8s; }  /* +2.2s */
+.ef-msg--3  { animation-delay: -35.6s; }  /* +4.4s */
+.ef-msg--4  { animation-delay: -33.4s; }  /* +6.6s */
+.ef-msg--5  { animation-delay: -31.2s; }  /* +8.8s */
+.ef-msg--6  { animation-delay: -29s; }    /* +11s */
+.ef-msg--7  { animation-delay: -26.8s; }  /* +13.2s */
+.ef-msg--8  { animation-delay: -24.6s; }  /* +15.4s */
+.ef-msg--9  { animation-delay: -22.4s; }  /* +17.6s */
+.ef-msg--10 { animation-delay: -20.2s; }  /* +19.8s */
+.ef-msg--11 { animation-delay: -18s; }    /* +22s */
+.ef-msg--12 { animation-delay: -15.8s; }  /* +24.2s */
+.ef-msg--13 { animation-delay: -13.6s; }  /* +26.4s */
+.ef-msg--14 { animation-delay: -11.4s; }  /* +28.6s */
+.ef-msg--15 { animation-delay: -9.2s; }   /* +30.8s */
+.ef-msg--16 { animation-delay: -7s; }     /* +33s */
 
 @keyframes ef-msg-in {
-  /* in-window: 0% → 2% slide+fade in; hold; 92%→100% fade out with the body */
-  0%   { opacity: 0; transform: translateY(8px); }
-  1%   { opacity: 0; transform: translateY(8px); }
-  3%   { opacity: 1; transform: translateY(-2px); }
-  5%   { opacity: 1; transform: translateY(0); }
-  88%  { opacity: 1; transform: translateY(0); }
-  95%  { opacity: 0; transform: translateY(-4px); }
-  100% { opacity: 0; transform: translateY(8px); }
+  /* Slide IN FROM BELOW (translateY +14 → 0) + animate max-height 0 → 60px
+     so newcomers push older messages UP the stack. With flex-end on the
+     body, the newest msg lands at the BOTTOM and the stack grows upward.
+     Brief fade-out at the end-of-loop syncs with the chat-body breath
+     for a clean restart. */
+  0%   { opacity: 0; max-height: 0;    transform: translateY(14px); }
+  1%   { opacity: 0; max-height: 0;    transform: translateY(14px); }
+  3%   { opacity: 1; max-height: 60px; transform: translateY(2px); }
+  5%   { opacity: 1; max-height: 60px; transform: translateY(0); }
+  95%  { opacity: 1; max-height: 60px; transform: translateY(0); }
+  98%  { opacity: 0; max-height: 60px; transform: translateY(-4px); }
+  100% { opacity: 0; max-height: 0;    transform: translateY(14px); }
 }
 
-/* Body-level loop: hold all 8 visible, then clear-fade for restart breath */
+/* Body-level loop: clean breath at end-of-loop so restart isn't jarring */
 @keyframes ef-chat-loop {
-  0%, 95% { background: transparent; }
-  95%, 100% { background: transparent; }
+  0%, 96%   { background: transparent; }
+  96%, 100% { background: transparent; }
 }
 
 .ef-phone-caption {

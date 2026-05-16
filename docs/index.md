@@ -80,14 +80,22 @@ This is the community guide for using it at Electric Forest.
         <span class="ef-chattitle">EF Mesh &mdash; Squad Chat</span>
       </div>
       <div class="ef-chatbody">
-        <div class="ef-msg ef-msg--in ef-msg--1"><span class="ef-name">alex</span><span class="ef-bubble">where&rsquo;s the squad at?</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--2"><span class="ef-name">sam</span><span class="ef-bubble">sherwood by the totem with the goofy hats &#127794;</span></div>
+        <div class="ef-msg ef-msg--in ef-msg--1"><span class="ef-name">alex</span><span class="ef-bubble">happy forest! where&rsquo;s the squad? &#127795;</span></div>
+        <div class="ef-msg ef-msg--in ef-msg--2"><span class="ef-name">sam</span><span class="ef-bubble">sherwood by the carousel &#127904;</span></div>
         <div class="ef-msg ef-msg--out ef-msg--3"><span class="ef-name">you</span><span class="ef-bubble">ranch arena in 10 &mdash; bring water &#128167;</span></div>
         <div class="ef-msg ef-msg--in ef-msg--4"><span class="ef-name">jess</span><span class="ef-bubble">save me a spot &#128591;</span></div>
         <div class="ef-msg ef-msg--in ef-msg--5"><span class="ef-name">alex</span><span class="ef-bubble">rain incoming, head back &#9748;</span></div>
         <div class="ef-msg ef-msg--in ef-msg--6"><span class="ef-name">sam</span><span class="ef-bubble">battery dying find me later &#128267;</span></div>
         <div class="ef-msg ef-msg--out ef-msg--7"><span class="ef-name">you</span><span class="ef-bubble">drop a pin &#128205;</span></div>
         <div class="ef-msg ef-msg--in ef-msg--8"><span class="ef-name">jess</span><span class="ef-bubble">this set is INSANE &#128293;</span></div>
+        <div class="ef-msg ef-msg--in ef-msg--9"><span class="ef-name">alex</span><span class="ef-bubble">happy forest &#127795; random wook just gave me kandi &#127752;</span></div>
+        <div class="ef-msg ef-msg--in ef-msg--10"><span class="ef-name">sam</span><span class="ef-bubble">forest fam heading to the observatory &#128301;</span></div>
+        <div class="ef-msg ef-msg--out ef-msg--11"><span class="ef-name">you</span><span class="ef-bubble">wishing tree at midnight? &#127795;</span></div>
+        <div class="ef-msg ef-msg--in ef-msg--12"><span class="ef-name">jess</span><span class="ef-bubble">fam where r u im lost in sherwood lol</span></div>
+        <div class="ef-msg ef-msg--in ef-msg--13"><span class="ef-name">alex</span><span class="ef-bubble">trading post in 30, rally up</span></div>
+        <div class="ef-msg ef-msg--in ef-msg--14"><span class="ef-name">sam</span><span class="ef-bubble">vibe check &#10024; everyone safe?</span></div>
+        <div class="ef-msg ef-msg--out ef-msg--15"><span class="ef-name">you</span><span class="ef-bubble">all good &mdash; happy forest &#128156;</span></div>
+        <div class="ef-msg ef-msg--in ef-msg--16"><span class="ef-name">jess</span><span class="ef-bubble">headliner!! &#127926; see u at ranch arena</span></div>
       </div>
     </div>
   </div>
