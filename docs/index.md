@@ -30,6 +30,34 @@ Meshtastic is a tiny radio that clips to your pack and lets you text your friend
 
 This is the community guide for using it at Electric Forest.
 
+<div class="ef-anim-row">
+<div class="mesh-animation" aria-hidden="true">
+<svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mesh network animation showing a message hopping between phone nodes">
+  <defs>
+    <symbol id="phone" viewBox="0 0 24 36">
+      <rect x="2" y="2" width="20" height="32" rx="3" ry="3" fill="#2e1d4d" stroke="#a78bfa" stroke-width="1.5"/>
+      <rect x="4" y="6" width="16" height="22" rx="1" fill="#7dd87a"/>
+      <circle cx="12" cy="31" r="1.3" fill="#a78bfa"/>
+    </symbol>
+  </defs>
+  <g class="mesh-links" stroke="#7dd87a" stroke-width="1" stroke-dasharray="3 3" opacity="0.35" fill="none">
+    <line x1="50" y1="150" x2="140" y2="60"/>
+    <line x1="140" y1="60" x2="230" y2="140"/>
+    <line x1="230" y1="140" x2="330" y2="55"/>
+    <line x1="50" y1="150" x2="230" y2="140"/>
+    <line x1="140" y1="60" x2="330" y2="55"/>
+  </g>
+  <g class="mesh-nodes">
+    <use href="#phone" x="38" y="132" width="24" height="36"/>
+    <use href="#phone" x="128" y="42" width="24" height="36"/>
+    <use href="#phone" x="218" y="122" width="24" height="36"/>
+    <use href="#phone" x="318" y="37" width="24" height="36"/>
+  </g>
+  <circle class="mesh-msg" r="5" fill="#ffb84d" stroke="#fff" stroke-width="1.5"/>
+</svg>
+<p class="mesh-caption">Each phone hops messages to the next — no cell tower needed.</p>
+</div>
+
 <div class="ef-phone-anim" aria-hidden="true">
   <div class="ef-phone">
     <svg class="ef-phone-frame" viewBox="0 0 240 480" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" focusable="false">
@@ -40,7 +68,7 @@ This is the community guide for using it at Electric Forest.
     <div class="ef-phone-screen">
       <div class="ef-statusbar">
         <span class="ef-time">10:42</span>
-        <span class="ef-carrier">EFMesh &middot; LTE</span>
+        <span class="ef-carrier">EFMesh</span>
         <span class="ef-battery" aria-hidden="true">
           <svg viewBox="0 0 22 10" width="22" height="10"><rect x="0.5" y="0.5" width="18" height="9" rx="2" fill="none" stroke="#bda7f5" stroke-width="1"/><rect x="2" y="2" width="13" height="6" rx="1" fill="#b6f0a8"/><rect x="19.5" y="3" width="2" height="4" rx="0.5" fill="#bda7f5"/></svg>
         </span>
@@ -54,7 +82,7 @@ This is the community guide for using it at Electric Forest.
       <div class="ef-chatbody">
         <div class="ef-msg ef-msg--in ef-msg--1"><span class="ef-name">alex</span><span class="ef-bubble">where&rsquo;s the squad at?</span></div>
         <div class="ef-msg ef-msg--in ef-msg--2"><span class="ef-name">sam</span><span class="ef-bubble">sherwood by the totem with the goofy hats &#127794;</span></div>
-        <div class="ef-msg ef-msg--out ef-msg--3"><span class="ef-name">you</span><span class="ef-bubble">main stage in 10 &mdash; bring water &#128167;</span></div>
+        <div class="ef-msg ef-msg--out ef-msg--3"><span class="ef-name">you</span><span class="ef-bubble">ranch arena in 10 &mdash; bring water &#128167;</span></div>
         <div class="ef-msg ef-msg--in ef-msg--4"><span class="ef-name">jess</span><span class="ef-bubble">save me a spot &#128591;</span></div>
         <div class="ef-msg ef-msg--in ef-msg--5"><span class="ef-name">alex</span><span class="ef-bubble">rain incoming, head back &#9748;</span></div>
         <div class="ef-msg ef-msg--in ef-msg--6"><span class="ef-name">sam</span><span class="ef-bubble">battery dying find me later &#128267;</span></div>
@@ -64,6 +92,7 @@ This is the community guide for using it at Electric Forest.
     </div>
   </div>
   <p class="ef-phone-caption">Real chats from your squad &mdash; no cell tower needed.</p>
+</div>
 </div>
 
 <div class="stats-row" markdown>
