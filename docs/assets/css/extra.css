@@ -58,42 +58,154 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
 }
 
-/* Mesh-relay hero animation — 4 phone nodes + hopping message dot */
-.mesh-animation {
-  max-width: 480px;
+/* Phone-chat hero animation — stylized phone frame + Forest squad messages
+   sliding in one at a time on a ~3s cadence, looped. Pure CSS keyframes, no JS,
+   no external libs. Respects prefers-reduced-motion. */
+.ef-phone-anim {
+  max-width: 260px;
   margin: 1.6rem auto 0.4rem auto;
   text-align: center;
 }
-.mesh-animation svg {
+.ef-phone {
+  position: relative;
   width: 100%;
-  height: auto;
+  aspect-ratio: 240 / 480;
+  margin: 0 auto;
+  filter: drop-shadow(0 8px 24px rgba(46, 29, 77, 0.45));
+}
+.ef-phone-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   display: block;
 }
-.mesh-caption {
-  font-size: 0.88rem;
+.ef-phone-screen {
+  position: absolute;
+  top: 4.2%;
+  left: 5%;
+  right: 5%;
+  bottom: 4.2%;
+  border-radius: 22px;
+  background: linear-gradient(180deg, #1a0f33 0%, #150927 100%);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #ece4ff;
+}
+.ef-statusbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.45rem 0.7rem 0.3rem 0.7rem;
+  font-size: 0.55rem;
+  color: #bda7f5;
+  letter-spacing: 0.02em;
+}
+.ef-statusbar .ef-carrier { font-weight: 600; }
+.ef-statusbar .ef-battery { display: inline-flex; align-items: center; }
+.ef-chatheader {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.7rem 0.5rem 0.7rem;
+  border-bottom: 1px solid rgba(167, 139, 250, 0.18);
+  font-size: 0.66rem;
+  color: #d9c9ff;
+}
+.ef-chattitle { font-weight: 600; letter-spacing: 0.01em; }
+.ef-chatbody {
+  position: relative;
+  flex: 1;
+  padding: 0.5rem 0.55rem 0.55rem 0.55rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  overflow: hidden;
+  animation: ef-chat-loop 27s linear infinite;
+}
+.ef-msg {
+  display: flex;
+  flex-direction: column;
+  max-width: 78%;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: ef-msg-in 27s linear infinite;
+}
+.ef-msg--in { align-self: flex-start; align-items: flex-start; }
+.ef-msg--out { align-self: flex-end; align-items: flex-end; }
+.ef-name {
+  font-size: 0.48rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.7;
+  margin: 0 0.3rem 0.1rem 0.3rem;
+}
+.ef-bubble {
+  font-size: 0.62rem;
+  line-height: 1.25;
+  padding: 0.32rem 0.5rem;
+  border-radius: 10px;
+  word-wrap: break-word;
+}
+.ef-msg--in .ef-bubble {
+  background: rgba(167, 139, 250, 0.22);
+  color: #ece4ff;
+  border: 1px solid rgba(167, 139, 250, 0.35);
+  border-bottom-left-radius: 3px;
+}
+.ef-msg--out .ef-bubble {
+  background: rgba(125, 216, 122, 0.22);
+  color: #e8ffe2;
+  border: 1px solid rgba(182, 240, 168, 0.4);
+  border-bottom-right-radius: 3px;
+}
+
+/* Per-message slide-in delays: 8 messages over ~22s, then hold + fade-clear.
+   Each msg animation runs the same 27s loop with its own delay shift so its
+   "in" window aligns. Trick: use negative animation-delay to phase-shift. */
+.ef-msg--1 { animation-delay: 0s; }
+.ef-msg--2 { animation-delay: -24.4s; }  /* visible starting +2.6s */
+.ef-msg--3 { animation-delay: -21.8s; }  /* +5.2s */
+.ef-msg--4 { animation-delay: -19.2s; }  /* +7.8s */
+.ef-msg--5 { animation-delay: -16.6s; }  /* +10.4s */
+.ef-msg--6 { animation-delay: -14s; }    /* +13s */
+.ef-msg--7 { animation-delay: -11.4s; }  /* +15.6s */
+.ef-msg--8 { animation-delay: -8.8s; }   /* +18.2s */
+
+@keyframes ef-msg-in {
+  /* in-window: 0% → 2% slide+fade in; hold; 92%→100% fade out with the body */
+  0%   { opacity: 0; transform: translateY(8px); }
+  1%   { opacity: 0; transform: translateY(8px); }
+  3%   { opacity: 1; transform: translateY(-2px); }
+  5%   { opacity: 1; transform: translateY(0); }
+  88%  { opacity: 1; transform: translateY(0); }
+  95%  { opacity: 0; transform: translateY(-4px); }
+  100% { opacity: 0; transform: translateY(8px); }
+}
+
+/* Body-level loop: hold all 8 visible, then clear-fade for restart breath */
+@keyframes ef-chat-loop {
+  0%, 95% { background: transparent; }
+  95%, 100% { background: transparent; }
+}
+
+.ef-phone-caption {
+  font-size: 0.85rem;
   color: var(--md-default-fg-color--light);
-  margin: 0.2rem 0 1.4rem 0;
+  margin: 0.7rem 0 1.2rem 0;
   font-style: italic;
 }
-.mesh-animation .mesh-msg {
-  animation: mesh-hop 6s ease-in-out infinite;
-  filter: drop-shadow(0 0 4px rgba(255, 184, 77, 0.7));
-}
-@keyframes mesh-hop {
-  0%   { transform: translate(50px, 150px); opacity: 0; }
-  5%   { opacity: 1; }
-  25%  { transform: translate(140px, 60px); opacity: 1; }
-  45%  { transform: translate(230px, 140px); opacity: 1; }
-  65%  { transform: translate(330px, 55px); opacity: 1; }
-  80%  { transform: translate(330px, 55px); opacity: 1; }
-  95%  { opacity: 0; }
-  100% { transform: translate(50px, 150px); opacity: 0; }
-}
+
 @media (prefers-reduced-motion: reduce) {
-  .mesh-animation .mesh-msg {
-    animation: none;
-    transform: translate(140px, 60px);
-  }
+  .ef-chatbody, .ef-msg { animation: none !important; }
+  .ef-msg { opacity: 1; transform: none; }
+}
+
+/* Larger viewports — give the phone a bit more presence */
+@media (min-width: 600px) {
+  .ef-phone-anim { max-width: 280px; }
 }
 
 /* Social-proof stats row */
