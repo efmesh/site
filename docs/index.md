@@ -30,34 +30,6 @@ Meshtastic is a tiny radio that clips to your pack and lets you text your friend
 
 This is the community guide for using it at Electric Forest.
 
-<div class="ef-anim-row">
-<div class="mesh-animation" aria-hidden="true">
-<svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mesh network animation showing a message hopping between phone nodes">
-  <defs>
-    <symbol id="phone" viewBox="0 0 24 36">
-      <rect x="2" y="2" width="20" height="32" rx="3" ry="3" fill="#2e1d4d" stroke="#a78bfa" stroke-width="1.5"/>
-      <rect x="4" y="6" width="16" height="22" rx="1" fill="#7dd87a"/>
-      <circle cx="12" cy="31" r="1.3" fill="#a78bfa"/>
-    </symbol>
-  </defs>
-  <g class="mesh-links" stroke="#7dd87a" stroke-width="1" stroke-dasharray="3 3" opacity="0.35" fill="none">
-    <line x1="50" y1="150" x2="140" y2="60"/>
-    <line x1="140" y1="60" x2="230" y2="140"/>
-    <line x1="230" y1="140" x2="330" y2="55"/>
-    <line x1="50" y1="150" x2="230" y2="140"/>
-    <line x1="140" y1="60" x2="330" y2="55"/>
-  </g>
-  <g class="mesh-nodes">
-    <use href="#phone" x="38" y="132" width="24" height="36"/>
-    <use href="#phone" x="128" y="42" width="24" height="36"/>
-    <use href="#phone" x="218" y="122" width="24" height="36"/>
-    <use href="#phone" x="318" y="37" width="24" height="36"/>
-  </g>
-  <circle class="mesh-msg" r="5" fill="#ffb84d" stroke="#fff" stroke-width="1.5"/>
-</svg>
-<p class="mesh-caption">Each phone hops messages to the next — no cell tower needed.</p>
-</div>
-
 <div class="ef-phone-anim" aria-hidden="true">
   <div class="ef-phone">
     <svg class="ef-phone-frame" viewBox="0 0 240 480" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" focusable="false">
@@ -101,7 +73,6 @@ This is the community guide for using it at Electric Forest.
   </div>
   <p class="ef-phone-caption">Real chats from your squad &mdash; no cell tower needed.</p>
 </div>
-</div>
 
 <div class="stats-row" markdown>
 <div class="stat"><span class="stat-num">120+</span><span class="stat-label">nodes last year</span></div>
@@ -127,6 +98,62 @@ It's a little 915 MHz radio (about the size of a deck of cards or smaller) that:
 - **Meshes** — every node in the Forest extends the range for everyone else. The more of us, the better it works.
 
 The little device connects via Bluetooth to your phone and lets you send messages and see each other's locations **without cell service**.
+
+---
+
+<div class="mesh-animation" aria-hidden="true">
+<svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mesh network animation showing 12 phones distributed across a festival camp, connected by dashed lines, with an orange message dot hopping between nodes">
+  <defs>
+    <symbol id="phone" viewBox="0 0 24 36">
+      <rect x="2" y="2" width="20" height="32" rx="3" ry="3" fill="#2e1d4d" stroke="#a78bfa" stroke-width="1.5"/>
+      <rect x="4" y="6" width="16" height="22" rx="1" fill="#7dd87a"/>
+      <circle cx="12" cy="31" r="1.3" fill="#a78bfa"/>
+    </symbol>
+  </defs>
+  <g class="mesh-links" stroke="#7dd87a" stroke-width="1" stroke-dasharray="3 3" opacity="0.4" fill="none">
+    <!-- Cluster A — upper-left main camp (P1,P2,P3) -->
+    <line x1="72"  y1="58"  x2="107" y2="93"/>
+    <line x1="107" y1="93"  x2="142" y2="60"/>
+    <line x1="72"  y1="58"  x2="142" y2="60"/>
+    <!-- Cluster B — center stage area (P4,P5,P6) -->
+    <line x1="247" y1="128" x2="282" y2="168"/>
+    <line x1="247" y1="128" x2="322" y2="113"/>
+    <line x1="282" y1="168" x2="322" y2="113"/>
+    <!-- Cluster C — back camp lower-right (P7,P8,P9) -->
+    <line x1="447" y1="193" x2="487" y2="223"/>
+    <line x1="487" y1="223" x2="522" y2="183"/>
+    <line x1="447" y1="193" x2="522" y2="183"/>
+    <!-- Bridges between clusters + outliers -->
+    <line x1="142" y1="60"  x2="402" y2="58"/>
+    <line x1="402" y1="58"  x2="322" y2="113"/>
+    <line x1="107" y1="93"  x2="187" y2="218"/>
+    <line x1="187" y1="218" x2="282" y2="168"/>
+    <line x1="322" y1="113" x2="562" y2="98"/>
+    <line x1="562" y1="98"  x2="522" y2="183"/>
+    <line x1="282" y1="168" x2="447" y2="193"/>
+  </g>
+  <g class="mesh-nodes">
+    <!-- Cluster A — upper-left main camp (tight, 3 phones) -->
+    <use href="#phone" x="60"  y="40"  width="24" height="36"/>
+    <use href="#phone" x="95"  y="75"  width="24" height="36"/>
+    <use href="#phone" x="130" y="42"  width="24" height="36"/>
+    <!-- Cluster B — center stage area (slight spread, 3 phones) -->
+    <use href="#phone" x="235" y="110" width="24" height="36"/>
+    <use href="#phone" x="270" y="150" width="24" height="36"/>
+    <use href="#phone" x="310" y="95"  width="24" height="36"/>
+    <!-- Cluster C — back camp lower-right (tight, 3 phones) -->
+    <use href="#phone" x="435" y="175" width="24" height="36"/>
+    <use href="#phone" x="475" y="205" width="24" height="36"/>
+    <use href="#phone" x="510" y="165" width="24" height="36"/>
+    <!-- 3 outliers spread across the camp -->
+    <use href="#phone" x="175" y="200" width="24" height="36"/>
+    <use href="#phone" x="390" y="40"  width="24" height="36"/>
+    <use href="#phone" x="540" y="80"  width="24" height="36"/>
+  </g>
+  <circle class="mesh-msg" r="5" fill="#ffb84d" stroke="#fff" stroke-width="1.5"/>
+</svg>
+<p class="mesh-caption">Each phone hops messages to the next — no cell tower needed.</p>
+</div>
 
 ---
 

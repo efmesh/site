@@ -58,10 +58,14 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
 }
 
-/* Mesh-relay hero animation — 4 phone nodes + hopping message dot */
+/* Mesh-network diagram — 12 phone nodes laid out as a believable festival
+   camp (3 tight clusters + 3 spread-out outliers), connected by dashed lines.
+   An orange message dot hops along a 6-hop path through the network to show
+   how a single message traverses the mesh. Lives as its own dedicated section
+   between "What is Meshtastic?" and "Get Started in 3 Steps". */
 .mesh-animation {
-  max-width: 480px;
-  margin: 1.6rem auto 0.4rem auto;
+  max-width: 700px;
+  margin: 2rem auto 1.2rem auto;
   text-align: center;
 }
 .mesh-animation svg {
@@ -72,50 +76,39 @@
 .mesh-caption {
   font-size: 0.88rem;
   color: var(--md-default-fg-color--light);
-  margin: 0.2rem 0 1.4rem 0;
+  margin: 0.4rem 0 0.4rem 0;
   font-style: italic;
 }
 .mesh-animation .mesh-msg {
-  animation: mesh-hop 6s ease-in-out infinite;
+  animation: mesh-hop 8s ease-in-out infinite;
   filter: drop-shadow(0 0 4px rgba(255, 184, 77, 0.7));
 }
+/* 6-hop path through the new 12-phone graph, picking the most visually
+   spread-out route for impact:
+     C1 (72,58)   — Cluster A, top-left
+   → C3 (142,60)  — Cluster A, top-left
+   → C11(402,58) — upper-right outlier (big jump across the camp)
+   → C6 (322,113) — Cluster B, center
+   → C5 (282,168) — Cluster B, center-low
+   → C7 (447,193) — Cluster C, lower-right
+   → C9 (522,183) — Cluster C, lower-right (final landing) */
 @keyframes mesh-hop {
-  0%   { transform: translate(50px, 150px); opacity: 0; }
-  5%   { opacity: 1; }
-  25%  { transform: translate(140px, 60px); opacity: 1; }
-  45%  { transform: translate(230px, 140px); opacity: 1; }
-  65%  { transform: translate(330px, 55px); opacity: 1; }
-  80%  { transform: translate(330px, 55px); opacity: 1; }
-  95%  { opacity: 0; }
-  100% { transform: translate(50px, 150px); opacity: 0; }
+  0%   { transform: translate(72px,  58px);  opacity: 0; }
+  3%   { transform: translate(72px,  58px);  opacity: 1; }
+  14%  { transform: translate(142px, 60px);  opacity: 1; }
+  28%  { transform: translate(402px, 58px);  opacity: 1; }
+  42%  { transform: translate(322px, 113px); opacity: 1; }
+  56%  { transform: translate(282px, 168px); opacity: 1; }
+  70%  { transform: translate(447px, 193px); opacity: 1; }
+  84%  { transform: translate(522px, 183px); opacity: 1; }
+  92%  { transform: translate(522px, 183px); opacity: 1; }
+  97%  { transform: translate(522px, 183px); opacity: 0; }
+  100% { transform: translate(72px,  58px);  opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .mesh-animation .mesh-msg {
     animation: none;
-    transform: translate(140px, 60px);
-  }
-}
-
-/* Side-by-side row holding the mesh-network diagram + the phone-chat anim.
-   Stacks vertically on mobile. */
-.ef-anim-row {
-  display: flex;
-  flex-direction: row;
-  gap: 1.5rem;
-  align-items: center;
-  justify-content: center;
-  margin: 1.5rem auto;
-  max-width: 900px;
-}
-.ef-anim-row > .mesh-animation,
-.ef-anim-row > .ef-phone-anim {
-  flex: 1 1 0;
-  min-width: 0;
-}
-@media (max-width: 768px) {
-  .ef-anim-row {
-    flex-direction: column;
-    gap: 1rem;
+    transform: translate(322px, 113px);
   }
 }
 
