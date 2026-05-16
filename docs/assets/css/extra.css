@@ -141,6 +141,23 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* Recommended-Hardware page — transparent product PNGs that breathe on
+   both light and dark mode. No solid bg; rely on alpha + subtle drop-shadow
+   that works against either palette. */
+.product-image {
+  display: block;
+  max-width: 240px;
+  height: auto;
+  margin: 0 auto 1rem auto;
+  padding: 0.5rem;
+}
+[data-md-color-scheme="default"] .product-image {
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.18));
+}
+[data-md-color-scheme="slate"] .product-image {
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.55));
+}
+
 /* Helper note paired with each EF Discord Meshtastic thread link */
 .discord-helper {
   display: block;

@@ -9,9 +9,9 @@ title: Recommended Hardware
 You only need one radio to start. There are a lot of options out there — and a **lot of knock-offs**, especially fake antennas on Amazon. Buy from a trusted source.
 
 !!! tip "What to actually buy"
-    **For most people, get the WisMesh Tag (~$30)** — clips to your pack, works out of the box, just charge it and go.
+    **For most people, get the [WisMesh Tag](#rak-wismesh-tag-30) (~$30)** — clips to your pack, works out of the box, just charge it and go.
 
-    **If you want a screen on the device itself**, get the **LILYGO T-Echo (~$60)** — readable in direct sun (e-ink), longer range thanks to an external antenna.
+    **If you want a screen on the device itself**, get the **[LILYGO T-Echo](#lilygo-t-echo-60) (~$60)** — readable in direct sun (e-ink), longer range thanks to an external antenna.
 
     Either of these is a great Forest radio. Order one this week and you're set.
 
@@ -20,6 +20,8 @@ You only need one radio to start. There are a lot of options out there — and a
 ## :material-cellphone: Handheld Radios (carry these on you)
 
 ### LILYGO T-Echo (~$60)
+
+![LILYGO T-Echo](../assets/img/hardware/lilygo-t-echo.png){ .product-image }
 
 A community favorite. E-ink screen (like a Kindle) so it's readable in direct Michigan sun and barely sips battery. External antenna means longer range than the card-style trackers.
 
@@ -34,6 +36,8 @@ A community favorite. E-ink screen (like a Kindle) so it's readable in direct Mi
 
 ### RAK WisMesh Tag (~$30)
 
+![RAK WisMesh Tag](../assets/img/hardware/rak-wismesh-tag.png){ .product-image }
+
 Cheapest option that works out of the box. About the size of a credit card, clips to your pack. No screen — you check messages on your phone.
 
 |  |  |
@@ -45,6 +49,8 @@ Cheapest option that works out of the box. About the size of a credit card, clip
 ---
 
 ### Sensecap T-1000e (~$30-35)
+
+![Sensecap T-1000-E](../assets/img/hardware/sensecap-t-1000e.png){ .product-image }
 
 Similar form factor to the WisMesh Tag. Most of us prefer the WisMesh Tag — better battery and a touch more range — but the T-1000e is widely available on Amazon for last-minute pickups.
 
@@ -60,6 +66,8 @@ Similar form factor to the WisMesh Tag. Most of us prefer the WisMesh Tag — be
 ---
 
 ### LILYGO T-Deck (~$80)
+
+![LILYGO T-Deck](../assets/img/hardware/lilygo-t-deck.png){ .product-image }
 
 Want to leave your phone in your tent? The T-Deck has a full physical keyboard and runs standalone. Niche but cool.
 
