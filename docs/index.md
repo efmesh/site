@@ -52,46 +52,46 @@ This is the community guide for using it at Electric Forest.
         <span class="ef-chattitle">Squad Chat</span>
       </div>
       <div class="ef-chatbody">
-        <div class="ef-msg ef-msg--in ef-msg--1"><span class="ef-name">alex</span><span class="ef-bubble">happy forest &#127795; made it through the gate!</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--2"><span class="ef-name">sam</span><span class="ef-bubble">in line at trading post, brb</span></div>
-        <div class="ef-msg ef-msg--out ef-msg--3"><span class="ef-name">you</span><span class="ef-bubble">set up at camp K3, look for the orange flag</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--4"><span class="ef-name">jess</span><span class="ef-bubble">happy forest fam! 30min out from gate</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--5"><span class="ef-name">alex</span><span class="ef-bubble">sherwood opens at sundown, we rolling?</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--6"><span class="ef-name">sam</span><span class="ef-bubble">battery dying, finding power &#128267;</span></div>
-        <div class="ef-msg ef-msg--out ef-msg--7"><span class="ef-name">you</span><span class="ef-bubble">vibe check &#10024; everyone good?</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--8"><span class="ef-name">jess</span><span class="ef-bubble">all good! kandi for days &#127752;</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--9"><span class="ef-name">alex</span><span class="ef-bubble">this set at ranch arena is INSANE &#128293;</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--10"><span class="ef-name">sam</span><span class="ef-bubble">anyone heading to sherwood?</span></div>
-        <div class="ef-msg ef-msg--out ef-msg--11"><span class="ef-name">you</span><span class="ef-bubble">i&rsquo;m in sherwood by the carousel &#127904;</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--12"><span class="ef-name">jess</span><span class="ef-bubble">drop a pin, can&rsquo;t find anyone</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--13"><span class="ef-name">alex</span><span class="ef-bubble">happy forest! coffee at hidden lake?</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--14"><span class="ef-name">sam</span><span class="ef-bubble">wook squad assembling at camp</span></div>
-        <div class="ef-msg ef-msg--out ef-msg--15"><span class="ef-name">you</span><span class="ef-bubble">PLURR vibes &#9996;&#128156;</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--16"><span class="ef-name">jess</span><span class="ef-bubble">yoga at the meadow in 20</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--17"><span class="ef-name">alex</span><span class="ef-bubble">headliner at 9pm, rally at 8?</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--18"><span class="ef-name">sam</span><span class="ef-bubble">trading kandi at the totem &#127752;</span></div>
-        <div class="ef-msg ef-msg--out ef-msg--19"><span class="ef-name">you</span><span class="ef-bubble">wishing tree at midnight, who&rsquo;s in</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--20"><span class="ef-name">jess</span><span class="ef-bubble">im at the observatory &#128301;</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--21"><span class="ef-name">alex</span><span class="ef-bubble">this DJ is unreal, you need to be here</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--22"><span class="ef-name">sam</span><span class="ef-bubble">lost my flow toys at the wood &#128557;</span></div>
-        <div class="ef-msg ef-msg--out ef-msg--23"><span class="ef-name">you</span><span class="ef-bubble">found a sherwood shepherd, all good</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--24"><span class="ef-name">jess</span><span class="ef-bubble">rain incoming &#9748; head back?</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--25"><span class="ef-name">alex</span><span class="ef-bubble">happy forest day 3!! &#9728;&#65039;</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--26"><span class="ef-name">sam</span><span class="ef-bubble">battery at 3%, save my pin</span></div>
-        <div class="ef-msg ef-msg--out ef-msg--27"><span class="ef-name">you</span><span class="ef-bubble">trading post run for sunscreen</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--28"><span class="ef-name">jess</span><span class="ef-bubble">anyone got pashminas to trade?</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--29"><span class="ef-name">alex</span><span class="ef-bubble">sherwood was MAGIC last night</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--30"><span class="ef-name">sam</span><span class="ef-bubble">lineup tonight is stacked</span></div>
-        <div class="ef-msg ef-msg--out ef-msg--31"><span class="ef-name">you</span><span class="ef-bubble">rally at ranch arena 7pm</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--32"><span class="ef-name">jess</span><span class="ef-bubble">see y&rsquo;all there &#128156;</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--33"><span class="ef-name">alex</span><span class="ef-bubble">last day, make it count &#127795;</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--34"><span class="ef-name">sam</span><span class="ef-bubble">happy forest fam &#10084;&#65039;</span></div>
-        <div class="ef-msg ef-msg--out ef-msg--35"><span class="ef-name">you</span><span class="ef-bubble">this week changed me</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--36"><span class="ef-name">jess</span><span class="ef-bubble">till next year. see you in the trees</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--37"><span class="ef-name">alex</span><span class="ef-bubble">drop a pin one more time</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--38"><span class="ef-name">sam</span><span class="ef-bubble">sunset at the carousel?</span></div>
-        <div class="ef-msg ef-msg--out ef-msg--39"><span class="ef-name">you</span><span class="ef-bubble">yes! bring the totem</span></div>
-        <div class="ef-msg ef-msg--in ef-msg--40"><span class="ef-name">jess</span><span class="ef-bubble">happy forest &#128156;&#127795;</span></div>
+        <div class="ef-msg ef-msg--in ef-msg--1"><div class="ef-msg__inner"><span class="ef-name">alex</span><span class="ef-bubble">happy forest &#127795; made it through the gate!</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--2"><div class="ef-msg__inner"><span class="ef-name">sam</span><span class="ef-bubble">in line at trading post, brb</span></div></div>
+        <div class="ef-msg ef-msg--out ef-msg--3"><div class="ef-msg__inner"><span class="ef-name">you</span><span class="ef-bubble">set up at camp K3, look for the orange flag</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--4"><div class="ef-msg__inner"><span class="ef-name">jess</span><span class="ef-bubble">happy forest fam! 30min out from gate</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--5"><div class="ef-msg__inner"><span class="ef-name">alex</span><span class="ef-bubble">sherwood opens at sundown, we rolling?</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--6"><div class="ef-msg__inner"><span class="ef-name">sam</span><span class="ef-bubble">battery dying, finding power &#128267;</span></div></div>
+        <div class="ef-msg ef-msg--out ef-msg--7"><div class="ef-msg__inner"><span class="ef-name">you</span><span class="ef-bubble">vibe check &#10024; everyone good?</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--8"><div class="ef-msg__inner"><span class="ef-name">jess</span><span class="ef-bubble">all good! kandi for days &#127752;</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--9"><div class="ef-msg__inner"><span class="ef-name">alex</span><span class="ef-bubble">this set at ranch arena is INSANE &#128293;</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--10"><div class="ef-msg__inner"><span class="ef-name">sam</span><span class="ef-bubble">anyone heading to sherwood?</span></div></div>
+        <div class="ef-msg ef-msg--out ef-msg--11"><div class="ef-msg__inner"><span class="ef-name">you</span><span class="ef-bubble">i&rsquo;m in sherwood by the carousel &#127904;</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--12"><div class="ef-msg__inner"><span class="ef-name">jess</span><span class="ef-bubble">drop a pin, can&rsquo;t find anyone</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--13"><div class="ef-msg__inner"><span class="ef-name">alex</span><span class="ef-bubble">happy forest! coffee at hidden lake?</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--14"><div class="ef-msg__inner"><span class="ef-name">sam</span><span class="ef-bubble">wook squad assembling at camp</span></div></div>
+        <div class="ef-msg ef-msg--out ef-msg--15"><div class="ef-msg__inner"><span class="ef-name">you</span><span class="ef-bubble">PLURR vibes &#9996;&#128156;</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--16"><div class="ef-msg__inner"><span class="ef-name">jess</span><span class="ef-bubble">yoga at the meadow in 20</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--17"><div class="ef-msg__inner"><span class="ef-name">alex</span><span class="ef-bubble">headliner at 9pm, rally at 8?</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--18"><div class="ef-msg__inner"><span class="ef-name">sam</span><span class="ef-bubble">trading kandi at the totem &#127752;</span></div></div>
+        <div class="ef-msg ef-msg--out ef-msg--19"><div class="ef-msg__inner"><span class="ef-name">you</span><span class="ef-bubble">wishing tree at midnight, who&rsquo;s in</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--20"><div class="ef-msg__inner"><span class="ef-name">jess</span><span class="ef-bubble">im at the observatory &#128301;</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--21"><div class="ef-msg__inner"><span class="ef-name">alex</span><span class="ef-bubble">this DJ is unreal, you need to be here</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--22"><div class="ef-msg__inner"><span class="ef-name">sam</span><span class="ef-bubble">lost my flow toys at the wood &#128557;</span></div></div>
+        <div class="ef-msg ef-msg--out ef-msg--23"><div class="ef-msg__inner"><span class="ef-name">you</span><span class="ef-bubble">found a sherwood shepherd, all good</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--24"><div class="ef-msg__inner"><span class="ef-name">jess</span><span class="ef-bubble">rain incoming &#9748; head back?</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--25"><div class="ef-msg__inner"><span class="ef-name">alex</span><span class="ef-bubble">happy forest day 3!! &#9728;&#65039;</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--26"><div class="ef-msg__inner"><span class="ef-name">sam</span><span class="ef-bubble">battery at 3%, save my pin</span></div></div>
+        <div class="ef-msg ef-msg--out ef-msg--27"><div class="ef-msg__inner"><span class="ef-name">you</span><span class="ef-bubble">trading post run for sunscreen</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--28"><div class="ef-msg__inner"><span class="ef-name">jess</span><span class="ef-bubble">anyone got pashminas to trade?</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--29"><div class="ef-msg__inner"><span class="ef-name">alex</span><span class="ef-bubble">sherwood was MAGIC last night</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--30"><div class="ef-msg__inner"><span class="ef-name">sam</span><span class="ef-bubble">lineup tonight is stacked</span></div></div>
+        <div class="ef-msg ef-msg--out ef-msg--31"><div class="ef-msg__inner"><span class="ef-name">you</span><span class="ef-bubble">rally at ranch arena 7pm</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--32"><div class="ef-msg__inner"><span class="ef-name">jess</span><span class="ef-bubble">see y&rsquo;all there &#128156;</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--33"><div class="ef-msg__inner"><span class="ef-name">alex</span><span class="ef-bubble">last day, make it count &#127795;</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--34"><div class="ef-msg__inner"><span class="ef-name">sam</span><span class="ef-bubble">happy forest fam &#10084;&#65039;</span></div></div>
+        <div class="ef-msg ef-msg--out ef-msg--35"><div class="ef-msg__inner"><span class="ef-name">you</span><span class="ef-bubble">this week changed me</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--36"><div class="ef-msg__inner"><span class="ef-name">jess</span><span class="ef-bubble">till next year. see you in the trees</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--37"><div class="ef-msg__inner"><span class="ef-name">alex</span><span class="ef-bubble">drop a pin one more time</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--38"><div class="ef-msg__inner"><span class="ef-name">sam</span><span class="ef-bubble">sunset at the carousel?</span></div></div>
+        <div class="ef-msg ef-msg--out ef-msg--39"><div class="ef-msg__inner"><span class="ef-name">you</span><span class="ef-bubble">yes! bring the totem</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--40"><div class="ef-msg__inner"><span class="ef-name">jess</span><span class="ef-bubble">happy forest &#128156;&#127795;</span></div></div>
       </div>
     </div>
   </div>

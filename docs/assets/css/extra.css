@@ -233,32 +233,51 @@
   /* Bottom-up chat stacking — newest message anchors at the bottom, older
      messages push UP as new ones arrive (standard chat-app feel).
      overflow:hidden + flex-end clips older messages off the TOP of the
-     visible area as the stack grows. */
+     visible area as the stack grows.
+     Note: NO `gap` here — would apply to all 40 flex children including
+     collapsed (0fr) ones, contributing phantom space that breaks the
+     bottom anchor. Spacing lives on `.ef-msg__inner` instead so it only
+     contributes when the slot is actually open. */
   flex-direction: column;
   justify-content: flex-end;
-  gap: 0.35rem;
   overflow: hidden;
   animation: ef-chat-loop 63s linear infinite;
 }
 .ef-msg {
-  display: flex;
-  flex-direction: column;
+  /* Slot wrapper: animates open/closed via grid-template-rows 0fr → 1fr,
+     which is the only CSS technique that animates between collapsed (0) and
+     intrinsic (`auto`) height without clamping content. Safari 17+, Chrome
+     117+, Firefox 121+ all support it. The single grid row holds the
+     inner `.ef-msg__inner` flex container — when the row resolves to `1fr`
+     the inner content takes its natural height (1, 2, or 3 lines of text).
+     `minmax(0, 0fr)` instead of bare `0fr` forces WebKit to size the row
+     track to literal 0 in the closed state (bare `0fr` resolves to min-
+     content height, which leaks the inner's padding-bottom as phantom
+     space and breaks the bottom anchor). */
+  display: grid;
+  grid-template-rows: minmax(0, 0fr);
   max-width: 78%;
   opacity: 0;
-  /* height + flex:0 0 auto so flexbox doesn't shrink children below their
-     keyframed height. Safari/WebKit does not reflow flex children when
-     `max-height` interpolates inside a keyframe (leaves the chat body
-     visually empty), and even with `height` the default `flex-shrink:1`
-     can clamp the keyframed value to ~0. Pin the flex slot explicitly. */
-  height: 0;
   flex: 0 0 auto;
-  overflow: hidden;
   transform: translateY(14px);
   /* `both` fill-mode holds the 0%/100% collapsed state when paused. */
   animation: ef-msg-in 63s linear infinite both;
 }
-.ef-msg--in { align-self: flex-start; align-items: flex-start; }
-.ef-msg--out { align-self: flex-end; align-items: flex-end; }
+.ef-msg__inner {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  /* Bottom padding only contributes height when the slot is open (1fr),
+     because grid-template-rows: minmax(0, 0fr) collapses the entire row
+     to literal 0. Replaces the parent `gap` that would have phantom-
+     spaced collapsed slots and broken the bottom anchor. */
+  padding-bottom: 0.35rem;
+}
+.ef-msg--in { align-self: flex-start; }
+.ef-msg--out { align-self: flex-end; }
+.ef-msg--in .ef-msg__inner { align-items: flex-start; }
+.ef-msg--out .ef-msg__inner { align-items: flex-end; }
 .ef-name {
   font-size: 0.48rem;
   text-transform: uppercase;
@@ -342,23 +361,20 @@
      Life of one message (63s loop = 100%):
        0%   – 1.2%   slide in    (~0.75s)
        1.2% – 15.5%  hold visible (~9s)
-       15.5%–16.7%  collapse out (~0.75s, height + opacity)
+       15.5%–16.7%  collapse out (~0.75s, rows + opacity)
        16.7%–100%   collapsed/idle (waits for next loop)
 
-     7 simultaneously-visible msgs × 44px = 308px in the 404px chatbody
-     window, leaving room for the bottom slide-in without overflow blowup
-     while still letting the oldest visible msg get pushed off the top.
-
-     Note: uses `height` (not `max-height`) — WebKit/Safari does not reflow
-     flex parents when max-height interpolates mid-keyframe.
-     Height target 44px ≈ name (15px) + bubble (~25px) + breathing room. */
-  0%    { opacity: 0; height: 0;    transform: translateY(14px); }
-  0.4%  { opacity: 0; height: 0;    transform: translateY(14px); }
-  1.2%  { opacity: 1; height: 44px; transform: translateY(0); }
-  15.5% { opacity: 1; height: 44px; transform: translateY(0); }
-  16.3% { opacity: 0; height: 44px; transform: translateY(-6px); }
-  16.7% { opacity: 0; height: 0;    transform: translateY(-6px); }
-  100%  { opacity: 0; height: 0;    transform: translateY(-6px); }
+     `grid-template-rows: 0fr → 1fr` lets each slot grow to its intrinsic
+     content height — 1 line for short messages, 2-3 lines for longer ones —
+     instead of being clamped to a fixed pixel height. Multi-line bubbles
+     are no longer truncated mid-sentence (the bug Will reported 2026-05-16). */
+  0%    { opacity: 0; grid-template-rows: minmax(0, 0fr); transform: translateY(14px); }
+  0.4%  { opacity: 0; grid-template-rows: minmax(0, 0fr); transform: translateY(14px); }
+  1.2%  { opacity: 1; grid-template-rows: minmax(0, 1fr); transform: translateY(0); }
+  15.5% { opacity: 1; grid-template-rows: minmax(0, 1fr); transform: translateY(0); }
+  16.3% { opacity: 0; grid-template-rows: minmax(0, 1fr); transform: translateY(-6px); }
+  16.7% { opacity: 0; grid-template-rows: minmax(0, 0fr); transform: translateY(-6px); }
+  100%  { opacity: 0; grid-template-rows: minmax(0, 0fr); transform: translateY(-6px); }
 }
 
 /* Body-level loop: clean breath at end-of-loop so restart isn't jarring */
@@ -376,17 +392,17 @@
 
 @media (prefers-reduced-motion: reduce) {
   /* Disable looping animations + render all 40 messages as a static stack.
-     Prior version killed animations but left .ef-msg at height:0 / opacity:0
-     (the base-rule defaults), so reduced-motion viewers — common on iOS —
-     saw an empty chat body. Restore intrinsic height + full opacity so the
-     stack is fully visible without motion. */
+     Prior version killed animations but left .ef-msg at grid-template-rows: 0fr
+     / opacity:0 (the base-rule defaults), so reduced-motion viewers — common
+     on iOS — saw an empty chat body. Restore intrinsic row height + full
+     opacity so the stack is fully visible without motion. */
   .ef-chatbody, .ef-msg { animation: none !important; }
   .ef-msg {
     opacity: 1 !important;
     transform: none !important;
-    height: auto !important;
-    overflow: visible !important;
+    grid-template-rows: 1fr !important;
   }
+  .ef-msg__inner { overflow: visible !important; }
   /* With 40 msgs visible, scroll older ones off the top of the visible
      window rather than crushing the phone frame. */
   .ef-chatbody { overflow-y: auto; }
