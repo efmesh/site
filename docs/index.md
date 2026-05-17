@@ -188,7 +188,7 @@ The little device connects via Bluetooth to your phone and lets you send message
 ---
 
 <div class="mesh-animation" aria-hidden="true">
-<svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mesh network animation: 12 phones connected by dashed lines, with seven differently-colored messages flood-routing through the camp — each message fans out from every relay node into multiple branches at once and travels 7+ hops, the way Meshtastic actually broadcasts.">
+<svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mesh network animation: 12 phones connected by dashed lines, with dozens of differently-colored messages constantly flood-routing through the camp — each phone is always rebroadcasting, the way a busy Meshtastic mesh actually feels with 100 people talking at once.">
   <defs>
     <symbol id="phone" viewBox="0 0 24 36">
       <rect x="2" y="2" width="20" height="32" rx="3" ry="3" fill="#2e1d4d" stroke="#a78bfa" stroke-width="1.5"/>
@@ -249,96 +249,546 @@ The little device connects via Bluetooth to your phone and lets you send message
        7-12 distinct nodes per message). See extra.css for the timing schedule.
        Stroke is white so each dot stays legible on both light and dark themes. -->
   <g class="mesh-msgs" stroke="#fff" stroke-width="1.5">
-    <!-- Source A — cyan, origin P1 (reaches all 12 nodes via 3 hops) -->
-    <circle class="mesh-msg mesh-msg--a mesh-orig--a"        r="6"/>
-    <circle class="mesh-msg mesh-msg--a mesh-seg-a-l1-p1-p2"  r="5"/>
-    <circle class="mesh-msg mesh-msg--a mesh-seg-a-l1-p1-p3"  r="5"/>
-    <circle class="mesh-msg mesh-msg--a mesh-seg-a-l1-p1-p10" r="5"/>
-    <circle class="mesh-msg mesh-msg--a mesh-seg-a-l2-p3-p6"  r="5"/>
-    <circle class="mesh-msg mesh-msg--a mesh-seg-a-l2-p3-p11" r="5"/>
-    <circle class="mesh-msg mesh-msg--a mesh-seg-a-l2-p10-p4" r="5"/>
-    <circle class="mesh-msg mesh-msg--a mesh-seg-a-l2-p10-p5" r="5"/>
-    <circle class="mesh-msg mesh-msg--a mesh-seg-a-l3-p5-p7"  r="5"/>
-    <circle class="mesh-msg mesh-msg--a mesh-seg-a-l3-p6-p12" r="5"/>
-    <!-- Source B — magenta, origin P8 -->
-    <circle class="mesh-msg mesh-msg--b mesh-orig--b"        r="6"/>
-    <circle class="mesh-msg mesh-msg--b mesh-seg-b-l1-p8-p7"  r="5"/>
-    <circle class="mesh-msg mesh-msg--b mesh-seg-b-l1-p8-p9"  r="5"/>
-    <circle class="mesh-msg mesh-msg--b mesh-seg-b-l1-p8-p12" r="5"/>
-    <circle class="mesh-msg mesh-msg--b mesh-seg-b-l2-p7-p5"  r="5"/>
-    <circle class="mesh-msg mesh-msg--b mesh-seg-b-l2-p7-p11" r="5"/>
-    <circle class="mesh-msg mesh-msg--b mesh-seg-b-l2-p12-p6" r="5"/>
-    <circle class="mesh-msg mesh-msg--b mesh-seg-b-l3-p5-p4"  r="5"/>
-    <circle class="mesh-msg mesh-msg--b mesh-seg-b-l3-p5-p10" r="5"/>
-    <circle class="mesh-msg mesh-msg--b mesh-seg-b-l3-p6-p3"  r="5"/>
-    <!-- Source C — lime, origin P10 -->
-    <circle class="mesh-msg mesh-msg--c mesh-orig--c"        r="6"/>
-    <circle class="mesh-msg mesh-msg--c mesh-seg-c-l1-p10-p1" r="5"/>
-    <circle class="mesh-msg mesh-msg--c mesh-seg-c-l1-p10-p2" r="5"/>
-    <circle class="mesh-msg mesh-msg--c mesh-seg-c-l1-p10-p4" r="5"/>
-    <circle class="mesh-msg mesh-msg--c mesh-seg-c-l1-p10-p5" r="5"/>
-    <circle class="mesh-msg mesh-msg--c mesh-seg-c-l2-p1-p3"  r="5"/>
-    <circle class="mesh-msg mesh-msg--c mesh-seg-c-l2-p4-p6"  r="5"/>
-    <circle class="mesh-msg mesh-msg--c mesh-seg-c-l2-p4-p11" r="5"/>
-    <circle class="mesh-msg mesh-msg--c mesh-seg-c-l2-p5-p7"  r="5"/>
-    <circle class="mesh-msg mesh-msg--c mesh-seg-c-l3-p6-p12" r="5"/>
-    <circle class="mesh-msg mesh-msg--c mesh-seg-c-l3-p7-p8"  r="5"/>
-    <circle class="mesh-msg mesh-msg--c mesh-seg-c-l3-p7-p9"  r="5"/>
-    <!-- Source D — gold, origin P12 -->
-    <circle class="mesh-msg mesh-msg--d mesh-orig--d"        r="6"/>
-    <circle class="mesh-msg mesh-msg--d mesh-seg-d-l1-p12-p6"  r="5"/>
-    <circle class="mesh-msg mesh-msg--d mesh-seg-d-l1-p12-p8"  r="5"/>
-    <circle class="mesh-msg mesh-msg--d mesh-seg-d-l1-p12-p9"  r="5"/>
-    <circle class="mesh-msg mesh-msg--d mesh-seg-d-l1-p12-p11" r="5"/>
-    <circle class="mesh-msg mesh-msg--d mesh-seg-d-l2-p6-p3"   r="5"/>
-    <circle class="mesh-msg mesh-msg--d mesh-seg-d-l2-p6-p4"   r="5"/>
-    <circle class="mesh-msg mesh-msg--d mesh-seg-d-l2-p6-p5"   r="5"/>
-    <circle class="mesh-msg mesh-msg--d mesh-seg-d-l2-p8-p7"   r="5"/>
-    <circle class="mesh-msg mesh-msg--d mesh-seg-d-l3-p3-p1"   r="5"/>
-    <circle class="mesh-msg mesh-msg--d mesh-seg-d-l3-p3-p2"   r="5"/>
-    <circle class="mesh-msg mesh-msg--d mesh-seg-d-l3-p4-p10"  r="5"/>
-    <!-- Source E — coral, origin P4 -->
-    <circle class="mesh-msg mesh-msg--e mesh-orig--e"        r="6"/>
-    <circle class="mesh-msg mesh-msg--e mesh-seg-e-l1-p4-p5"  r="5"/>
-    <circle class="mesh-msg mesh-msg--e mesh-seg-e-l1-p4-p6"  r="5"/>
-    <circle class="mesh-msg mesh-msg--e mesh-seg-e-l1-p4-p10" r="5"/>
-    <circle class="mesh-msg mesh-msg--e mesh-seg-e-l1-p4-p11" r="5"/>
-    <circle class="mesh-msg mesh-msg--e mesh-seg-e-l2-p5-p7"  r="5"/>
-    <circle class="mesh-msg mesh-msg--e mesh-seg-e-l2-p6-p3"  r="5"/>
-    <circle class="mesh-msg mesh-msg--e mesh-seg-e-l2-p6-p12" r="5"/>
-    <circle class="mesh-msg mesh-msg--e mesh-seg-e-l2-p10-p1" r="5"/>
-    <circle class="mesh-msg mesh-msg--e mesh-seg-e-l2-p10-p2" r="5"/>
-    <circle class="mesh-msg mesh-msg--e mesh-seg-e-l3-p7-p8"  r="5"/>
-    <circle class="mesh-msg mesh-msg--e mesh-seg-e-l3-p7-p9"  r="5"/>
-    <!-- Source F — violet, origin P3 -->
-    <circle class="mesh-msg mesh-msg--f mesh-orig--f"        r="6"/>
-    <circle class="mesh-msg mesh-msg--f mesh-seg-f-l1-p3-p1"  r="5"/>
-    <circle class="mesh-msg mesh-msg--f mesh-seg-f-l1-p3-p2"  r="5"/>
-    <circle class="mesh-msg mesh-msg--f mesh-seg-f-l1-p3-p6"  r="5"/>
-    <circle class="mesh-msg mesh-msg--f mesh-seg-f-l1-p3-p11" r="5"/>
-    <circle class="mesh-msg mesh-msg--f mesh-seg-f-l2-p1-p10" r="5"/>
-    <circle class="mesh-msg mesh-msg--f mesh-seg-f-l2-p6-p4"  r="5"/>
-    <circle class="mesh-msg mesh-msg--f mesh-seg-f-l2-p6-p5"  r="5"/>
-    <circle class="mesh-msg mesh-msg--f mesh-seg-f-l2-p6-p12" r="5"/>
-    <circle class="mesh-msg mesh-msg--f mesh-seg-f-l2-p11-p7" r="5"/>
-    <circle class="mesh-msg mesh-msg--f mesh-seg-f-l3-p7-p8"  r="5"/>
-    <circle class="mesh-msg mesh-msg--f mesh-seg-f-l3-p7-p9"  r="5"/>
-    <!-- Source G — sky-blue, origin P7 -->
-    <circle class="mesh-msg mesh-msg--g mesh-orig--g"        r="6"/>
-    <circle class="mesh-msg mesh-msg--g mesh-seg-g-l1-p7-p5"  r="5"/>
-    <circle class="mesh-msg mesh-msg--g mesh-seg-g-l1-p7-p8"  r="5"/>
-    <circle class="mesh-msg mesh-msg--g mesh-seg-g-l1-p7-p9"  r="5"/>
-    <circle class="mesh-msg mesh-msg--g mesh-seg-g-l1-p7-p11" r="5"/>
-    <circle class="mesh-msg mesh-msg--g mesh-seg-g-l2-p5-p4"  r="5"/>
-    <circle class="mesh-msg mesh-msg--g mesh-seg-g-l2-p5-p6"  r="5"/>
-    <circle class="mesh-msg mesh-msg--g mesh-seg-g-l2-p5-p10" r="5"/>
-    <circle class="mesh-msg mesh-msg--g mesh-seg-g-l2-p8-p12" r="5"/>
-    <circle class="mesh-msg mesh-msg--g mesh-seg-g-l2-p11-p3" r="5"/>
-    <circle class="mesh-msg mesh-msg--g mesh-seg-g-l3-p3-p1"  r="5"/>
-    <circle class="mesh-msg mesh-msg--g mesh-seg-g-l3-p3-p2"  r="5"/>
+    <!-- v3 (2026-05-16): 7 sources × 6 emissions = 42 trees per 30s loop. -->
+    <!-- Each circle's animation-delay (inline style) places it in its emission slot. -->
+    <!-- Color rotates per emission so successive trees from one source are distinguishable. -->
+    <!-- Source A (origin P1) — 6 emissions, color rotates per emission -->
+    <circle class="mesh-msg mesh-msg--cyan mesh-orig--a" r="6" style="animation-delay:-0.000s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-a-l1-p1-p2"  r="5" style="animation-delay:-0.000s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-a-l1-p1-p3"  r="5" style="animation-delay:-0.000s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-a-l1-p1-p10"  r="5" style="animation-delay:-0.000s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-a-l2-p3-p6"  r="5" style="animation-delay:-0.000s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-a-l2-p3-p11"  r="5" style="animation-delay:-0.000s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-a-l2-p10-p4"  r="5" style="animation-delay:-0.000s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-a-l2-p10-p5"  r="5" style="animation-delay:-0.000s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-a-l3-p5-p7"  r="5" style="animation-delay:-0.000s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-a-l3-p6-p12"  r="5" style="animation-delay:-0.000s"/>
+
+    <circle class="mesh-msg mesh-msg--gold mesh-orig--a" r="6" style="animation-delay:-5.000s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-a-l1-p1-p2"  r="5" style="animation-delay:-5.000s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-a-l1-p1-p3"  r="5" style="animation-delay:-5.000s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-a-l1-p1-p10"  r="5" style="animation-delay:-5.000s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-a-l2-p3-p6"  r="5" style="animation-delay:-5.000s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-a-l2-p3-p11"  r="5" style="animation-delay:-5.000s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-a-l2-p10-p4"  r="5" style="animation-delay:-5.000s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-a-l2-p10-p5"  r="5" style="animation-delay:-5.000s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-a-l3-p5-p7"  r="5" style="animation-delay:-5.000s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-a-l3-p6-p12"  r="5" style="animation-delay:-5.000s"/>
+
+    <circle class="mesh-msg mesh-msg--mint mesh-orig--a" r="6" style="animation-delay:-10.000s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-a-l1-p1-p2"  r="5" style="animation-delay:-10.000s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-a-l1-p1-p3"  r="5" style="animation-delay:-10.000s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-a-l1-p1-p10"  r="5" style="animation-delay:-10.000s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-a-l2-p3-p6"  r="5" style="animation-delay:-10.000s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-a-l2-p3-p11"  r="5" style="animation-delay:-10.000s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-a-l2-p10-p4"  r="5" style="animation-delay:-10.000s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-a-l2-p10-p5"  r="5" style="animation-delay:-10.000s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-a-l3-p5-p7"  r="5" style="animation-delay:-10.000s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-a-l3-p6-p12"  r="5" style="animation-delay:-10.000s"/>
+
+    <circle class="mesh-msg mesh-msg--magenta mesh-orig--a" r="6" style="animation-delay:-15.000s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-a-l1-p1-p2"  r="5" style="animation-delay:-15.000s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-a-l1-p1-p3"  r="5" style="animation-delay:-15.000s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-a-l1-p1-p10"  r="5" style="animation-delay:-15.000s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-a-l2-p3-p6"  r="5" style="animation-delay:-15.000s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-a-l2-p3-p11"  r="5" style="animation-delay:-15.000s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-a-l2-p10-p4"  r="5" style="animation-delay:-15.000s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-a-l2-p10-p5"  r="5" style="animation-delay:-15.000s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-a-l3-p5-p7"  r="5" style="animation-delay:-15.000s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-a-l3-p6-p12"  r="5" style="animation-delay:-15.000s"/>
+
+    <circle class="mesh-msg mesh-msg--coral mesh-orig--a" r="6" style="animation-delay:-20.000s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-a-l1-p1-p2"  r="5" style="animation-delay:-20.000s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-a-l1-p1-p3"  r="5" style="animation-delay:-20.000s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-a-l1-p1-p10"  r="5" style="animation-delay:-20.000s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-a-l2-p3-p6"  r="5" style="animation-delay:-20.000s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-a-l2-p3-p11"  r="5" style="animation-delay:-20.000s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-a-l2-p10-p4"  r="5" style="animation-delay:-20.000s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-a-l2-p10-p5"  r="5" style="animation-delay:-20.000s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-a-l3-p5-p7"  r="5" style="animation-delay:-20.000s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-a-l3-p6-p12"  r="5" style="animation-delay:-20.000s"/>
+
+    <circle class="mesh-msg mesh-msg--violet mesh-orig--a" r="6" style="animation-delay:-25.000s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-a-l1-p1-p2"  r="5" style="animation-delay:-25.000s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-a-l1-p1-p3"  r="5" style="animation-delay:-25.000s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-a-l1-p1-p10"  r="5" style="animation-delay:-25.000s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-a-l2-p3-p6"  r="5" style="animation-delay:-25.000s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-a-l2-p3-p11"  r="5" style="animation-delay:-25.000s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-a-l2-p10-p4"  r="5" style="animation-delay:-25.000s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-a-l2-p10-p5"  r="5" style="animation-delay:-25.000s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-a-l3-p5-p7"  r="5" style="animation-delay:-25.000s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-a-l3-p6-p12"  r="5" style="animation-delay:-25.000s"/>
+
+
+    <!-- Source B (origin P8) — 6 emissions, color rotates per emission -->
+    <circle class="mesh-msg mesh-msg--magenta mesh-orig--b" r="6" style="animation-delay:-0.714s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-b-l1-p8-p7"  r="5" style="animation-delay:-0.714s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-b-l1-p8-p9"  r="5" style="animation-delay:-0.714s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-b-l1-p8-p12"  r="5" style="animation-delay:-0.714s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-b-l2-p7-p5"  r="5" style="animation-delay:-0.714s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-b-l2-p7-p11"  r="5" style="animation-delay:-0.714s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-b-l2-p12-p6"  r="5" style="animation-delay:-0.714s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-b-l3-p5-p4"  r="5" style="animation-delay:-0.714s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-b-l3-p5-p10"  r="5" style="animation-delay:-0.714s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-b-l3-p6-p3"  r="5" style="animation-delay:-0.714s"/>
+
+    <circle class="mesh-msg mesh-msg--lime mesh-orig--b" r="6" style="animation-delay:-5.714s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-b-l1-p8-p7"  r="5" style="animation-delay:-5.714s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-b-l1-p8-p9"  r="5" style="animation-delay:-5.714s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-b-l1-p8-p12"  r="5" style="animation-delay:-5.714s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-b-l2-p7-p5"  r="5" style="animation-delay:-5.714s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-b-l2-p7-p11"  r="5" style="animation-delay:-5.714s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-b-l2-p12-p6"  r="5" style="animation-delay:-5.714s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-b-l3-p5-p4"  r="5" style="animation-delay:-5.714s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-b-l3-p5-p10"  r="5" style="animation-delay:-5.714s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-b-l3-p6-p3"  r="5" style="animation-delay:-5.714s"/>
+
+    <circle class="mesh-msg mesh-msg--sky mesh-orig--b" r="6" style="animation-delay:-10.714s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-b-l1-p8-p7"  r="5" style="animation-delay:-10.714s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-b-l1-p8-p9"  r="5" style="animation-delay:-10.714s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-b-l1-p8-p12"  r="5" style="animation-delay:-10.714s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-b-l2-p7-p5"  r="5" style="animation-delay:-10.714s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-b-l2-p7-p11"  r="5" style="animation-delay:-10.714s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-b-l2-p12-p6"  r="5" style="animation-delay:-10.714s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-b-l3-p5-p4"  r="5" style="animation-delay:-10.714s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-b-l3-p5-p10"  r="5" style="animation-delay:-10.714s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-b-l3-p6-p3"  r="5" style="animation-delay:-10.714s"/>
+
+    <circle class="mesh-msg mesh-msg--violet mesh-orig--b" r="6" style="animation-delay:-15.714s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-b-l1-p8-p7"  r="5" style="animation-delay:-15.714s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-b-l1-p8-p9"  r="5" style="animation-delay:-15.714s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-b-l1-p8-p12"  r="5" style="animation-delay:-15.714s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-b-l2-p7-p5"  r="5" style="animation-delay:-15.714s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-b-l2-p7-p11"  r="5" style="animation-delay:-15.714s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-b-l2-p12-p6"  r="5" style="animation-delay:-15.714s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-b-l3-p5-p4"  r="5" style="animation-delay:-15.714s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-b-l3-p5-p10"  r="5" style="animation-delay:-15.714s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-b-l3-p6-p3"  r="5" style="animation-delay:-15.714s"/>
+
+    <circle class="mesh-msg mesh-msg--cyan mesh-orig--b" r="6" style="animation-delay:-20.714s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-b-l1-p8-p7"  r="5" style="animation-delay:-20.714s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-b-l1-p8-p9"  r="5" style="animation-delay:-20.714s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-b-l1-p8-p12"  r="5" style="animation-delay:-20.714s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-b-l2-p7-p5"  r="5" style="animation-delay:-20.714s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-b-l2-p7-p11"  r="5" style="animation-delay:-20.714s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-b-l2-p12-p6"  r="5" style="animation-delay:-20.714s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-b-l3-p5-p4"  r="5" style="animation-delay:-20.714s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-b-l3-p5-p10"  r="5" style="animation-delay:-20.714s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-b-l3-p6-p3"  r="5" style="animation-delay:-20.714s"/>
+
+    <circle class="mesh-msg mesh-msg--gold mesh-orig--b" r="6" style="animation-delay:-25.714s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-b-l1-p8-p7"  r="5" style="animation-delay:-25.714s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-b-l1-p8-p9"  r="5" style="animation-delay:-25.714s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-b-l1-p8-p12"  r="5" style="animation-delay:-25.714s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-b-l2-p7-p5"  r="5" style="animation-delay:-25.714s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-b-l2-p7-p11"  r="5" style="animation-delay:-25.714s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-b-l2-p12-p6"  r="5" style="animation-delay:-25.714s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-b-l3-p5-p4"  r="5" style="animation-delay:-25.714s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-b-l3-p5-p10"  r="5" style="animation-delay:-25.714s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-b-l3-p6-p3"  r="5" style="animation-delay:-25.714s"/>
+
+
+    <!-- Source C (origin P10) — 6 emissions, color rotates per emission -->
+    <circle class="mesh-msg mesh-msg--lime mesh-orig--c" r="6" style="animation-delay:-1.429s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-c-l1-p10-p1"  r="5" style="animation-delay:-1.429s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-c-l1-p10-p2"  r="5" style="animation-delay:-1.429s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-c-l1-p10-p4"  r="5" style="animation-delay:-1.429s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-c-l1-p10-p5"  r="5" style="animation-delay:-1.429s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-c-l2-p1-p3"  r="5" style="animation-delay:-1.429s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-c-l2-p4-p6"  r="5" style="animation-delay:-1.429s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-c-l2-p4-p11"  r="5" style="animation-delay:-1.429s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-c-l2-p5-p7"  r="5" style="animation-delay:-1.429s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-c-l3-p6-p12"  r="5" style="animation-delay:-1.429s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-c-l3-p7-p8"  r="5" style="animation-delay:-1.429s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-c-l3-p7-p9"  r="5" style="animation-delay:-1.429s"/>
+
+    <circle class="mesh-msg mesh-msg--coral mesh-orig--c" r="6" style="animation-delay:-6.429s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-c-l1-p10-p1"  r="5" style="animation-delay:-6.429s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-c-l1-p10-p2"  r="5" style="animation-delay:-6.429s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-c-l1-p10-p4"  r="5" style="animation-delay:-6.429s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-c-l1-p10-p5"  r="5" style="animation-delay:-6.429s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-c-l2-p1-p3"  r="5" style="animation-delay:-6.429s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-c-l2-p4-p6"  r="5" style="animation-delay:-6.429s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-c-l2-p4-p11"  r="5" style="animation-delay:-6.429s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-c-l2-p5-p7"  r="5" style="animation-delay:-6.429s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-c-l3-p6-p12"  r="5" style="animation-delay:-6.429s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-c-l3-p7-p8"  r="5" style="animation-delay:-6.429s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-c-l3-p7-p9"  r="5" style="animation-delay:-6.429s"/>
+
+    <circle class="mesh-msg mesh-msg--cyan mesh-orig--c" r="6" style="animation-delay:-11.429s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-c-l1-p10-p1"  r="5" style="animation-delay:-11.429s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-c-l1-p10-p2"  r="5" style="animation-delay:-11.429s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-c-l1-p10-p4"  r="5" style="animation-delay:-11.429s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-c-l1-p10-p5"  r="5" style="animation-delay:-11.429s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-c-l2-p1-p3"  r="5" style="animation-delay:-11.429s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-c-l2-p4-p6"  r="5" style="animation-delay:-11.429s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-c-l2-p4-p11"  r="5" style="animation-delay:-11.429s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-c-l2-p5-p7"  r="5" style="animation-delay:-11.429s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-c-l3-p6-p12"  r="5" style="animation-delay:-11.429s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-c-l3-p7-p8"  r="5" style="animation-delay:-11.429s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-c-l3-p7-p9"  r="5" style="animation-delay:-11.429s"/>
+
+    <circle class="mesh-msg mesh-msg--gold mesh-orig--c" r="6" style="animation-delay:-16.429s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-c-l1-p10-p1"  r="5" style="animation-delay:-16.429s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-c-l1-p10-p2"  r="5" style="animation-delay:-16.429s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-c-l1-p10-p4"  r="5" style="animation-delay:-16.429s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-c-l1-p10-p5"  r="5" style="animation-delay:-16.429s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-c-l2-p1-p3"  r="5" style="animation-delay:-16.429s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-c-l2-p4-p6"  r="5" style="animation-delay:-16.429s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-c-l2-p4-p11"  r="5" style="animation-delay:-16.429s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-c-l2-p5-p7"  r="5" style="animation-delay:-16.429s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-c-l3-p6-p12"  r="5" style="animation-delay:-16.429s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-c-l3-p7-p8"  r="5" style="animation-delay:-16.429s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-c-l3-p7-p9"  r="5" style="animation-delay:-16.429s"/>
+
+    <circle class="mesh-msg mesh-msg--mint mesh-orig--c" r="6" style="animation-delay:-21.429s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-c-l1-p10-p1"  r="5" style="animation-delay:-21.429s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-c-l1-p10-p2"  r="5" style="animation-delay:-21.429s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-c-l1-p10-p4"  r="5" style="animation-delay:-21.429s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-c-l1-p10-p5"  r="5" style="animation-delay:-21.429s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-c-l2-p1-p3"  r="5" style="animation-delay:-21.429s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-c-l2-p4-p6"  r="5" style="animation-delay:-21.429s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-c-l2-p4-p11"  r="5" style="animation-delay:-21.429s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-c-l2-p5-p7"  r="5" style="animation-delay:-21.429s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-c-l3-p6-p12"  r="5" style="animation-delay:-21.429s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-c-l3-p7-p8"  r="5" style="animation-delay:-21.429s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-c-l3-p7-p9"  r="5" style="animation-delay:-21.429s"/>
+
+    <circle class="mesh-msg mesh-msg--sky mesh-orig--c" r="6" style="animation-delay:-26.429s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-c-l1-p10-p1"  r="5" style="animation-delay:-26.429s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-c-l1-p10-p2"  r="5" style="animation-delay:-26.429s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-c-l1-p10-p4"  r="5" style="animation-delay:-26.429s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-c-l1-p10-p5"  r="5" style="animation-delay:-26.429s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-c-l2-p1-p3"  r="5" style="animation-delay:-26.429s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-c-l2-p4-p6"  r="5" style="animation-delay:-26.429s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-c-l2-p4-p11"  r="5" style="animation-delay:-26.429s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-c-l2-p5-p7"  r="5" style="animation-delay:-26.429s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-c-l3-p6-p12"  r="5" style="animation-delay:-26.429s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-c-l3-p7-p8"  r="5" style="animation-delay:-26.429s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-c-l3-p7-p9"  r="5" style="animation-delay:-26.429s"/>
+
+
+    <!-- Source D (origin P12) — 6 emissions, color rotates per emission -->
+    <circle class="mesh-msg mesh-msg--gold mesh-orig--d" r="6" style="animation-delay:-2.143s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-d-l1-p12-p6"  r="5" style="animation-delay:-2.143s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-d-l1-p12-p8"  r="5" style="animation-delay:-2.143s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-d-l1-p12-p9"  r="5" style="animation-delay:-2.143s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-d-l1-p12-p11"  r="5" style="animation-delay:-2.143s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-d-l2-p6-p3"  r="5" style="animation-delay:-2.143s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-d-l2-p6-p4"  r="5" style="animation-delay:-2.143s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-d-l2-p6-p5"  r="5" style="animation-delay:-2.143s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-d-l2-p8-p7"  r="5" style="animation-delay:-2.143s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-d-l3-p3-p1"  r="5" style="animation-delay:-2.143s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-d-l3-p3-p2"  r="5" style="animation-delay:-2.143s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-d-l3-p4-p10"  r="5" style="animation-delay:-2.143s"/>
+
+    <circle class="mesh-msg mesh-msg--violet mesh-orig--d" r="6" style="animation-delay:-7.143s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-d-l1-p12-p6"  r="5" style="animation-delay:-7.143s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-d-l1-p12-p8"  r="5" style="animation-delay:-7.143s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-d-l1-p12-p9"  r="5" style="animation-delay:-7.143s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-d-l1-p12-p11"  r="5" style="animation-delay:-7.143s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-d-l2-p6-p3"  r="5" style="animation-delay:-7.143s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-d-l2-p6-p4"  r="5" style="animation-delay:-7.143s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-d-l2-p6-p5"  r="5" style="animation-delay:-7.143s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-d-l2-p8-p7"  r="5" style="animation-delay:-7.143s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-d-l3-p3-p1"  r="5" style="animation-delay:-7.143s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-d-l3-p3-p2"  r="5" style="animation-delay:-7.143s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-d-l3-p4-p10"  r="5" style="animation-delay:-7.143s"/>
+
+    <circle class="mesh-msg mesh-msg--magenta mesh-orig--d" r="6" style="animation-delay:-12.143s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-d-l1-p12-p6"  r="5" style="animation-delay:-12.143s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-d-l1-p12-p8"  r="5" style="animation-delay:-12.143s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-d-l1-p12-p9"  r="5" style="animation-delay:-12.143s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-d-l1-p12-p11"  r="5" style="animation-delay:-12.143s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-d-l2-p6-p3"  r="5" style="animation-delay:-12.143s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-d-l2-p6-p4"  r="5" style="animation-delay:-12.143s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-d-l2-p6-p5"  r="5" style="animation-delay:-12.143s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-d-l2-p8-p7"  r="5" style="animation-delay:-12.143s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-d-l3-p3-p1"  r="5" style="animation-delay:-12.143s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-d-l3-p3-p2"  r="5" style="animation-delay:-12.143s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-d-l3-p4-p10"  r="5" style="animation-delay:-12.143s"/>
+
+    <circle class="mesh-msg mesh-msg--lime mesh-orig--d" r="6" style="animation-delay:-17.143s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-d-l1-p12-p6"  r="5" style="animation-delay:-17.143s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-d-l1-p12-p8"  r="5" style="animation-delay:-17.143s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-d-l1-p12-p9"  r="5" style="animation-delay:-17.143s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-d-l1-p12-p11"  r="5" style="animation-delay:-17.143s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-d-l2-p6-p3"  r="5" style="animation-delay:-17.143s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-d-l2-p6-p4"  r="5" style="animation-delay:-17.143s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-d-l2-p6-p5"  r="5" style="animation-delay:-17.143s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-d-l2-p8-p7"  r="5" style="animation-delay:-17.143s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-d-l3-p3-p1"  r="5" style="animation-delay:-17.143s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-d-l3-p3-p2"  r="5" style="animation-delay:-17.143s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-d-l3-p4-p10"  r="5" style="animation-delay:-17.143s"/>
+
+    <circle class="mesh-msg mesh-msg--sky mesh-orig--d" r="6" style="animation-delay:-22.143s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-d-l1-p12-p6"  r="5" style="animation-delay:-22.143s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-d-l1-p12-p8"  r="5" style="animation-delay:-22.143s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-d-l1-p12-p9"  r="5" style="animation-delay:-22.143s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-d-l1-p12-p11"  r="5" style="animation-delay:-22.143s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-d-l2-p6-p3"  r="5" style="animation-delay:-22.143s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-d-l2-p6-p4"  r="5" style="animation-delay:-22.143s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-d-l2-p6-p5"  r="5" style="animation-delay:-22.143s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-d-l2-p8-p7"  r="5" style="animation-delay:-22.143s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-d-l3-p3-p1"  r="5" style="animation-delay:-22.143s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-d-l3-p3-p2"  r="5" style="animation-delay:-22.143s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-d-l3-p4-p10"  r="5" style="animation-delay:-22.143s"/>
+
+    <circle class="mesh-msg mesh-msg--coral mesh-orig--d" r="6" style="animation-delay:-27.143s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-d-l1-p12-p6"  r="5" style="animation-delay:-27.143s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-d-l1-p12-p8"  r="5" style="animation-delay:-27.143s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-d-l1-p12-p9"  r="5" style="animation-delay:-27.143s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-d-l1-p12-p11"  r="5" style="animation-delay:-27.143s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-d-l2-p6-p3"  r="5" style="animation-delay:-27.143s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-d-l2-p6-p4"  r="5" style="animation-delay:-27.143s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-d-l2-p6-p5"  r="5" style="animation-delay:-27.143s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-d-l2-p8-p7"  r="5" style="animation-delay:-27.143s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-d-l3-p3-p1"  r="5" style="animation-delay:-27.143s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-d-l3-p3-p2"  r="5" style="animation-delay:-27.143s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-d-l3-p4-p10"  r="5" style="animation-delay:-27.143s"/>
+
+
+    <!-- Source E (origin P4) — 6 emissions, color rotates per emission -->
+    <circle class="mesh-msg mesh-msg--coral mesh-orig--e" r="6" style="animation-delay:-2.857s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-e-l1-p4-p5"  r="5" style="animation-delay:-2.857s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-e-l1-p4-p6"  r="5" style="animation-delay:-2.857s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-e-l1-p4-p10"  r="5" style="animation-delay:-2.857s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-e-l1-p4-p11"  r="5" style="animation-delay:-2.857s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-e-l2-p5-p7"  r="5" style="animation-delay:-2.857s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-e-l2-p6-p3"  r="5" style="animation-delay:-2.857s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-e-l2-p6-p12"  r="5" style="animation-delay:-2.857s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-e-l2-p10-p1"  r="5" style="animation-delay:-2.857s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-e-l2-p10-p2"  r="5" style="animation-delay:-2.857s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-e-l3-p7-p8"  r="5" style="animation-delay:-2.857s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-e-l3-p7-p9"  r="5" style="animation-delay:-2.857s"/>
+
+    <circle class="mesh-msg mesh-msg--sky mesh-orig--e" r="6" style="animation-delay:-7.857s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-e-l1-p4-p5"  r="5" style="animation-delay:-7.857s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-e-l1-p4-p6"  r="5" style="animation-delay:-7.857s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-e-l1-p4-p10"  r="5" style="animation-delay:-7.857s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-e-l1-p4-p11"  r="5" style="animation-delay:-7.857s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-e-l2-p5-p7"  r="5" style="animation-delay:-7.857s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-e-l2-p6-p3"  r="5" style="animation-delay:-7.857s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-e-l2-p6-p12"  r="5" style="animation-delay:-7.857s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-e-l2-p10-p1"  r="5" style="animation-delay:-7.857s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-e-l2-p10-p2"  r="5" style="animation-delay:-7.857s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-e-l3-p7-p8"  r="5" style="animation-delay:-7.857s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-e-l3-p7-p9"  r="5" style="animation-delay:-7.857s"/>
+
+    <circle class="mesh-msg mesh-msg--gold mesh-orig--e" r="6" style="animation-delay:-12.857s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-e-l1-p4-p5"  r="5" style="animation-delay:-12.857s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-e-l1-p4-p6"  r="5" style="animation-delay:-12.857s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-e-l1-p4-p10"  r="5" style="animation-delay:-12.857s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-e-l1-p4-p11"  r="5" style="animation-delay:-12.857s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-e-l2-p5-p7"  r="5" style="animation-delay:-12.857s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-e-l2-p6-p3"  r="5" style="animation-delay:-12.857s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-e-l2-p6-p12"  r="5" style="animation-delay:-12.857s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-e-l2-p10-p1"  r="5" style="animation-delay:-12.857s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-e-l2-p10-p2"  r="5" style="animation-delay:-12.857s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-e-l3-p7-p8"  r="5" style="animation-delay:-12.857s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-e-l3-p7-p9"  r="5" style="animation-delay:-12.857s"/>
+
+    <circle class="mesh-msg mesh-msg--cyan mesh-orig--e" r="6" style="animation-delay:-17.857s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-e-l1-p4-p5"  r="5" style="animation-delay:-17.857s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-e-l1-p4-p6"  r="5" style="animation-delay:-17.857s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-e-l1-p4-p10"  r="5" style="animation-delay:-17.857s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-e-l1-p4-p11"  r="5" style="animation-delay:-17.857s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-e-l2-p5-p7"  r="5" style="animation-delay:-17.857s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-e-l2-p6-p3"  r="5" style="animation-delay:-17.857s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-e-l2-p6-p12"  r="5" style="animation-delay:-17.857s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-e-l2-p10-p1"  r="5" style="animation-delay:-17.857s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-e-l2-p10-p2"  r="5" style="animation-delay:-17.857s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-e-l3-p7-p8"  r="5" style="animation-delay:-17.857s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-e-l3-p7-p9"  r="5" style="animation-delay:-17.857s"/>
+
+    <circle class="mesh-msg mesh-msg--violet mesh-orig--e" r="6" style="animation-delay:-22.857s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-e-l1-p4-p5"  r="5" style="animation-delay:-22.857s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-e-l1-p4-p6"  r="5" style="animation-delay:-22.857s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-e-l1-p4-p10"  r="5" style="animation-delay:-22.857s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-e-l1-p4-p11"  r="5" style="animation-delay:-22.857s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-e-l2-p5-p7"  r="5" style="animation-delay:-22.857s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-e-l2-p6-p3"  r="5" style="animation-delay:-22.857s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-e-l2-p6-p12"  r="5" style="animation-delay:-22.857s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-e-l2-p10-p1"  r="5" style="animation-delay:-22.857s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-e-l2-p10-p2"  r="5" style="animation-delay:-22.857s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-e-l3-p7-p8"  r="5" style="animation-delay:-22.857s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-e-l3-p7-p9"  r="5" style="animation-delay:-22.857s"/>
+
+    <circle class="mesh-msg mesh-msg--lime mesh-orig--e" r="6" style="animation-delay:-27.857s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-e-l1-p4-p5"  r="5" style="animation-delay:-27.857s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-e-l1-p4-p6"  r="5" style="animation-delay:-27.857s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-e-l1-p4-p10"  r="5" style="animation-delay:-27.857s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-e-l1-p4-p11"  r="5" style="animation-delay:-27.857s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-e-l2-p5-p7"  r="5" style="animation-delay:-27.857s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-e-l2-p6-p3"  r="5" style="animation-delay:-27.857s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-e-l2-p6-p12"  r="5" style="animation-delay:-27.857s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-e-l2-p10-p1"  r="5" style="animation-delay:-27.857s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-e-l2-p10-p2"  r="5" style="animation-delay:-27.857s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-e-l3-p7-p8"  r="5" style="animation-delay:-27.857s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-e-l3-p7-p9"  r="5" style="animation-delay:-27.857s"/>
+
+
+    <!-- Source F (origin P3) — 6 emissions, color rotates per emission -->
+    <circle class="mesh-msg mesh-msg--violet mesh-orig--f" r="6" style="animation-delay:-3.571s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-f-l1-p3-p1"  r="5" style="animation-delay:-3.571s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-f-l1-p3-p2"  r="5" style="animation-delay:-3.571s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-f-l1-p3-p6"  r="5" style="animation-delay:-3.571s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-f-l1-p3-p11"  r="5" style="animation-delay:-3.571s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-f-l2-p1-p10"  r="5" style="animation-delay:-3.571s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-f-l2-p6-p4"  r="5" style="animation-delay:-3.571s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-f-l2-p6-p5"  r="5" style="animation-delay:-3.571s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-f-l2-p6-p12"  r="5" style="animation-delay:-3.571s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-f-l2-p11-p7"  r="5" style="animation-delay:-3.571s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-f-l3-p7-p8"  r="5" style="animation-delay:-3.571s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-f-l3-p7-p9"  r="5" style="animation-delay:-3.571s"/>
+
+    <circle class="mesh-msg mesh-msg--magenta mesh-orig--f" r="6" style="animation-delay:-8.571s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-f-l1-p3-p1"  r="5" style="animation-delay:-8.571s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-f-l1-p3-p2"  r="5" style="animation-delay:-8.571s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-f-l1-p3-p6"  r="5" style="animation-delay:-8.571s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-f-l1-p3-p11"  r="5" style="animation-delay:-8.571s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-f-l2-p1-p10"  r="5" style="animation-delay:-8.571s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-f-l2-p6-p4"  r="5" style="animation-delay:-8.571s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-f-l2-p6-p5"  r="5" style="animation-delay:-8.571s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-f-l2-p6-p12"  r="5" style="animation-delay:-8.571s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-f-l2-p11-p7"  r="5" style="animation-delay:-8.571s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-f-l3-p7-p8"  r="5" style="animation-delay:-8.571s"/>
+    <circle class="mesh-msg mesh-msg--magenta mesh-seg-f-l3-p7-p9"  r="5" style="animation-delay:-8.571s"/>
+
+    <circle class="mesh-msg mesh-msg--lime mesh-orig--f" r="6" style="animation-delay:-13.571s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-f-l1-p3-p1"  r="5" style="animation-delay:-13.571s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-f-l1-p3-p2"  r="5" style="animation-delay:-13.571s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-f-l1-p3-p6"  r="5" style="animation-delay:-13.571s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-f-l1-p3-p11"  r="5" style="animation-delay:-13.571s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-f-l2-p1-p10"  r="5" style="animation-delay:-13.571s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-f-l2-p6-p4"  r="5" style="animation-delay:-13.571s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-f-l2-p6-p5"  r="5" style="animation-delay:-13.571s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-f-l2-p6-p12"  r="5" style="animation-delay:-13.571s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-f-l2-p11-p7"  r="5" style="animation-delay:-13.571s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-f-l3-p7-p8"  r="5" style="animation-delay:-13.571s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-f-l3-p7-p9"  r="5" style="animation-delay:-13.571s"/>
+
+    <circle class="mesh-msg mesh-msg--sky mesh-orig--f" r="6" style="animation-delay:-18.571s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-f-l1-p3-p1"  r="5" style="animation-delay:-18.571s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-f-l1-p3-p2"  r="5" style="animation-delay:-18.571s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-f-l1-p3-p6"  r="5" style="animation-delay:-18.571s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-f-l1-p3-p11"  r="5" style="animation-delay:-18.571s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-f-l2-p1-p10"  r="5" style="animation-delay:-18.571s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-f-l2-p6-p4"  r="5" style="animation-delay:-18.571s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-f-l2-p6-p5"  r="5" style="animation-delay:-18.571s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-f-l2-p6-p12"  r="5" style="animation-delay:-18.571s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-f-l2-p11-p7"  r="5" style="animation-delay:-18.571s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-f-l3-p7-p8"  r="5" style="animation-delay:-18.571s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-f-l3-p7-p9"  r="5" style="animation-delay:-18.571s"/>
+
+    <circle class="mesh-msg mesh-msg--gold mesh-orig--f" r="6" style="animation-delay:-23.571s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-f-l1-p3-p1"  r="5" style="animation-delay:-23.571s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-f-l1-p3-p2"  r="5" style="animation-delay:-23.571s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-f-l1-p3-p6"  r="5" style="animation-delay:-23.571s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-f-l1-p3-p11"  r="5" style="animation-delay:-23.571s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-f-l2-p1-p10"  r="5" style="animation-delay:-23.571s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-f-l2-p6-p4"  r="5" style="animation-delay:-23.571s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-f-l2-p6-p5"  r="5" style="animation-delay:-23.571s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-f-l2-p6-p12"  r="5" style="animation-delay:-23.571s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-f-l2-p11-p7"  r="5" style="animation-delay:-23.571s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-f-l3-p7-p8"  r="5" style="animation-delay:-23.571s"/>
+    <circle class="mesh-msg mesh-msg--gold mesh-seg-f-l3-p7-p9"  r="5" style="animation-delay:-23.571s"/>
+
+    <circle class="mesh-msg mesh-msg--mint mesh-orig--f" r="6" style="animation-delay:-28.571s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-f-l1-p3-p1"  r="5" style="animation-delay:-28.571s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-f-l1-p3-p2"  r="5" style="animation-delay:-28.571s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-f-l1-p3-p6"  r="5" style="animation-delay:-28.571s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-f-l1-p3-p11"  r="5" style="animation-delay:-28.571s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-f-l2-p1-p10"  r="5" style="animation-delay:-28.571s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-f-l2-p6-p4"  r="5" style="animation-delay:-28.571s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-f-l2-p6-p5"  r="5" style="animation-delay:-28.571s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-f-l2-p6-p12"  r="5" style="animation-delay:-28.571s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-f-l2-p11-p7"  r="5" style="animation-delay:-28.571s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-f-l3-p7-p8"  r="5" style="animation-delay:-28.571s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-f-l3-p7-p9"  r="5" style="animation-delay:-28.571s"/>
+
+
+    <!-- Source G (origin P7) — 6 emissions, color rotates per emission -->
+    <circle class="mesh-msg mesh-msg--sky mesh-orig--g" r="6" style="animation-delay:-4.286s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-g-l1-p7-p5"  r="5" style="animation-delay:-4.286s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-g-l1-p7-p8"  r="5" style="animation-delay:-4.286s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-g-l1-p7-p9"  r="5" style="animation-delay:-4.286s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-g-l1-p7-p11"  r="5" style="animation-delay:-4.286s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-g-l2-p5-p4"  r="5" style="animation-delay:-4.286s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-g-l2-p5-p6"  r="5" style="animation-delay:-4.286s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-g-l2-p5-p10"  r="5" style="animation-delay:-4.286s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-g-l2-p8-p12"  r="5" style="animation-delay:-4.286s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-g-l2-p11-p3"  r="5" style="animation-delay:-4.286s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-g-l3-p3-p1"  r="5" style="animation-delay:-4.286s"/>
+    <circle class="mesh-msg mesh-msg--sky mesh-seg-g-l3-p3-p2"  r="5" style="animation-delay:-4.286s"/>
+
+    <circle class="mesh-msg mesh-msg--mint mesh-orig--g" r="6" style="animation-delay:-9.286s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-g-l1-p7-p5"  r="5" style="animation-delay:-9.286s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-g-l1-p7-p8"  r="5" style="animation-delay:-9.286s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-g-l1-p7-p9"  r="5" style="animation-delay:-9.286s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-g-l1-p7-p11"  r="5" style="animation-delay:-9.286s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-g-l2-p5-p4"  r="5" style="animation-delay:-9.286s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-g-l2-p5-p6"  r="5" style="animation-delay:-9.286s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-g-l2-p5-p10"  r="5" style="animation-delay:-9.286s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-g-l2-p8-p12"  r="5" style="animation-delay:-9.286s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-g-l2-p11-p3"  r="5" style="animation-delay:-9.286s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-g-l3-p3-p1"  r="5" style="animation-delay:-9.286s"/>
+    <circle class="mesh-msg mesh-msg--mint mesh-seg-g-l3-p3-p2"  r="5" style="animation-delay:-9.286s"/>
+
+    <circle class="mesh-msg mesh-msg--violet mesh-orig--g" r="6" style="animation-delay:-14.286s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-g-l1-p7-p5"  r="5" style="animation-delay:-14.286s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-g-l1-p7-p8"  r="5" style="animation-delay:-14.286s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-g-l1-p7-p9"  r="5" style="animation-delay:-14.286s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-g-l1-p7-p11"  r="5" style="animation-delay:-14.286s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-g-l2-p5-p4"  r="5" style="animation-delay:-14.286s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-g-l2-p5-p6"  r="5" style="animation-delay:-14.286s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-g-l2-p5-p10"  r="5" style="animation-delay:-14.286s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-g-l2-p8-p12"  r="5" style="animation-delay:-14.286s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-g-l2-p11-p3"  r="5" style="animation-delay:-14.286s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-g-l3-p3-p1"  r="5" style="animation-delay:-14.286s"/>
+    <circle class="mesh-msg mesh-msg--violet mesh-seg-g-l3-p3-p2"  r="5" style="animation-delay:-14.286s"/>
+
+    <circle class="mesh-msg mesh-msg--coral mesh-orig--g" r="6" style="animation-delay:-19.286s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-g-l1-p7-p5"  r="5" style="animation-delay:-19.286s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-g-l1-p7-p8"  r="5" style="animation-delay:-19.286s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-g-l1-p7-p9"  r="5" style="animation-delay:-19.286s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-g-l1-p7-p11"  r="5" style="animation-delay:-19.286s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-g-l2-p5-p4"  r="5" style="animation-delay:-19.286s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-g-l2-p5-p6"  r="5" style="animation-delay:-19.286s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-g-l2-p5-p10"  r="5" style="animation-delay:-19.286s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-g-l2-p8-p12"  r="5" style="animation-delay:-19.286s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-g-l2-p11-p3"  r="5" style="animation-delay:-19.286s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-g-l3-p3-p1"  r="5" style="animation-delay:-19.286s"/>
+    <circle class="mesh-msg mesh-msg--coral mesh-seg-g-l3-p3-p2"  r="5" style="animation-delay:-19.286s"/>
+
+    <circle class="mesh-msg mesh-msg--lime mesh-orig--g" r="6" style="animation-delay:-24.286s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-g-l1-p7-p5"  r="5" style="animation-delay:-24.286s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-g-l1-p7-p8"  r="5" style="animation-delay:-24.286s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-g-l1-p7-p9"  r="5" style="animation-delay:-24.286s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-g-l1-p7-p11"  r="5" style="animation-delay:-24.286s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-g-l2-p5-p4"  r="5" style="animation-delay:-24.286s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-g-l2-p5-p6"  r="5" style="animation-delay:-24.286s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-g-l2-p5-p10"  r="5" style="animation-delay:-24.286s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-g-l2-p8-p12"  r="5" style="animation-delay:-24.286s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-g-l2-p11-p3"  r="5" style="animation-delay:-24.286s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-g-l3-p3-p1"  r="5" style="animation-delay:-24.286s"/>
+    <circle class="mesh-msg mesh-msg--lime mesh-seg-g-l3-p3-p2"  r="5" style="animation-delay:-24.286s"/>
+
+    <circle class="mesh-msg mesh-msg--cyan mesh-orig--g" r="6" style="animation-delay:-29.286s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-g-l1-p7-p5"  r="5" style="animation-delay:-29.286s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-g-l1-p7-p8"  r="5" style="animation-delay:-29.286s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-g-l1-p7-p9"  r="5" style="animation-delay:-29.286s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-g-l1-p7-p11"  r="5" style="animation-delay:-29.286s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-g-l2-p5-p4"  r="5" style="animation-delay:-29.286s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-g-l2-p5-p6"  r="5" style="animation-delay:-29.286s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-g-l2-p5-p10"  r="5" style="animation-delay:-29.286s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-g-l2-p8-p12"  r="5" style="animation-delay:-29.286s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-g-l2-p11-p3"  r="5" style="animation-delay:-29.286s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-g-l3-p3-p1"  r="5" style="animation-delay:-29.286s"/>
+    <circle class="mesh-msg mesh-msg--cyan mesh-seg-g-l3-p3-p2"  r="5" style="animation-delay:-29.286s"/>
   </g>
 </svg>
-<p class="mesh-caption">Seven messages flood-routing in parallel, 7+ hops deep — each relay rebroadcasts to every neighbor at once, no cell tower needed.</p>
+<p class="mesh-caption">Dozens of messages flood-routing in parallel across the camp — every phone constantly relays, the way a real Meshtastic mesh feels when 100 people are chatting at once.</p>
 </div>
 
 ---
