@@ -141,7 +141,12 @@
 .mesh-animation .mesh-msg {
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
-  animation-duration: 30s;
+  /* 60s loop (was 30s). Doubles the loop length so every keyframe segment
+     stretches in proportion: per-hop travel goes from ~0.9s to ~1.8s, so
+     individual packets are visibly crossing between phones instead of zipping.
+     Linger + emission cadence also halve, keeping the flood-tree density
+     intact while the eye can follow each colored dot. */
+  animation-duration: 60s;
   opacity: 0;
 }
 
