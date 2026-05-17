@@ -276,24 +276,33 @@
 .ef-msg--40 { animation-delay: -4.5s; }   /* +58.5s */
 
 @keyframes ef-msg-in {
-  /* Slide IN FROM BELOW (translateY +14 → 0) + animate height 0 → 36px so
-     newcomers push older messages UP the stack. With flex-end on the body,
-     the newest msg lands at the BOTTOM and the stack grows upward. Brief
-     fade-out at the end-of-loop syncs with the chat-body breath for a
-     clean restart. Tightened slide window for 1.5s cadence on 63s loop:
-     each msg pops in over ~1s (0.5%-2%) then holds until 95%.
+  /* Each message lives ~10.5s out of the 63s loop — roughly 7 messages
+     visible at once. With 40 msgs at 1.5s cadence the streaming feel
+     comes from a SHORT visible window per message; if the window covers
+     most of the loop (as the prior version did, 0.5%-98%), every message
+     is in its "visible plateau" at any given instant and the stack
+     appears statically full — the bug Will reported on iOS Safari.
+
+     Life of one message (63s loop = 100%):
+       0%   – 1.2%   slide in    (~0.75s)
+       1.2% – 15.5%  hold visible (~9s)
+       15.5%–16.7%  collapse out (~0.75s, height + opacity)
+       16.7%–100%   collapsed/idle (waits for next loop)
+
+     7 simultaneously-visible msgs × 44px = 308px in the 404px chatbody
+     window, leaving room for the bottom slide-in without overflow blowup
+     while still letting the oldest visible msg get pushed off the top.
 
      Note: uses `height` (not `max-height`) — WebKit/Safari does not reflow
-     flex parents when max-height interpolates mid-keyframe, leaving the
-     chat body visually empty even though opacity transitions correctly.
+     flex parents when max-height interpolates mid-keyframe.
      Height target 44px ≈ name (15px) + bubble (~25px) + breathing room. */
-  0%   { opacity: 0; height: 0;    transform: translateY(14px); }
-  0.5% { opacity: 0; height: 0;    transform: translateY(14px); }
-  2%   { opacity: 1; height: 44px; transform: translateY(2px); }
-  3.5% { opacity: 1; height: 44px; transform: translateY(0); }
-  95%  { opacity: 1; height: 44px; transform: translateY(0); }
-  98%  { opacity: 0; height: 44px; transform: translateY(-4px); }
-  100% { opacity: 0; height: 0;    transform: translateY(14px); }
+  0%    { opacity: 0; height: 0;    transform: translateY(14px); }
+  0.4%  { opacity: 0; height: 0;    transform: translateY(14px); }
+  1.2%  { opacity: 1; height: 44px; transform: translateY(0); }
+  15.5% { opacity: 1; height: 44px; transform: translateY(0); }
+  16.3% { opacity: 0; height: 44px; transform: translateY(-6px); }
+  16.7% { opacity: 0; height: 0;    transform: translateY(-6px); }
+  100%  { opacity: 0; height: 0;    transform: translateY(-6px); }
 }
 
 /* Body-level loop: clean breath at end-of-loop so restart isn't jarring */
