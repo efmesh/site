@@ -188,7 +188,7 @@ The little device connects via Bluetooth to your phone and lets you send message
 ---
 
 <div class="mesh-animation" aria-hidden="true">
-<svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mesh network animation showing 12 phones distributed across a festival camp, connected by dashed lines, with an orange message dot hopping between nodes">
+<svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mesh network animation: 12 phones connected by dashed lines, with four differently-colored messages flood-routing through the camp — each message fans out from every relay node into multiple branches at once, the way Meshtastic actually broadcasts.">
   <defs>
     <symbol id="phone" viewBox="0 0 24 36">
       <rect x="2" y="2" width="20" height="32" rx="3" ry="3" fill="#2e1d4d" stroke="#a78bfa" stroke-width="1.5"/>
@@ -214,8 +214,8 @@ The little device connects via Bluetooth to your phone and lets you send message
     <line x1="402" y1="58"  x2="322" y2="113"/>
     <line x1="107" y1="93"  x2="187" y2="218"/>
     <line x1="187" y1="218" x2="282" y2="168"/>
-    <line x1="322" y1="113" x2="562" y2="98"/>
-    <line x1="562" y1="98"  x2="522" y2="183"/>
+    <line x1="322" y1="113" x2="552" y2="98"/>
+    <line x1="552" y1="98"  x2="522" y2="183"/>
     <line x1="282" y1="168" x2="447" y2="193"/>
   </g>
   <g class="mesh-nodes">
@@ -236,14 +236,41 @@ The little device connects via Bluetooth to your phone and lets you send message
     <use href="#phone" x="390" y="40"  width="24" height="36"/>
     <use href="#phone" x="540" y="80"  width="24" height="36"/>
   </g>
-  <circle class="mesh-msg mesh-msg--1" r="5" fill="#ffb84d" stroke="#fff" stroke-width="1.5"/>
-  <circle class="mesh-msg mesh-msg--2" r="5" fill="#ffb84d" stroke="#fff" stroke-width="1.5"/>
-  <circle class="mesh-msg mesh-msg--3" r="5" fill="#ffb84d" stroke="#fff" stroke-width="1.5"/>
-  <circle class="mesh-msg mesh-msg--4" r="5" fill="#ffb84d" stroke="#fff" stroke-width="1.5"/>
-  <circle class="mesh-msg mesh-msg--5" r="5" fill="#ffb84d" stroke="#fff" stroke-width="1.5"/>
-  <circle class="mesh-msg mesh-msg--6" r="5" fill="#ffb84d" stroke="#fff" stroke-width="1.5"/>
+  <!-- Flood-routing packet dots. Each message gets a distinct color and an
+       origin-pulse plus per-hop fan-out dots (see extra.css for design intent
+       + per-keyframe schedule). Stroke is white so each dot stays legible
+       on both light and dark themes. -->
+  <g class="mesh-msgs" stroke="#fff" stroke-width="1.5">
+    <!-- Source A — cyan, origin P1 -->
+    <circle class="mesh-msg mesh-msg--a mesh-orig--a"   r="6"/>
+    <circle class="mesh-msg mesh-msg--a mesh-seg-a-p1-p2" r="5"/>
+    <circle class="mesh-msg mesh-msg--a mesh-seg-a-p1-p3" r="5"/>
+    <circle class="mesh-msg mesh-msg--a mesh-seg-a-p2-p10" r="5"/>
+    <circle class="mesh-msg mesh-msg--a mesh-seg-a-p3-p11" r="5"/>
+    <!-- Source B — magenta, origin P8 -->
+    <circle class="mesh-msg mesh-msg--b mesh-orig--b"   r="6"/>
+    <circle class="mesh-msg mesh-msg--b mesh-seg-b-p8-p7" r="5"/>
+    <circle class="mesh-msg mesh-msg--b mesh-seg-b-p8-p9" r="5"/>
+    <circle class="mesh-msg mesh-msg--b mesh-seg-b-p7-p5" r="5"/>
+    <circle class="mesh-msg mesh-msg--b mesh-seg-b-p9-p12" r="5"/>
+    <!-- Source C — lime, origin P10 -->
+    <circle class="mesh-msg mesh-msg--c mesh-orig--c"   r="6"/>
+    <circle class="mesh-msg mesh-msg--c mesh-seg-c-p10-p2" r="5"/>
+    <circle class="mesh-msg mesh-msg--c mesh-seg-c-p10-p5" r="5"/>
+    <circle class="mesh-msg mesh-msg--c mesh-seg-c-p2-p1"  r="5"/>
+    <circle class="mesh-msg mesh-msg--c mesh-seg-c-p2-p3"  r="5"/>
+    <circle class="mesh-msg mesh-msg--c mesh-seg-c-p5-p4"  r="5"/>
+    <circle class="mesh-msg mesh-msg--c mesh-seg-c-p5-p6"  r="5"/>
+    <!-- Source D — gold, origin P12 -->
+    <circle class="mesh-msg mesh-msg--d mesh-orig--d"   r="6"/>
+    <circle class="mesh-msg mesh-msg--d mesh-seg-d-p12-p6" r="5"/>
+    <circle class="mesh-msg mesh-msg--d mesh-seg-d-p12-p9" r="5"/>
+    <circle class="mesh-msg mesh-msg--d mesh-seg-d-p6-p4"  r="5"/>
+    <circle class="mesh-msg mesh-msg--d mesh-seg-d-p6-p11" r="5"/>
+    <circle class="mesh-msg mesh-msg--d mesh-seg-d-p9-p7"  r="5"/>
+  </g>
 </svg>
-<p class="mesh-caption">Packets hop phone to phone in parallel — no cell tower needed.</p>
+<p class="mesh-caption">Four messages flood-routing in parallel — each relay rebroadcasts to every neighbor at once, no cell tower needed.</p>
 </div>
 
 ---
