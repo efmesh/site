@@ -71,7 +71,7 @@ This is the community guide for using it at Electric Forest.
         <div class="ef-msg ef-msg--in ef-msg--16"><div class="ef-msg__inner"><span class="ef-name">jess</span><span class="ef-bubble">yoga at the meadow in 20</span></div></div>
         <div class="ef-msg ef-msg--in ef-msg--17"><div class="ef-msg__inner"><span class="ef-name">alex</span><span class="ef-bubble">headliner at 9pm, rally at 8?</span></div></div>
         <div class="ef-msg ef-msg--in ef-msg--18"><div class="ef-msg__inner"><span class="ef-name">sam</span><span class="ef-bubble">trading kandi at the totem &#127752;</span></div></div>
-        <div class="ef-msg ef-msg--out ef-msg--19"><div class="ef-msg__inner"><span class="ef-name">you</span><span class="ef-bubble">wishing tree at midnight, who&rsquo;s in</span></div></div>
+        <div class="ef-msg ef-msg--out ef-msg--19"><div class="ef-msg__inner"><span class="ef-name">you</span><span class="ef-bubble">giving tree at midnight, who&rsquo;s in</span></div></div>
         <div class="ef-msg ef-msg--in ef-msg--20"><div class="ef-msg__inner"><span class="ef-name">jess</span><span class="ef-bubble">im at the observatory &#128301;</span></div></div>
         <div class="ef-msg ef-msg--in ef-msg--21"><div class="ef-msg__inner"><span class="ef-name">alex</span><span class="ef-bubble">this DJ is unreal, you need to be here</span></div></div>
         <div class="ef-msg ef-msg--in ef-msg--22"><div class="ef-msg__inner"><span class="ef-name">sam</span><span class="ef-bubble">lost my flow toys at the wood &#128557;</span></div></div>
