@@ -174,9 +174,14 @@ The little device connects via Bluetooth to your phone and lets you send message
     <use href="#phone" x="390" y="40"  width="24" height="36"/>
     <use href="#phone" x="540" y="80"  width="24" height="36"/>
   </g>
-  <circle class="mesh-msg" r="5" fill="#ffb84d" stroke="#fff" stroke-width="1.5"/>
+  <circle class="mesh-msg mesh-msg--1" r="5" fill="#ffb84d" stroke="#fff" stroke-width="1.5"/>
+  <circle class="mesh-msg mesh-msg--2" r="5" fill="#ffb84d" stroke="#fff" stroke-width="1.5"/>
+  <circle class="mesh-msg mesh-msg--3" r="5" fill="#ffb84d" stroke="#fff" stroke-width="1.5"/>
+  <circle class="mesh-msg mesh-msg--4" r="5" fill="#ffb84d" stroke="#fff" stroke-width="1.5"/>
+  <circle class="mesh-msg mesh-msg--5" r="5" fill="#ffb84d" stroke="#fff" stroke-width="1.5"/>
+  <circle class="mesh-msg mesh-msg--6" r="5" fill="#ffb84d" stroke="#fff" stroke-width="1.5"/>
 </svg>
-<p class="mesh-caption">Each phone hops messages to the next — no cell tower needed.</p>
+<p class="mesh-caption">Packets hop phone to phone in parallel — no cell tower needed.</p>
 </div>
 
 ---

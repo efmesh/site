@@ -60,9 +60,16 @@
 
 /* Mesh-network diagram — 12 phone nodes laid out as a believable festival
    camp (3 tight clusters + 3 spread-out outliers), connected by dashed lines.
-   An orange message dot hops along a 6-hop path through the network to show
-   how a single message traverses the mesh. Lives as its own dedicated section
-   between "What is Meshtastic?" and "Get Started in 3 Steps". */
+   Six orange packet dots hop in parallel along distinct multi-hop paths to
+   show real Meshtastic traffic: multiple messages flying through the camp
+   at once. Each dot has its own keyframe + duration + stagger so they
+   overlap visually without firing together. Lives as its own dedicated
+   section between "What is Meshtastic?" and "Get Started in 3 Steps".
+   Phone centers (used by all paths below):
+     P1 (72,58)   P2 (107,93)  P3 (142,60)   — Cluster A (top-left)
+     P4 (247,128) P5 (282,168) P6 (322,113)  — Cluster B (center)
+     P7 (447,193) P8 (487,223) P9 (522,183)  — Cluster C (lower-right)
+     P10(187,218) P11(402,58)  P12(552,98)   — outliers */
 .mesh-animation {
   max-width: 700px;
   margin: 2rem auto 1.2rem auto;
@@ -80,36 +87,85 @@
   font-style: italic;
 }
 .mesh-animation .mesh-msg {
-  animation: mesh-hop 8s ease-in-out infinite;
   filter: drop-shadow(0 0 4px rgba(255, 184, 77, 0.7));
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
 }
-/* 6-hop path through the new 12-phone graph, picking the most visually
-   spread-out route for impact:
-     C1 (72,58)   — Cluster A, top-left
-   → C3 (142,60)  — Cluster A, top-left
-   → C11(402,58) — upper-right outlier (big jump across the camp)
-   → C6 (322,113) — Cluster B, center
-   → C5 (282,168) — Cluster B, center-low
-   → C7 (447,193) — Cluster C, lower-right
-   → C9 (522,183) — Cluster C, lower-right (final landing) */
-@keyframes mesh-hop {
+/* Per-dot durations + negative stagger so all six are in flight but
+   visibly offset; longer hops get longer cycles. */
+.mesh-animation .mesh-msg--1 { animation-name: mesh-hop-1; animation-duration: 8s;   animation-delay: 0s; }
+.mesh-animation .mesh-msg--2 { animation-name: mesh-hop-2; animation-duration: 7s;   animation-delay: -2s; }
+.mesh-animation .mesh-msg--3 { animation-name: mesh-hop-3; animation-duration: 9s;   animation-delay: -3.5s; }
+.mesh-animation .mesh-msg--4 { animation-name: mesh-hop-4; animation-duration: 10s;  animation-delay: -5.5s; }
+.mesh-animation .mesh-msg--5 { animation-name: mesh-hop-5; animation-duration: 6s;   animation-delay: -1s; }
+.mesh-animation .mesh-msg--6 { animation-name: mesh-hop-6; animation-duration: 7.5s; animation-delay: -4s; }
+/* Path 1: P1 -> P3 -> P11 -> P6 -> P9  (Cluster A across to outlier, into B, down to C) */
+@keyframes mesh-hop-1 {
   0%   { transform: translate(72px,  58px);  opacity: 0; }
-  3%   { transform: translate(72px,  58px);  opacity: 1; }
-  14%  { transform: translate(142px, 60px);  opacity: 1; }
-  28%  { transform: translate(402px, 58px);  opacity: 1; }
-  42%  { transform: translate(322px, 113px); opacity: 1; }
-  56%  { transform: translate(282px, 168px); opacity: 1; }
-  70%  { transform: translate(447px, 193px); opacity: 1; }
-  84%  { transform: translate(522px, 183px); opacity: 1; }
-  92%  { transform: translate(522px, 183px); opacity: 1; }
-  97%  { transform: translate(522px, 183px); opacity: 0; }
+  4%   { transform: translate(72px,  58px);  opacity: 1; }
+  22%  { transform: translate(142px, 60px);  opacity: 1; }
+  44%  { transform: translate(402px, 58px);  opacity: 1; }
+  66%  { transform: translate(322px, 113px); opacity: 1; }
+  88%  { transform: translate(522px, 183px); opacity: 1; }
+  96%  { transform: translate(522px, 183px); opacity: 0; }
   100% { transform: translate(72px,  58px);  opacity: 0; }
+}
+/* Path 2: P4 -> P6 -> P12 -> P9  (Cluster B out to right outlier, into C) */
+@keyframes mesh-hop-2 {
+  0%   { transform: translate(247px, 128px); opacity: 0; }
+  5%   { transform: translate(247px, 128px); opacity: 1; }
+  30%  { transform: translate(322px, 113px); opacity: 1; }
+  60%  { transform: translate(552px, 98px);  opacity: 1; }
+  90%  { transform: translate(522px, 183px); opacity: 1; }
+  96%  { transform: translate(522px, 183px); opacity: 0; }
+  100% { transform: translate(247px, 128px); opacity: 0; }
+}
+/* Path 3: P10 -> P2 -> P4 -> P5  (lower outlier up to Cluster A, into B) */
+@keyframes mesh-hop-3 {
+  0%   { transform: translate(187px, 218px); opacity: 0; }
+  4%   { transform: translate(187px, 218px); opacity: 1; }
+  28%  { transform: translate(107px, 93px);  opacity: 1; }
+  56%  { transform: translate(247px, 128px); opacity: 1; }
+  84%  { transform: translate(282px, 168px); opacity: 1; }
+  94%  { transform: translate(282px, 168px); opacity: 0; }
+  100% { transform: translate(187px, 218px); opacity: 0; }
+}
+/* Path 4: P9 -> P7 -> P5 -> P2 -> P1  (long traverse Cluster C to A) */
+@keyframes mesh-hop-4 {
+  0%   { transform: translate(522px, 183px); opacity: 0; }
+  3%   { transform: translate(522px, 183px); opacity: 1; }
+  22%  { transform: translate(447px, 193px); opacity: 1; }
+  46%  { transform: translate(282px, 168px); opacity: 1; }
+  70%  { transform: translate(107px, 93px);  opacity: 1; }
+  92%  { transform: translate(72px,  58px);  opacity: 1; }
+  97%  { transform: translate(72px,  58px);  opacity: 0; }
+  100% { transform: translate(522px, 183px); opacity: 0; }
+}
+/* Path 5: P11 -> P6 -> P9  (short fast hop, upper outlier down to C) */
+@keyframes mesh-hop-5 {
+  0%   { transform: translate(402px, 58px);  opacity: 0; }
+  6%   { transform: translate(402px, 58px);  opacity: 1; }
+  48%  { transform: translate(322px, 113px); opacity: 1; }
+  90%  { transform: translate(522px, 183px); opacity: 1; }
+  96%  { transform: translate(522px, 183px); opacity: 0; }
+  100% { transform: translate(402px, 58px);  opacity: 0; }
+}
+/* Path 6: P2 -> P10 -> P5 -> P7  (Cluster A down to outlier, into B, into C) */
+@keyframes mesh-hop-6 {
+  0%   { transform: translate(107px, 93px);  opacity: 0; }
+  4%   { transform: translate(107px, 93px);  opacity: 1; }
+  28%  { transform: translate(187px, 218px); opacity: 1; }
+  56%  { transform: translate(282px, 168px); opacity: 1; }
+  84%  { transform: translate(447px, 193px); opacity: 1; }
+  94%  { transform: translate(447px, 193px); opacity: 0; }
+  100% { transform: translate(107px, 93px);  opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .mesh-animation .mesh-msg {
     animation: none;
-    transform: translate(322px, 113px);
+    opacity: 0;
   }
+  .mesh-animation .mesh-msg--1 { opacity: 1; transform: translate(322px, 113px); }
 }
 
 /* Phone-chat hero animation — stylized phone frame + Forest squad messages
