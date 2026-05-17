@@ -91,12 +91,18 @@
      F (P3): violet→magenta→lime→sky→gold→mint
      G (P7): sky→mint→violet→coral→lime→cyan
 
-   Per-source timing within the SHARED tree window (0%-26% of 30s loop):
+   Per-source timing within the SHARED tree window (0%-27% of 30s loop):
      L0 origin pulse: 0-3%  (~0.9s)
-     L1 travel 3-6% then linger to 16%, fade by 20%
-     L2 travel 6-9% then linger to 19%, fade by 23%
-     L3 travel 9-12% then linger to 22%, fade by 26%
-   Tree fully done by 26% (~7.8s wall); rest is idle until next emission slot.
+     L1 travel 3-5% then linger to 18%, fade by 21%   (was 6%/16%/20%)
+     L2 travel 6-8% then linger to 21%, fade by 24%   (was 9%/19%/23%)
+     L3 travel 9-11% then linger to 24%, fade by 27%  (was 12%/22%/26%)
+   Tree fully done by 27% (~8.1s wall); next emission of same source
+   starts 5s later (16.67% of loop), so trees overlap continuously and
+   the boundary between loop iterations is invisible. L3 opacity bumped
+   0.45 -> 0.6 and L2 0.7 -> 0.8 to lift the visibility floor so the
+   "thinner" moments still read as a continuous flood (fix 2026-05-16
+   for Will's "loop has gap" complaint — pacing tune alone removed the
+   timing gap; this lift removes the perceptual dimming gap).
 
    Emission staggering: each <circle> in the HTML sets a per-emission
    animation-delay = (source_base + emission_index * 5s) where source_base
@@ -175,151 +181,151 @@
   2%                { opacity: 1; transform: translate(447px, 193px) scale(1);   }
 }
 
-@keyframes mesh-seg-a-l1-p1-p2 { 0%,3%,20%,100%{opacity:0} 6%,16%{opacity:1.0}
+@keyframes mesh-seg-a-l1-p1-p2 { 0%,3%,21%,100%{opacity:0} 5%,18%{opacity:1.0}
   0%,3%{transform:translate(72px,58px)} 6%,100%{transform:translate(107px,93px)} }
-@keyframes mesh-seg-a-l1-p1-p3 { 0%,3%,20%,100%{opacity:0} 6%,16%{opacity:1.0}
+@keyframes mesh-seg-a-l1-p1-p3 { 0%,3%,21%,100%{opacity:0} 5%,18%{opacity:1.0}
   0%,3%{transform:translate(72px,58px)} 6%,100%{transform:translate(142px,60px)} }
-@keyframes mesh-seg-a-l1-p1-p10 { 0%,3%,20%,100%{opacity:0} 6%,16%{opacity:1.0}
+@keyframes mesh-seg-a-l1-p1-p10 { 0%,3%,21%,100%{opacity:0} 5%,18%{opacity:1.0}
   0%,3%{transform:translate(72px,58px)} 6%,100%{transform:translate(187px,218px)} }
-@keyframes mesh-seg-a-l2-p3-p6 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-a-l2-p3-p6 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(142px,60px)} 9%,100%{transform:translate(322px,113px)} }
-@keyframes mesh-seg-a-l2-p3-p11 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-a-l2-p3-p11 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(142px,60px)} 9%,100%{transform:translate(402px,58px)} }
-@keyframes mesh-seg-a-l2-p10-p4 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-a-l2-p10-p4 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(187px,218px)} 9%,100%{transform:translate(247px,128px)} }
-@keyframes mesh-seg-a-l2-p10-p5 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-a-l2-p10-p5 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(187px,218px)} 9%,100%{transform:translate(282px,168px)} }
-@keyframes mesh-seg-a-l3-p5-p7 { 0%,9%,26%,100%{opacity:0} 12%,22%{opacity:0.45}
+@keyframes mesh-seg-a-l3-p5-p7 { 0%,9%,27%,100%{opacity:0} 11%,24%{opacity:0.6}
   0%,9%{transform:translate(282px,168px)} 12%,100%{transform:translate(447px,193px)} }
-@keyframes mesh-seg-a-l3-p6-p12 { 0%,9%,26%,100%{opacity:0} 12%,22%{opacity:0.45}
+@keyframes mesh-seg-a-l3-p6-p12 { 0%,9%,27%,100%{opacity:0} 11%,24%{opacity:0.6}
   0%,9%{transform:translate(322px,113px)} 12%,100%{transform:translate(552px,98px)} }
-@keyframes mesh-seg-b-l1-p8-p7 { 0%,3%,20%,100%{opacity:0} 6%,16%{opacity:1.0}
+@keyframes mesh-seg-b-l1-p8-p7 { 0%,3%,21%,100%{opacity:0} 5%,18%{opacity:1.0}
   0%,3%{transform:translate(487px,223px)} 6%,100%{transform:translate(447px,193px)} }
-@keyframes mesh-seg-b-l1-p8-p9 { 0%,3%,20%,100%{opacity:0} 6%,16%{opacity:1.0}
+@keyframes mesh-seg-b-l1-p8-p9 { 0%,3%,21%,100%{opacity:0} 5%,18%{opacity:1.0}
   0%,3%{transform:translate(487px,223px)} 6%,100%{transform:translate(522px,183px)} }
-@keyframes mesh-seg-b-l1-p8-p12 { 0%,3%,20%,100%{opacity:0} 6%,16%{opacity:1.0}
+@keyframes mesh-seg-b-l1-p8-p12 { 0%,3%,21%,100%{opacity:0} 5%,18%{opacity:1.0}
   0%,3%{transform:translate(487px,223px)} 6%,100%{transform:translate(552px,98px)} }
-@keyframes mesh-seg-b-l2-p7-p5 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-b-l2-p7-p5 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(447px,193px)} 9%,100%{transform:translate(282px,168px)} }
-@keyframes mesh-seg-b-l2-p7-p11 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-b-l2-p7-p11 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(447px,193px)} 9%,100%{transform:translate(402px,58px)} }
-@keyframes mesh-seg-b-l2-p12-p6 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-b-l2-p12-p6 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(552px,98px)} 9%,100%{transform:translate(322px,113px)} }
-@keyframes mesh-seg-b-l3-p5-p4 { 0%,9%,26%,100%{opacity:0} 12%,22%{opacity:0.45}
+@keyframes mesh-seg-b-l3-p5-p4 { 0%,9%,27%,100%{opacity:0} 11%,24%{opacity:0.6}
   0%,9%{transform:translate(282px,168px)} 12%,100%{transform:translate(247px,128px)} }
-@keyframes mesh-seg-b-l3-p5-p10 { 0%,9%,26%,100%{opacity:0} 12%,22%{opacity:0.45}
+@keyframes mesh-seg-b-l3-p5-p10 { 0%,9%,27%,100%{opacity:0} 11%,24%{opacity:0.6}
   0%,9%{transform:translate(282px,168px)} 12%,100%{transform:translate(187px,218px)} }
-@keyframes mesh-seg-b-l3-p6-p3 { 0%,9%,26%,100%{opacity:0} 12%,22%{opacity:0.45}
+@keyframes mesh-seg-b-l3-p6-p3 { 0%,9%,27%,100%{opacity:0} 11%,24%{opacity:0.6}
   0%,9%{transform:translate(322px,113px)} 12%,100%{transform:translate(142px,60px)} }
-@keyframes mesh-seg-c-l1-p10-p1 { 0%,3%,20%,100%{opacity:0} 6%,16%{opacity:1.0}
+@keyframes mesh-seg-c-l1-p10-p1 { 0%,3%,21%,100%{opacity:0} 5%,18%{opacity:1.0}
   0%,3%{transform:translate(187px,218px)} 6%,100%{transform:translate(72px,58px)} }
-@keyframes mesh-seg-c-l1-p10-p2 { 0%,3%,20%,100%{opacity:0} 6%,16%{opacity:1.0}
+@keyframes mesh-seg-c-l1-p10-p2 { 0%,3%,21%,100%{opacity:0} 5%,18%{opacity:1.0}
   0%,3%{transform:translate(187px,218px)} 6%,100%{transform:translate(107px,93px)} }
-@keyframes mesh-seg-c-l1-p10-p4 { 0%,3%,20%,100%{opacity:0} 6%,16%{opacity:1.0}
+@keyframes mesh-seg-c-l1-p10-p4 { 0%,3%,21%,100%{opacity:0} 5%,18%{opacity:1.0}
   0%,3%{transform:translate(187px,218px)} 6%,100%{transform:translate(247px,128px)} }
-@keyframes mesh-seg-c-l1-p10-p5 { 0%,3%,20%,100%{opacity:0} 6%,16%{opacity:1.0}
+@keyframes mesh-seg-c-l1-p10-p5 { 0%,3%,21%,100%{opacity:0} 5%,18%{opacity:1.0}
   0%,3%{transform:translate(187px,218px)} 6%,100%{transform:translate(282px,168px)} }
-@keyframes mesh-seg-c-l2-p1-p3 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-c-l2-p1-p3 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(72px,58px)} 9%,100%{transform:translate(142px,60px)} }
-@keyframes mesh-seg-c-l2-p4-p6 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-c-l2-p4-p6 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(247px,128px)} 9%,100%{transform:translate(322px,113px)} }
-@keyframes mesh-seg-c-l2-p4-p11 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-c-l2-p4-p11 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(247px,128px)} 9%,100%{transform:translate(402px,58px)} }
-@keyframes mesh-seg-c-l2-p5-p7 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-c-l2-p5-p7 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(282px,168px)} 9%,100%{transform:translate(447px,193px)} }
-@keyframes mesh-seg-c-l3-p6-p12 { 0%,9%,26%,100%{opacity:0} 12%,22%{opacity:0.45}
+@keyframes mesh-seg-c-l3-p6-p12 { 0%,9%,27%,100%{opacity:0} 11%,24%{opacity:0.6}
   0%,9%{transform:translate(322px,113px)} 12%,100%{transform:translate(552px,98px)} }
-@keyframes mesh-seg-c-l3-p7-p8 { 0%,9%,26%,100%{opacity:0} 12%,22%{opacity:0.45}
+@keyframes mesh-seg-c-l3-p7-p8 { 0%,9%,27%,100%{opacity:0} 11%,24%{opacity:0.6}
   0%,9%{transform:translate(447px,193px)} 12%,100%{transform:translate(487px,223px)} }
-@keyframes mesh-seg-c-l3-p7-p9 { 0%,9%,26%,100%{opacity:0} 12%,22%{opacity:0.45}
+@keyframes mesh-seg-c-l3-p7-p9 { 0%,9%,27%,100%{opacity:0} 11%,24%{opacity:0.6}
   0%,9%{transform:translate(447px,193px)} 12%,100%{transform:translate(522px,183px)} }
-@keyframes mesh-seg-d-l1-p12-p6 { 0%,3%,20%,100%{opacity:0} 6%,16%{opacity:1.0}
+@keyframes mesh-seg-d-l1-p12-p6 { 0%,3%,21%,100%{opacity:0} 5%,18%{opacity:1.0}
   0%,3%{transform:translate(552px,98px)} 6%,100%{transform:translate(322px,113px)} }
-@keyframes mesh-seg-d-l1-p12-p8 { 0%,3%,20%,100%{opacity:0} 6%,16%{opacity:1.0}
+@keyframes mesh-seg-d-l1-p12-p8 { 0%,3%,21%,100%{opacity:0} 5%,18%{opacity:1.0}
   0%,3%{transform:translate(552px,98px)} 6%,100%{transform:translate(487px,223px)} }
-@keyframes mesh-seg-d-l1-p12-p9 { 0%,3%,20%,100%{opacity:0} 6%,16%{opacity:1.0}
+@keyframes mesh-seg-d-l1-p12-p9 { 0%,3%,21%,100%{opacity:0} 5%,18%{opacity:1.0}
   0%,3%{transform:translate(552px,98px)} 6%,100%{transform:translate(522px,183px)} }
-@keyframes mesh-seg-d-l1-p12-p11 { 0%,3%,20%,100%{opacity:0} 6%,16%{opacity:1.0}
+@keyframes mesh-seg-d-l1-p12-p11 { 0%,3%,21%,100%{opacity:0} 5%,18%{opacity:1.0}
   0%,3%{transform:translate(552px,98px)} 6%,100%{transform:translate(402px,58px)} }
-@keyframes mesh-seg-d-l2-p6-p3 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-d-l2-p6-p3 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(322px,113px)} 9%,100%{transform:translate(142px,60px)} }
-@keyframes mesh-seg-d-l2-p6-p4 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-d-l2-p6-p4 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(322px,113px)} 9%,100%{transform:translate(247px,128px)} }
-@keyframes mesh-seg-d-l2-p6-p5 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-d-l2-p6-p5 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(322px,113px)} 9%,100%{transform:translate(282px,168px)} }
-@keyframes mesh-seg-d-l2-p8-p7 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-d-l2-p8-p7 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(487px,223px)} 9%,100%{transform:translate(447px,193px)} }
-@keyframes mesh-seg-d-l3-p3-p1 { 0%,9%,26%,100%{opacity:0} 12%,22%{opacity:0.45}
+@keyframes mesh-seg-d-l3-p3-p1 { 0%,9%,27%,100%{opacity:0} 11%,24%{opacity:0.6}
   0%,9%{transform:translate(142px,60px)} 12%,100%{transform:translate(72px,58px)} }
-@keyframes mesh-seg-d-l3-p3-p2 { 0%,9%,26%,100%{opacity:0} 12%,22%{opacity:0.45}
+@keyframes mesh-seg-d-l3-p3-p2 { 0%,9%,27%,100%{opacity:0} 11%,24%{opacity:0.6}
   0%,9%{transform:translate(142px,60px)} 12%,100%{transform:translate(107px,93px)} }
-@keyframes mesh-seg-d-l3-p4-p10 { 0%,9%,26%,100%{opacity:0} 12%,22%{opacity:0.45}
+@keyframes mesh-seg-d-l3-p4-p10 { 0%,9%,27%,100%{opacity:0} 11%,24%{opacity:0.6}
   0%,9%{transform:translate(247px,128px)} 12%,100%{transform:translate(187px,218px)} }
-@keyframes mesh-seg-e-l1-p4-p5 { 0%,3%,20%,100%{opacity:0} 6%,16%{opacity:1.0}
+@keyframes mesh-seg-e-l1-p4-p5 { 0%,3%,21%,100%{opacity:0} 5%,18%{opacity:1.0}
   0%,3%{transform:translate(247px,128px)} 6%,100%{transform:translate(282px,168px)} }
-@keyframes mesh-seg-e-l1-p4-p6 { 0%,3%,20%,100%{opacity:0} 6%,16%{opacity:1.0}
+@keyframes mesh-seg-e-l1-p4-p6 { 0%,3%,21%,100%{opacity:0} 5%,18%{opacity:1.0}
   0%,3%{transform:translate(247px,128px)} 6%,100%{transform:translate(322px,113px)} }
-@keyframes mesh-seg-e-l1-p4-p10 { 0%,3%,20%,100%{opacity:0} 6%,16%{opacity:1.0}
+@keyframes mesh-seg-e-l1-p4-p10 { 0%,3%,21%,100%{opacity:0} 5%,18%{opacity:1.0}
   0%,3%{transform:translate(247px,128px)} 6%,100%{transform:translate(187px,218px)} }
-@keyframes mesh-seg-e-l1-p4-p11 { 0%,3%,20%,100%{opacity:0} 6%,16%{opacity:1.0}
+@keyframes mesh-seg-e-l1-p4-p11 { 0%,3%,21%,100%{opacity:0} 5%,18%{opacity:1.0}
   0%,3%{transform:translate(247px,128px)} 6%,100%{transform:translate(402px,58px)} }
-@keyframes mesh-seg-e-l2-p5-p7 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-e-l2-p5-p7 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(282px,168px)} 9%,100%{transform:translate(447px,193px)} }
-@keyframes mesh-seg-e-l2-p6-p3 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-e-l2-p6-p3 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(322px,113px)} 9%,100%{transform:translate(142px,60px)} }
-@keyframes mesh-seg-e-l2-p6-p12 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-e-l2-p6-p12 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(322px,113px)} 9%,100%{transform:translate(552px,98px)} }
-@keyframes mesh-seg-e-l2-p10-p1 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-e-l2-p10-p1 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(187px,218px)} 9%,100%{transform:translate(72px,58px)} }
-@keyframes mesh-seg-e-l2-p10-p2 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-e-l2-p10-p2 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(187px,218px)} 9%,100%{transform:translate(107px,93px)} }
-@keyframes mesh-seg-e-l3-p7-p8 { 0%,9%,26%,100%{opacity:0} 12%,22%{opacity:0.45}
+@keyframes mesh-seg-e-l3-p7-p8 { 0%,9%,27%,100%{opacity:0} 11%,24%{opacity:0.6}
   0%,9%{transform:translate(447px,193px)} 12%,100%{transform:translate(487px,223px)} }
-@keyframes mesh-seg-e-l3-p7-p9 { 0%,9%,26%,100%{opacity:0} 12%,22%{opacity:0.45}
+@keyframes mesh-seg-e-l3-p7-p9 { 0%,9%,27%,100%{opacity:0} 11%,24%{opacity:0.6}
   0%,9%{transform:translate(447px,193px)} 12%,100%{transform:translate(522px,183px)} }
-@keyframes mesh-seg-f-l1-p3-p1 { 0%,3%,20%,100%{opacity:0} 6%,16%{opacity:1.0}
+@keyframes mesh-seg-f-l1-p3-p1 { 0%,3%,21%,100%{opacity:0} 5%,18%{opacity:1.0}
   0%,3%{transform:translate(142px,60px)} 6%,100%{transform:translate(72px,58px)} }
-@keyframes mesh-seg-f-l1-p3-p2 { 0%,3%,20%,100%{opacity:0} 6%,16%{opacity:1.0}
+@keyframes mesh-seg-f-l1-p3-p2 { 0%,3%,21%,100%{opacity:0} 5%,18%{opacity:1.0}
   0%,3%{transform:translate(142px,60px)} 6%,100%{transform:translate(107px,93px)} }
-@keyframes mesh-seg-f-l1-p3-p6 { 0%,3%,20%,100%{opacity:0} 6%,16%{opacity:1.0}
+@keyframes mesh-seg-f-l1-p3-p6 { 0%,3%,21%,100%{opacity:0} 5%,18%{opacity:1.0}
   0%,3%{transform:translate(142px,60px)} 6%,100%{transform:translate(322px,113px)} }
-@keyframes mesh-seg-f-l1-p3-p11 { 0%,3%,20%,100%{opacity:0} 6%,16%{opacity:1.0}
+@keyframes mesh-seg-f-l1-p3-p11 { 0%,3%,21%,100%{opacity:0} 5%,18%{opacity:1.0}
   0%,3%{transform:translate(142px,60px)} 6%,100%{transform:translate(402px,58px)} }
-@keyframes mesh-seg-f-l2-p1-p10 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-f-l2-p1-p10 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(72px,58px)} 9%,100%{transform:translate(187px,218px)} }
-@keyframes mesh-seg-f-l2-p6-p4 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-f-l2-p6-p4 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(322px,113px)} 9%,100%{transform:translate(247px,128px)} }
-@keyframes mesh-seg-f-l2-p6-p5 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-f-l2-p6-p5 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(322px,113px)} 9%,100%{transform:translate(282px,168px)} }
-@keyframes mesh-seg-f-l2-p6-p12 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-f-l2-p6-p12 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(322px,113px)} 9%,100%{transform:translate(552px,98px)} }
-@keyframes mesh-seg-f-l2-p11-p7 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-f-l2-p11-p7 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(402px,58px)} 9%,100%{transform:translate(447px,193px)} }
-@keyframes mesh-seg-f-l3-p7-p8 { 0%,9%,26%,100%{opacity:0} 12%,22%{opacity:0.45}
+@keyframes mesh-seg-f-l3-p7-p8 { 0%,9%,27%,100%{opacity:0} 11%,24%{opacity:0.6}
   0%,9%{transform:translate(447px,193px)} 12%,100%{transform:translate(487px,223px)} }
-@keyframes mesh-seg-f-l3-p7-p9 { 0%,9%,26%,100%{opacity:0} 12%,22%{opacity:0.45}
+@keyframes mesh-seg-f-l3-p7-p9 { 0%,9%,27%,100%{opacity:0} 11%,24%{opacity:0.6}
   0%,9%{transform:translate(447px,193px)} 12%,100%{transform:translate(522px,183px)} }
-@keyframes mesh-seg-g-l1-p7-p5 { 0%,3%,20%,100%{opacity:0} 6%,16%{opacity:1.0}
+@keyframes mesh-seg-g-l1-p7-p5 { 0%,3%,21%,100%{opacity:0} 5%,18%{opacity:1.0}
   0%,3%{transform:translate(447px,193px)} 6%,100%{transform:translate(282px,168px)} }
-@keyframes mesh-seg-g-l1-p7-p8 { 0%,3%,20%,100%{opacity:0} 6%,16%{opacity:1.0}
+@keyframes mesh-seg-g-l1-p7-p8 { 0%,3%,21%,100%{opacity:0} 5%,18%{opacity:1.0}
   0%,3%{transform:translate(447px,193px)} 6%,100%{transform:translate(487px,223px)} }
-@keyframes mesh-seg-g-l1-p7-p9 { 0%,3%,20%,100%{opacity:0} 6%,16%{opacity:1.0}
+@keyframes mesh-seg-g-l1-p7-p9 { 0%,3%,21%,100%{opacity:0} 5%,18%{opacity:1.0}
   0%,3%{transform:translate(447px,193px)} 6%,100%{transform:translate(522px,183px)} }
-@keyframes mesh-seg-g-l1-p7-p11 { 0%,3%,20%,100%{opacity:0} 6%,16%{opacity:1.0}
+@keyframes mesh-seg-g-l1-p7-p11 { 0%,3%,21%,100%{opacity:0} 5%,18%{opacity:1.0}
   0%,3%{transform:translate(447px,193px)} 6%,100%{transform:translate(402px,58px)} }
-@keyframes mesh-seg-g-l2-p5-p4 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-g-l2-p5-p4 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(282px,168px)} 9%,100%{transform:translate(247px,128px)} }
-@keyframes mesh-seg-g-l2-p5-p6 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-g-l2-p5-p6 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(282px,168px)} 9%,100%{transform:translate(322px,113px)} }
-@keyframes mesh-seg-g-l2-p5-p10 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-g-l2-p5-p10 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(282px,168px)} 9%,100%{transform:translate(187px,218px)} }
-@keyframes mesh-seg-g-l2-p8-p12 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-g-l2-p8-p12 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(487px,223px)} 9%,100%{transform:translate(552px,98px)} }
-@keyframes mesh-seg-g-l2-p11-p3 { 0%,6%,23%,100%{opacity:0} 9%,19%{opacity:0.7}
+@keyframes mesh-seg-g-l2-p11-p3 { 0%,6%,24%,100%{opacity:0} 8%,21%{opacity:0.8}
   0%,6%{transform:translate(402px,58px)} 9%,100%{transform:translate(142px,60px)} }
-@keyframes mesh-seg-g-l3-p3-p1 { 0%,9%,26%,100%{opacity:0} 12%,22%{opacity:0.45}
+@keyframes mesh-seg-g-l3-p3-p1 { 0%,9%,27%,100%{opacity:0} 11%,24%{opacity:0.6}
   0%,9%{transform:translate(142px,60px)} 12%,100%{transform:translate(72px,58px)} }
-@keyframes mesh-seg-g-l3-p3-p2 { 0%,9%,26%,100%{opacity:0} 12%,22%{opacity:0.45}
+@keyframes mesh-seg-g-l3-p3-p2 { 0%,9%,27%,100%{opacity:0} 11%,24%{opacity:0.6}
   0%,9%{transform:translate(142px,60px)} 12%,100%{transform:translate(107px,93px)} }
 
 /* === Animation-name assignments === */
