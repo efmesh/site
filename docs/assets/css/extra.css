@@ -66,28 +66,33 @@
    "managed flood routing" (https://meshtastic.org/docs/overview/mesh-algo/).
    When a node first hears a packet, it rebroadcasts a SINGLE RF burst that
    ALL its in-range neighbors receive simultaneously. So one source packet
-   FANS OUT into multiple branches at every relay. There is no shortest-path
-   routing and no routing table — every packet floods until hop_limit hits 0
-   or all reachable nodes have seen it (duplicate suppression via packet ID).
+   FANS OUT into multiple branches at every relay.
 
-   So instead of single dots travelling a linear A→B→C→D path (which is
-   misleading), we render four DIFFERENT-COLORED concurrent messages,
-   each represented as a per-hop dot that splits out from every relay:
-     Msg A — cyan    #38e1ff — source P1  (top-left)
-     Msg B — magenta #ff5fd1 — source P8  (bottom-right corner)
-     Msg C — lime    #c8ff3a — source P10 (lower outlier)
-     Msg D — gold    #ffb84d — source P12 (right outlier)
+   v2 (2026-05-16): cranked the drama. Trees now flood 7+ hops deep
+   (often covering the whole 12-node graph), 7 concurrent colored messages
+   spawn 0.36s apart on a 12s loop, per-hop is 0.5s, and the edge graph was
+   beefed up so every node has 3-5 neighbors and the flood actually fans out.
+
+   Seven sources (colors chosen for contrast in both light + dark themes):
+     Msg A — cyan       #38e1ff — source P1  (top-left)
+     Msg B — magenta    #ff5fd1 — source P8  (bottom-right corner)
+     Msg C — lime       #c8ff3a — source P10 (lower outlier)
+     Msg D — gold       #ffb84d — source P12 (right outlier)
+     Msg E — coral      #ff7a5a — source P4  (center-left)
+     Msg F — violet     #c08bff — source P3  (top-right of cluster A)
+     Msg G — sky-blue   #5ec8ff — source P7  (cluster C)
 
    Each message:
-     - L0 (origin): one dot pulses at the source.
-     - L1: dot fans out simultaneously to EACH in-range neighbor.
-     - L2: from each L1 relay, fans out again to each *new* neighbor
-           (nodes that already heard the packet are skipped — duplicate
-           suppression). Opacity decays slightly each hop to suggest
-           hop_limit decrement.
+     - L0 (origin):   pulses once at the source.
+     - L1 (hop 1):    fans out to EVERY in-range neighbor simultaneously.
+     - L2 (hop 2):    each L1 relay fans out to its new neighbors.
+     - L3 (hop 3):    each L2 relay fans out further — typically reaches
+                      the corners of the graph here.
+     Opacity decays per hop (L1=1.0, L2=0.7, L3=0.45) to suggest the
+     hop_limit decrement that's intrinsic to Meshtastic.
 
-   Shared 20s loop. Sources start at t=0/5/10/15s so trees overlap visually
-   but don't all fire at once. Pure CSS animations (no JS, no SMIL).
+   Shared 12s loop. Sources stagger 0.36s (3% of loop) so 4-6 trees are
+   typically in flight at once. Pure CSS animations (no JS, no SMIL).
 
    Phone centers (used by every segment below):
      P1 (72,58)   P2 (107,93)  P3 (142,60)   — Cluster A (top-left)
@@ -114,114 +119,334 @@
 .mesh-animation .mesh-msg {
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
-  animation-duration: 20s;
+  animation-duration: 12s;
   opacity: 0;
 }
-/* Per-message color + drop shadow. The color stays the same across every
-   hop of one message so you can visually track the flood. */
+/* Per-message color + drop shadow. Same color across all hops of one
+   message so you can visually track the flood. */
 .mesh-animation .mesh-msg--a { fill: #38e1ff; filter: drop-shadow(0 0 5px rgba(56, 225, 255, 0.85)); }
 .mesh-animation .mesh-msg--b { fill: #ff5fd1; filter: drop-shadow(0 0 5px rgba(255, 95, 209, 0.85)); }
 .mesh-animation .mesh-msg--c { fill: #c8ff3a; filter: drop-shadow(0 0 5px rgba(200, 255, 58, 0.85)); }
 .mesh-animation .mesh-msg--d { fill: #ffb84d; filter: drop-shadow(0 0 5px rgba(255, 184, 77, 0.85)); }
+.mesh-animation .mesh-msg--e { fill: #ff7a5a; filter: drop-shadow(0 0 5px rgba(255, 122, 90, 0.85)); }
+.mesh-animation .mesh-msg--f { fill: #c08bff; filter: drop-shadow(0 0 5px rgba(192, 139, 255, 0.85)); }
+.mesh-animation .mesh-msg--g { fill: #5ec8ff; filter: drop-shadow(0 0 5px rgba(94, 200, 255, 0.85)); }
 
-/* Origin pulses (L0) — one dot at each source flashes when the message
-   originates. 5% of the 20s cycle = ~1s visible. */
+/* Origin pulses (L0). Each source fires for ~0.48s (4% of 12s loop) at
+   its spawn time. Sources stagger every 3% (~0.36s):
+     A=0%, B=3%, C=6%, D=9%, E=12%, F=15%, G=18%. */
 .mesh-animation .mesh-orig--a { animation-name: mesh-orig-a; }
 .mesh-animation .mesh-orig--b { animation-name: mesh-orig-b; }
 .mesh-animation .mesh-orig--c { animation-name: mesh-orig-c; }
 .mesh-animation .mesh-orig--d { animation-name: mesh-orig-d; }
+.mesh-animation .mesh-orig--e { animation-name: mesh-orig-e; }
+.mesh-animation .mesh-orig--f { animation-name: mesh-orig-f; }
+.mesh-animation .mesh-orig--g { animation-name: mesh-orig-g; }
 @keyframes mesh-orig-a {
-  0%, 5%, 100% { opacity: 0; transform: translate(72px, 58px)  scale(1);   }
-  1%           { opacity: 1; transform: translate(72px, 58px)  scale(1.4); }
-  4%           { opacity: 1; transform: translate(72px, 58px)  scale(1);   }
+  0%, 4%, 100% { opacity: 0; transform: translate(72px,  58px)  scale(1);   }
+  1%           { opacity: 1; transform: translate(72px,  58px)  scale(1.5); }
+  3%           { opacity: 1; transform: translate(72px,  58px)  scale(1);   }
 }
 @keyframes mesh-orig-b {
-  0%, 25%, 30%, 100% { opacity: 0; transform: translate(487px, 223px) scale(1);   }
-  26%                { opacity: 1; transform: translate(487px, 223px) scale(1.4); }
-  29%                { opacity: 1; transform: translate(487px, 223px) scale(1);   }
+  0%, 3%, 7%, 100% { opacity: 0; transform: translate(487px, 223px) scale(1);   }
+  4%               { opacity: 1; transform: translate(487px, 223px) scale(1.5); }
+  6%               { opacity: 1; transform: translate(487px, 223px) scale(1);   }
 }
 @keyframes mesh-orig-c {
-  0%, 50%, 55%, 100% { opacity: 0; transform: translate(187px, 218px) scale(1);   }
-  51%                { opacity: 1; transform: translate(187px, 218px) scale(1.4); }
-  54%                { opacity: 1; transform: translate(187px, 218px) scale(1);   }
+  0%, 6%, 10%, 100% { opacity: 0; transform: translate(187px, 218px) scale(1);   }
+  7%                { opacity: 1; transform: translate(187px, 218px) scale(1.5); }
+  9%                { opacity: 1; transform: translate(187px, 218px) scale(1);   }
 }
 @keyframes mesh-orig-d {
-  0%, 75%, 80%, 100% { opacity: 0; transform: translate(552px, 98px)  scale(1);   }
-  76%                { opacity: 1; transform: translate(552px, 98px)  scale(1.4); }
-  79%                { opacity: 1; transform: translate(552px, 98px)  scale(1);   }
+  0%, 9%, 13%, 100% { opacity: 0; transform: translate(552px, 98px)  scale(1);   }
+  10%               { opacity: 1; transform: translate(552px, 98px)  scale(1.5); }
+  12%               { opacity: 1; transform: translate(552px, 98px)  scale(1);   }
+}
+@keyframes mesh-orig-e {
+  0%, 12%, 16%, 100% { opacity: 0; transform: translate(247px, 128px) scale(1);   }
+  13%                { opacity: 1; transform: translate(247px, 128px) scale(1.5); }
+  15%                { opacity: 1; transform: translate(247px, 128px) scale(1);   }
+}
+@keyframes mesh-orig-f {
+  0%, 15%, 19%, 100% { opacity: 0; transform: translate(142px, 60px)  scale(1);   }
+  16%                { opacity: 1; transform: translate(142px, 60px)  scale(1.5); }
+  18%                { opacity: 1; transform: translate(142px, 60px)  scale(1);   }
+}
+@keyframes mesh-orig-g {
+  0%, 18%, 22%, 100% { opacity: 0; transform: translate(447px, 193px) scale(1);   }
+  19%                { opacity: 1; transform: translate(447px, 193px) scale(1.5); }
+  21%                { opacity: 1; transform: translate(447px, 193px) scale(1);   }
 }
 
 /* Per-segment hop dots. Each dot represents ONE RF rebroadcast (parent->child).
-   Every segment within a message fires simultaneously from its parent, so
-   you see branches splitting in lockstep. The full 20s loop = 100%; each
-   visible window is ~8% (~1.6s travel from parent to child).
-   --- Source A (cyan, t=0s, L1 at 2-10%, L2 at 11-19%) --- */
-.mesh-animation .mesh-seg-a-p1-p2 { animation-name: mesh-seg-a-p1-p2; }
-.mesh-animation .mesh-seg-a-p1-p3 { animation-name: mesh-seg-a-p1-p3; }
-.mesh-animation .mesh-seg-a-p2-p10 { animation-name: mesh-seg-a-p2-p10; }
-.mesh-animation .mesh-seg-a-p3-p11 { animation-name: mesh-seg-a-p3-p11; }
-@keyframes mesh-seg-a-p1-p2  { 0%,2%,12%,100% { opacity: 0; } 3%,10% { opacity: 1; }
-  0%,2%   { transform: translate(72px,58px); } 10%,100% { transform: translate(107px,93px); } }
-@keyframes mesh-seg-a-p1-p3  { 0%,2%,12%,100% { opacity: 0; } 3%,10% { opacity: 1; }
-  0%,2%   { transform: translate(72px,58px); } 10%,100% { transform: translate(142px,60px); } }
-@keyframes mesh-seg-a-p2-p10 { 0%,11%,20%,100% { opacity: 0; } 12%,18% { opacity: 0.7; }
-  0%,11%  { transform: translate(107px,93px); } 18%,100% { transform: translate(187px,218px); } }
-@keyframes mesh-seg-a-p3-p11 { 0%,11%,20%,100% { opacity: 0; } 12%,18% { opacity: 0.7; }
-  0%,11%  { transform: translate(142px,60px); } 18%,100% { transform: translate(402px,58px); } }
+   Window per hop = 4% (~0.48s). Hop opacity decays: L1=1.0, L2=0.7, L3=0.45.
 
-/* --- Source B (magenta, t=5s, L1 at 27-35%, L2 at 36-44%) --- */
-.mesh-animation .mesh-seg-b-p8-p7 { animation-name: mesh-seg-b-p8-p7; }
-.mesh-animation .mesh-seg-b-p8-p9 { animation-name: mesh-seg-b-p8-p9; }
-.mesh-animation .mesh-seg-b-p7-p5 { animation-name: mesh-seg-b-p7-p5; }
-.mesh-animation .mesh-seg-b-p9-p12 { animation-name: mesh-seg-b-p9-p12; }
-@keyframes mesh-seg-b-p8-p7  { 0%,27%,37%,100% { opacity: 0; } 28%,35% { opacity: 1; }
-  0%,27%  { transform: translate(487px,223px); } 35%,100% { transform: translate(447px,193px); } }
-@keyframes mesh-seg-b-p8-p9  { 0%,27%,37%,100% { opacity: 0; } 28%,35% { opacity: 1; }
-  0%,27%  { transform: translate(487px,223px); } 35%,100% { transform: translate(522px,183px); } }
-@keyframes mesh-seg-b-p7-p5  { 0%,36%,45%,100% { opacity: 0; } 37%,43% { opacity: 0.7; }
-  0%,36%  { transform: translate(447px,193px); } 43%,100% { transform: translate(282px,168px); } }
-@keyframes mesh-seg-b-p9-p12 { 0%,36%,45%,100% { opacity: 0; } 37%,43% { opacity: 0.7; }
-  0%,36%  { transform: translate(522px,183px); } 43%,100% { transform: translate(552px,98px); } }
+   Per-source hop windows (start% of 12s loop):
+     A: L1@4-8,  L2@8-12,  L3@12-16
+     B: L1@7-11, L2@11-15, L3@15-19
+     C: L1@10-14,L2@14-18, L3@18-22
+     D: L1@13-17,L2@17-21, L3@21-25
+     E: L1@16-20,L2@20-24, L3@24-28
+     F: L1@19-23,L2@23-27, L3@27-31
+     G: L1@22-26,L2@26-30, L3@30-34
+   Last activity ends at 34%; idle 34-100% lets the eye breathe. */
 
-/* --- Source C (lime, t=10s, L1 at 52-60%, L2 at 61-69%) --- */
-.mesh-animation .mesh-seg-c-p10-p2 { animation-name: mesh-seg-c-p10-p2; }
-.mesh-animation .mesh-seg-c-p10-p5 { animation-name: mesh-seg-c-p10-p5; }
-.mesh-animation .mesh-seg-c-p2-p1  { animation-name: mesh-seg-c-p2-p1; }
-.mesh-animation .mesh-seg-c-p2-p3  { animation-name: mesh-seg-c-p2-p3; }
-.mesh-animation .mesh-seg-c-p5-p4  { animation-name: mesh-seg-c-p5-p4; }
-.mesh-animation .mesh-seg-c-p5-p6  { animation-name: mesh-seg-c-p5-p6; }
-@keyframes mesh-seg-c-p10-p2 { 0%,52%,62%,100% { opacity: 0; } 53%,60% { opacity: 1; }
-  0%,52%  { transform: translate(187px,218px); } 60%,100% { transform: translate(107px,93px); } }
-@keyframes mesh-seg-c-p10-p5 { 0%,52%,62%,100% { opacity: 0; } 53%,60% { opacity: 1; }
-  0%,52%  { transform: translate(187px,218px); } 60%,100% { transform: translate(282px,168px); } }
-@keyframes mesh-seg-c-p2-p1  { 0%,61%,70%,100% { opacity: 0; } 62%,68% { opacity: 0.7; }
-  0%,61%  { transform: translate(107px,93px); } 68%,100% { transform: translate(72px,58px); } }
-@keyframes mesh-seg-c-p2-p3  { 0%,61%,70%,100% { opacity: 0; } 62%,68% { opacity: 0.7; }
-  0%,61%  { transform: translate(107px,93px); } 68%,100% { transform: translate(142px,60px); } }
-@keyframes mesh-seg-c-p5-p4  { 0%,61%,70%,100% { opacity: 0; } 62%,68% { opacity: 0.7; }
-  0%,61%  { transform: translate(282px,168px); } 68%,100% { transform: translate(247px,128px); } }
-@keyframes mesh-seg-c-p5-p6  { 0%,61%,70%,100% { opacity: 0; } 62%,68% { opacity: 0.7; }
-  0%,61%  { transform: translate(282px,168px); } 68%,100% { transform: translate(322px,113px); } }
+/* === Source A (cyan, origin P1) — reaches all 12 nodes via 3 hops === */
+/* L1 from P1: P2, P3, P10 */
+.mesh-animation .mesh-seg-a-l1-p1-p2  { animation-name: mesh-seg-a-l1-p1-p2; }
+.mesh-animation .mesh-seg-a-l1-p1-p3  { animation-name: mesh-seg-a-l1-p1-p3; }
+.mesh-animation .mesh-seg-a-l1-p1-p10 { animation-name: mesh-seg-a-l1-p1-p10; }
+@keyframes mesh-seg-a-l1-p1-p2  { 0%,4%,8%,100%{opacity:0} 5%,7%{opacity:1}
+  0%,4%{transform:translate(72px,58px)} 7%,100%{transform:translate(107px,93px)} }
+@keyframes mesh-seg-a-l1-p1-p3  { 0%,4%,8%,100%{opacity:0} 5%,7%{opacity:1}
+  0%,4%{transform:translate(72px,58px)} 7%,100%{transform:translate(142px,60px)} }
+@keyframes mesh-seg-a-l1-p1-p10 { 0%,4%,8%,100%{opacity:0} 5%,7%{opacity:1}
+  0%,4%{transform:translate(72px,58px)} 7%,100%{transform:translate(187px,218px)} }
+/* L2 from {P2,P3,P10}: P4(via P10), P5(via P10), P6(via P3), P11(via P3) */
+.mesh-animation .mesh-seg-a-l2-p3-p6   { animation-name: mesh-seg-a-l2-p3-p6; }
+.mesh-animation .mesh-seg-a-l2-p3-p11  { animation-name: mesh-seg-a-l2-p3-p11; }
+.mesh-animation .mesh-seg-a-l2-p10-p4  { animation-name: mesh-seg-a-l2-p10-p4; }
+.mesh-animation .mesh-seg-a-l2-p10-p5  { animation-name: mesh-seg-a-l2-p10-p5; }
+@keyframes mesh-seg-a-l2-p3-p6   { 0%,8%,12%,100%{opacity:0} 9%,11%{opacity:0.7}
+  0%,8%{transform:translate(142px,60px)} 11%,100%{transform:translate(322px,113px)} }
+@keyframes mesh-seg-a-l2-p3-p11  { 0%,8%,12%,100%{opacity:0} 9%,11%{opacity:0.7}
+  0%,8%{transform:translate(142px,60px)} 11%,100%{transform:translate(402px,58px)} }
+@keyframes mesh-seg-a-l2-p10-p4  { 0%,8%,12%,100%{opacity:0} 9%,11%{opacity:0.7}
+  0%,8%{transform:translate(187px,218px)} 11%,100%{transform:translate(247px,128px)} }
+@keyframes mesh-seg-a-l2-p10-p5  { 0%,8%,12%,100%{opacity:0} 9%,11%{opacity:0.7}
+  0%,8%{transform:translate(187px,218px)} 11%,100%{transform:translate(282px,168px)} }
+/* L3 from L2 relays: P7(via P5), P12(via P6) */
+.mesh-animation .mesh-seg-a-l3-p5-p7   { animation-name: mesh-seg-a-l3-p5-p7; }
+.mesh-animation .mesh-seg-a-l3-p6-p12  { animation-name: mesh-seg-a-l3-p6-p12; }
+@keyframes mesh-seg-a-l3-p5-p7   { 0%,12%,16%,100%{opacity:0} 13%,15%{opacity:0.45}
+  0%,12%{transform:translate(282px,168px)} 15%,100%{transform:translate(447px,193px)} }
+@keyframes mesh-seg-a-l3-p6-p12  { 0%,12%,16%,100%{opacity:0} 13%,15%{opacity:0.45}
+  0%,12%{transform:translate(322px,113px)} 15%,100%{transform:translate(552px,98px)} }
 
-/* --- Source D (gold, t=15s, L1 at 77-85%, L2 at 86-94%) --- */
-.mesh-animation .mesh-seg-d-p12-p6 { animation-name: mesh-seg-d-p12-p6; }
-.mesh-animation .mesh-seg-d-p12-p9 { animation-name: mesh-seg-d-p12-p9; }
-.mesh-animation .mesh-seg-d-p6-p4  { animation-name: mesh-seg-d-p6-p4; }
-.mesh-animation .mesh-seg-d-p6-p11 { animation-name: mesh-seg-d-p6-p11; }
-.mesh-animation .mesh-seg-d-p9-p7  { animation-name: mesh-seg-d-p9-p7; }
-@keyframes mesh-seg-d-p12-p6 { 0%,77%,87%,100% { opacity: 0; } 78%,85% { opacity: 1; }
-  0%,77%  { transform: translate(552px,98px); } 85%,100% { transform: translate(322px,113px); } }
-@keyframes mesh-seg-d-p12-p9 { 0%,77%,87%,100% { opacity: 0; } 78%,85% { opacity: 1; }
-  0%,77%  { transform: translate(552px,98px); } 85%,100% { transform: translate(522px,183px); } }
-@keyframes mesh-seg-d-p6-p4  { 0%,86%,95%,100% { opacity: 0; } 87%,93% { opacity: 0.7; }
-  0%,86%  { transform: translate(322px,113px); } 93%,100% { transform: translate(247px,128px); } }
-@keyframes mesh-seg-d-p6-p11 { 0%,86%,95%,100% { opacity: 0; } 87%,93% { opacity: 0.7; }
-  0%,86%  { transform: translate(322px,113px); } 93%,100% { transform: translate(402px,58px); } }
-@keyframes mesh-seg-d-p9-p7  { 0%,86%,95%,100% { opacity: 0; } 87%,93% { opacity: 0.7; }
-  0%,86%  { transform: translate(522px,183px); } 93%,100% { transform: translate(447px,193px); } }
+/* === Source B (magenta, origin P8) — 12 nodes via 3 hops === */
+/* L1 from P8: P7, P9, P12 */
+.mesh-animation .mesh-seg-b-l1-p8-p7  { animation-name: mesh-seg-b-l1-p8-p7; }
+.mesh-animation .mesh-seg-b-l1-p8-p9  { animation-name: mesh-seg-b-l1-p8-p9; }
+.mesh-animation .mesh-seg-b-l1-p8-p12 { animation-name: mesh-seg-b-l1-p8-p12; }
+@keyframes mesh-seg-b-l1-p8-p7  { 0%,7%,11%,100%{opacity:0} 8%,10%{opacity:1}
+  0%,7%{transform:translate(487px,223px)} 10%,100%{transform:translate(447px,193px)} }
+@keyframes mesh-seg-b-l1-p8-p9  { 0%,7%,11%,100%{opacity:0} 8%,10%{opacity:1}
+  0%,7%{transform:translate(487px,223px)} 10%,100%{transform:translate(522px,183px)} }
+@keyframes mesh-seg-b-l1-p8-p12 { 0%,7%,11%,100%{opacity:0} 8%,10%{opacity:1}
+  0%,7%{transform:translate(487px,223px)} 10%,100%{transform:translate(552px,98px)} }
+/* L2: P5,P11 (via P7); P6,P11(dup) (via P12) */
+.mesh-animation .mesh-seg-b-l2-p7-p5  { animation-name: mesh-seg-b-l2-p7-p5; }
+.mesh-animation .mesh-seg-b-l2-p7-p11 { animation-name: mesh-seg-b-l2-p7-p11; }
+.mesh-animation .mesh-seg-b-l2-p12-p6 { animation-name: mesh-seg-b-l2-p12-p6; }
+@keyframes mesh-seg-b-l2-p7-p5  { 0%,11%,15%,100%{opacity:0} 12%,14%{opacity:0.7}
+  0%,11%{transform:translate(447px,193px)} 14%,100%{transform:translate(282px,168px)} }
+@keyframes mesh-seg-b-l2-p7-p11 { 0%,11%,15%,100%{opacity:0} 12%,14%{opacity:0.7}
+  0%,11%{transform:translate(447px,193px)} 14%,100%{transform:translate(402px,58px)} }
+@keyframes mesh-seg-b-l2-p12-p6 { 0%,11%,15%,100%{opacity:0} 12%,14%{opacity:0.7}
+  0%,11%{transform:translate(552px,98px)} 14%,100%{transform:translate(322px,113px)} }
+/* L3: P4,P10 (via P5); P3 (via P6); P2 (via P11 short-cut via P3 longer — keep simple: P4 via P6, P3 via P11) */
+.mesh-animation .mesh-seg-b-l3-p5-p4   { animation-name: mesh-seg-b-l3-p5-p4; }
+.mesh-animation .mesh-seg-b-l3-p5-p10  { animation-name: mesh-seg-b-l3-p5-p10; }
+.mesh-animation .mesh-seg-b-l3-p6-p3   { animation-name: mesh-seg-b-l3-p6-p3; }
+@keyframes mesh-seg-b-l3-p5-p4   { 0%,15%,19%,100%{opacity:0} 16%,18%{opacity:0.45}
+  0%,15%{transform:translate(282px,168px)} 18%,100%{transform:translate(247px,128px)} }
+@keyframes mesh-seg-b-l3-p5-p10  { 0%,15%,19%,100%{opacity:0} 16%,18%{opacity:0.45}
+  0%,15%{transform:translate(282px,168px)} 18%,100%{transform:translate(187px,218px)} }
+@keyframes mesh-seg-b-l3-p6-p3   { 0%,15%,19%,100%{opacity:0} 16%,18%{opacity:0.45}
+  0%,15%{transform:translate(322px,113px)} 18%,100%{transform:translate(142px,60px)} }
+
+/* === Source C (lime, origin P10) — 12 nodes via 3 hops === */
+/* L1 from P10: P1, P2, P4, P5 */
+.mesh-animation .mesh-seg-c-l1-p10-p1 { animation-name: mesh-seg-c-l1-p10-p1; }
+.mesh-animation .mesh-seg-c-l1-p10-p2 { animation-name: mesh-seg-c-l1-p10-p2; }
+.mesh-animation .mesh-seg-c-l1-p10-p4 { animation-name: mesh-seg-c-l1-p10-p4; }
+.mesh-animation .mesh-seg-c-l1-p10-p5 { animation-name: mesh-seg-c-l1-p10-p5; }
+@keyframes mesh-seg-c-l1-p10-p1 { 0%,10%,14%,100%{opacity:0} 11%,13%{opacity:1}
+  0%,10%{transform:translate(187px,218px)} 13%,100%{transform:translate(72px,58px)} }
+@keyframes mesh-seg-c-l1-p10-p2 { 0%,10%,14%,100%{opacity:0} 11%,13%{opacity:1}
+  0%,10%{transform:translate(187px,218px)} 13%,100%{transform:translate(107px,93px)} }
+@keyframes mesh-seg-c-l1-p10-p4 { 0%,10%,14%,100%{opacity:0} 11%,13%{opacity:1}
+  0%,10%{transform:translate(187px,218px)} 13%,100%{transform:translate(247px,128px)} }
+@keyframes mesh-seg-c-l1-p10-p5 { 0%,10%,14%,100%{opacity:0} 11%,13%{opacity:1}
+  0%,10%{transform:translate(187px,218px)} 13%,100%{transform:translate(282px,168px)} }
+/* L2: P3 (via P1 or P2); P6,P11 (via P4); P7 (via P5) */
+.mesh-animation .mesh-seg-c-l2-p1-p3  { animation-name: mesh-seg-c-l2-p1-p3; }
+.mesh-animation .mesh-seg-c-l2-p4-p6  { animation-name: mesh-seg-c-l2-p4-p6; }
+.mesh-animation .mesh-seg-c-l2-p4-p11 { animation-name: mesh-seg-c-l2-p4-p11; }
+.mesh-animation .mesh-seg-c-l2-p5-p7  { animation-name: mesh-seg-c-l2-p5-p7; }
+@keyframes mesh-seg-c-l2-p1-p3  { 0%,14%,18%,100%{opacity:0} 15%,17%{opacity:0.7}
+  0%,14%{transform:translate(72px,58px)} 17%,100%{transform:translate(142px,60px)} }
+@keyframes mesh-seg-c-l2-p4-p6  { 0%,14%,18%,100%{opacity:0} 15%,17%{opacity:0.7}
+  0%,14%{transform:translate(247px,128px)} 17%,100%{transform:translate(322px,113px)} }
+@keyframes mesh-seg-c-l2-p4-p11 { 0%,14%,18%,100%{opacity:0} 15%,17%{opacity:0.7}
+  0%,14%{transform:translate(247px,128px)} 17%,100%{transform:translate(402px,58px)} }
+@keyframes mesh-seg-c-l2-p5-p7  { 0%,14%,18%,100%{opacity:0} 15%,17%{opacity:0.7}
+  0%,14%{transform:translate(282px,168px)} 17%,100%{transform:translate(447px,193px)} }
+/* L3: P12 (via P6 or P11); P8,P9 (via P7) */
+.mesh-animation .mesh-seg-c-l3-p6-p12 { animation-name: mesh-seg-c-l3-p6-p12; }
+.mesh-animation .mesh-seg-c-l3-p7-p8  { animation-name: mesh-seg-c-l3-p7-p8; }
+.mesh-animation .mesh-seg-c-l3-p7-p9  { animation-name: mesh-seg-c-l3-p7-p9; }
+@keyframes mesh-seg-c-l3-p6-p12 { 0%,18%,22%,100%{opacity:0} 19%,21%{opacity:0.45}
+  0%,18%{transform:translate(322px,113px)} 21%,100%{transform:translate(552px,98px)} }
+@keyframes mesh-seg-c-l3-p7-p8  { 0%,18%,22%,100%{opacity:0} 19%,21%{opacity:0.45}
+  0%,18%{transform:translate(447px,193px)} 21%,100%{transform:translate(487px,223px)} }
+@keyframes mesh-seg-c-l3-p7-p9  { 0%,18%,22%,100%{opacity:0} 19%,21%{opacity:0.45}
+  0%,18%{transform:translate(447px,193px)} 21%,100%{transform:translate(522px,183px)} }
+
+/* === Source D (gold, origin P12) — 12 nodes via 3 hops === */
+/* L1 from P12: P6, P8, P9, P11 */
+.mesh-animation .mesh-seg-d-l1-p12-p6  { animation-name: mesh-seg-d-l1-p12-p6; }
+.mesh-animation .mesh-seg-d-l1-p12-p8  { animation-name: mesh-seg-d-l1-p12-p8; }
+.mesh-animation .mesh-seg-d-l1-p12-p9  { animation-name: mesh-seg-d-l1-p12-p9; }
+.mesh-animation .mesh-seg-d-l1-p12-p11 { animation-name: mesh-seg-d-l1-p12-p11; }
+@keyframes mesh-seg-d-l1-p12-p6  { 0%,13%,17%,100%{opacity:0} 14%,16%{opacity:1}
+  0%,13%{transform:translate(552px,98px)} 16%,100%{transform:translate(322px,113px)} }
+@keyframes mesh-seg-d-l1-p12-p8  { 0%,13%,17%,100%{opacity:0} 14%,16%{opacity:1}
+  0%,13%{transform:translate(552px,98px)} 16%,100%{transform:translate(487px,223px)} }
+@keyframes mesh-seg-d-l1-p12-p9  { 0%,13%,17%,100%{opacity:0} 14%,16%{opacity:1}
+  0%,13%{transform:translate(552px,98px)} 16%,100%{transform:translate(522px,183px)} }
+@keyframes mesh-seg-d-l1-p12-p11 { 0%,13%,17%,100%{opacity:0} 14%,16%{opacity:1}
+  0%,13%{transform:translate(552px,98px)} 16%,100%{transform:translate(402px,58px)} }
+/* L2: P3,P4,P5 (via P6); P7 (via P8 or P9) */
+.mesh-animation .mesh-seg-d-l2-p6-p3  { animation-name: mesh-seg-d-l2-p6-p3; }
+.mesh-animation .mesh-seg-d-l2-p6-p4  { animation-name: mesh-seg-d-l2-p6-p4; }
+.mesh-animation .mesh-seg-d-l2-p6-p5  { animation-name: mesh-seg-d-l2-p6-p5; }
+.mesh-animation .mesh-seg-d-l2-p8-p7  { animation-name: mesh-seg-d-l2-p8-p7; }
+@keyframes mesh-seg-d-l2-p6-p3  { 0%,17%,21%,100%{opacity:0} 18%,20%{opacity:0.7}
+  0%,17%{transform:translate(322px,113px)} 20%,100%{transform:translate(142px,60px)} }
+@keyframes mesh-seg-d-l2-p6-p4  { 0%,17%,21%,100%{opacity:0} 18%,20%{opacity:0.7}
+  0%,17%{transform:translate(322px,113px)} 20%,100%{transform:translate(247px,128px)} }
+@keyframes mesh-seg-d-l2-p6-p5  { 0%,17%,21%,100%{opacity:0} 18%,20%{opacity:0.7}
+  0%,17%{transform:translate(322px,113px)} 20%,100%{transform:translate(282px,168px)} }
+@keyframes mesh-seg-d-l2-p8-p7  { 0%,17%,21%,100%{opacity:0} 18%,20%{opacity:0.7}
+  0%,17%{transform:translate(487px,223px)} 20%,100%{transform:translate(447px,193px)} }
+/* L3: P1,P2 (via P3); P10 (via P4) */
+.mesh-animation .mesh-seg-d-l3-p3-p1  { animation-name: mesh-seg-d-l3-p3-p1; }
+.mesh-animation .mesh-seg-d-l3-p3-p2  { animation-name: mesh-seg-d-l3-p3-p2; }
+.mesh-animation .mesh-seg-d-l3-p4-p10 { animation-name: mesh-seg-d-l3-p4-p10; }
+@keyframes mesh-seg-d-l3-p3-p1  { 0%,21%,25%,100%{opacity:0} 22%,24%{opacity:0.45}
+  0%,21%{transform:translate(142px,60px)} 24%,100%{transform:translate(72px,58px)} }
+@keyframes mesh-seg-d-l3-p3-p2  { 0%,21%,25%,100%{opacity:0} 22%,24%{opacity:0.45}
+  0%,21%{transform:translate(142px,60px)} 24%,100%{transform:translate(107px,93px)} }
+@keyframes mesh-seg-d-l3-p4-p10 { 0%,21%,25%,100%{opacity:0} 22%,24%{opacity:0.45}
+  0%,21%{transform:translate(247px,128px)} 24%,100%{transform:translate(187px,218px)} }
+
+/* === Source E (coral, origin P4) — 12 nodes via 3 hops === */
+/* L1 from P4: P5, P6, P10, P11 */
+.mesh-animation .mesh-seg-e-l1-p4-p5  { animation-name: mesh-seg-e-l1-p4-p5; }
+.mesh-animation .mesh-seg-e-l1-p4-p6  { animation-name: mesh-seg-e-l1-p4-p6; }
+.mesh-animation .mesh-seg-e-l1-p4-p10 { animation-name: mesh-seg-e-l1-p4-p10; }
+.mesh-animation .mesh-seg-e-l1-p4-p11 { animation-name: mesh-seg-e-l1-p4-p11; }
+@keyframes mesh-seg-e-l1-p4-p5  { 0%,16%,20%,100%{opacity:0} 17%,19%{opacity:1}
+  0%,16%{transform:translate(247px,128px)} 19%,100%{transform:translate(282px,168px)} }
+@keyframes mesh-seg-e-l1-p4-p6  { 0%,16%,20%,100%{opacity:0} 17%,19%{opacity:1}
+  0%,16%{transform:translate(247px,128px)} 19%,100%{transform:translate(322px,113px)} }
+@keyframes mesh-seg-e-l1-p4-p10 { 0%,16%,20%,100%{opacity:0} 17%,19%{opacity:1}
+  0%,16%{transform:translate(247px,128px)} 19%,100%{transform:translate(187px,218px)} }
+@keyframes mesh-seg-e-l1-p4-p11 { 0%,16%,20%,100%{opacity:0} 17%,19%{opacity:1}
+  0%,16%{transform:translate(247px,128px)} 19%,100%{transform:translate(402px,58px)} }
+/* L2: P7 (via P5); P3,P12 (via P6); P1,P2 (via P10) */
+.mesh-animation .mesh-seg-e-l2-p5-p7  { animation-name: mesh-seg-e-l2-p5-p7; }
+.mesh-animation .mesh-seg-e-l2-p6-p3  { animation-name: mesh-seg-e-l2-p6-p3; }
+.mesh-animation .mesh-seg-e-l2-p6-p12 { animation-name: mesh-seg-e-l2-p6-p12; }
+.mesh-animation .mesh-seg-e-l2-p10-p1 { animation-name: mesh-seg-e-l2-p10-p1; }
+.mesh-animation .mesh-seg-e-l2-p10-p2 { animation-name: mesh-seg-e-l2-p10-p2; }
+@keyframes mesh-seg-e-l2-p5-p7  { 0%,20%,24%,100%{opacity:0} 21%,23%{opacity:0.7}
+  0%,20%{transform:translate(282px,168px)} 23%,100%{transform:translate(447px,193px)} }
+@keyframes mesh-seg-e-l2-p6-p3  { 0%,20%,24%,100%{opacity:0} 21%,23%{opacity:0.7}
+  0%,20%{transform:translate(322px,113px)} 23%,100%{transform:translate(142px,60px)} }
+@keyframes mesh-seg-e-l2-p6-p12 { 0%,20%,24%,100%{opacity:0} 21%,23%{opacity:0.7}
+  0%,20%{transform:translate(322px,113px)} 23%,100%{transform:translate(552px,98px)} }
+@keyframes mesh-seg-e-l2-p10-p1 { 0%,20%,24%,100%{opacity:0} 21%,23%{opacity:0.7}
+  0%,20%{transform:translate(187px,218px)} 23%,100%{transform:translate(72px,58px)} }
+@keyframes mesh-seg-e-l2-p10-p2 { 0%,20%,24%,100%{opacity:0} 21%,23%{opacity:0.7}
+  0%,20%{transform:translate(187px,218px)} 23%,100%{transform:translate(107px,93px)} }
+/* L3: P8,P9 (via P7) */
+.mesh-animation .mesh-seg-e-l3-p7-p8 { animation-name: mesh-seg-e-l3-p7-p8; }
+.mesh-animation .mesh-seg-e-l3-p7-p9 { animation-name: mesh-seg-e-l3-p7-p9; }
+@keyframes mesh-seg-e-l3-p7-p8 { 0%,24%,28%,100%{opacity:0} 25%,27%{opacity:0.45}
+  0%,24%{transform:translate(447px,193px)} 27%,100%{transform:translate(487px,223px)} }
+@keyframes mesh-seg-e-l3-p7-p9 { 0%,24%,28%,100%{opacity:0} 25%,27%{opacity:0.45}
+  0%,24%{transform:translate(447px,193px)} 27%,100%{transform:translate(522px,183px)} }
+
+/* === Source F (violet, origin P3) — 12 nodes via 3 hops === */
+/* L1 from P3: P1, P2, P6, P11 */
+.mesh-animation .mesh-seg-f-l1-p3-p1  { animation-name: mesh-seg-f-l1-p3-p1; }
+.mesh-animation .mesh-seg-f-l1-p3-p2  { animation-name: mesh-seg-f-l1-p3-p2; }
+.mesh-animation .mesh-seg-f-l1-p3-p6  { animation-name: mesh-seg-f-l1-p3-p6; }
+.mesh-animation .mesh-seg-f-l1-p3-p11 { animation-name: mesh-seg-f-l1-p3-p11; }
+@keyframes mesh-seg-f-l1-p3-p1  { 0%,19%,23%,100%{opacity:0} 20%,22%{opacity:1}
+  0%,19%{transform:translate(142px,60px)} 22%,100%{transform:translate(72px,58px)} }
+@keyframes mesh-seg-f-l1-p3-p2  { 0%,19%,23%,100%{opacity:0} 20%,22%{opacity:1}
+  0%,19%{transform:translate(142px,60px)} 22%,100%{transform:translate(107px,93px)} }
+@keyframes mesh-seg-f-l1-p3-p6  { 0%,19%,23%,100%{opacity:0} 20%,22%{opacity:1}
+  0%,19%{transform:translate(142px,60px)} 22%,100%{transform:translate(322px,113px)} }
+@keyframes mesh-seg-f-l1-p3-p11 { 0%,19%,23%,100%{opacity:0} 20%,22%{opacity:1}
+  0%,19%{transform:translate(142px,60px)} 22%,100%{transform:translate(402px,58px)} }
+/* L2: P10 (via P1); P4,P5,P12 (via P6); P7 (via P11) */
+.mesh-animation .mesh-seg-f-l2-p1-p10 { animation-name: mesh-seg-f-l2-p1-p10; }
+.mesh-animation .mesh-seg-f-l2-p6-p4  { animation-name: mesh-seg-f-l2-p6-p4; }
+.mesh-animation .mesh-seg-f-l2-p6-p5  { animation-name: mesh-seg-f-l2-p6-p5; }
+.mesh-animation .mesh-seg-f-l2-p6-p12 { animation-name: mesh-seg-f-l2-p6-p12; }
+.mesh-animation .mesh-seg-f-l2-p11-p7 { animation-name: mesh-seg-f-l2-p11-p7; }
+@keyframes mesh-seg-f-l2-p1-p10 { 0%,23%,27%,100%{opacity:0} 24%,26%{opacity:0.7}
+  0%,23%{transform:translate(72px,58px)} 26%,100%{transform:translate(187px,218px)} }
+@keyframes mesh-seg-f-l2-p6-p4  { 0%,23%,27%,100%{opacity:0} 24%,26%{opacity:0.7}
+  0%,23%{transform:translate(322px,113px)} 26%,100%{transform:translate(247px,128px)} }
+@keyframes mesh-seg-f-l2-p6-p5  { 0%,23%,27%,100%{opacity:0} 24%,26%{opacity:0.7}
+  0%,23%{transform:translate(322px,113px)} 26%,100%{transform:translate(282px,168px)} }
+@keyframes mesh-seg-f-l2-p6-p12 { 0%,23%,27%,100%{opacity:0} 24%,26%{opacity:0.7}
+  0%,23%{transform:translate(322px,113px)} 26%,100%{transform:translate(552px,98px)} }
+@keyframes mesh-seg-f-l2-p11-p7 { 0%,23%,27%,100%{opacity:0} 24%,26%{opacity:0.7}
+  0%,23%{transform:translate(402px,58px)} 26%,100%{transform:translate(447px,193px)} }
+/* L3: P8,P9 (via P7) */
+.mesh-animation .mesh-seg-f-l3-p7-p8 { animation-name: mesh-seg-f-l3-p7-p8; }
+.mesh-animation .mesh-seg-f-l3-p7-p9 { animation-name: mesh-seg-f-l3-p7-p9; }
+@keyframes mesh-seg-f-l3-p7-p8 { 0%,27%,31%,100%{opacity:0} 28%,30%{opacity:0.45}
+  0%,27%{transform:translate(447px,193px)} 30%,100%{transform:translate(487px,223px)} }
+@keyframes mesh-seg-f-l3-p7-p9 { 0%,27%,31%,100%{opacity:0} 28%,30%{opacity:0.45}
+  0%,27%{transform:translate(447px,193px)} 30%,100%{transform:translate(522px,183px)} }
+
+/* === Source G (sky-blue, origin P7) — 12 nodes via 3 hops === */
+/* L1 from P7: P5, P8, P9, P11 */
+.mesh-animation .mesh-seg-g-l1-p7-p5  { animation-name: mesh-seg-g-l1-p7-p5; }
+.mesh-animation .mesh-seg-g-l1-p7-p8  { animation-name: mesh-seg-g-l1-p7-p8; }
+.mesh-animation .mesh-seg-g-l1-p7-p9  { animation-name: mesh-seg-g-l1-p7-p9; }
+.mesh-animation .mesh-seg-g-l1-p7-p11 { animation-name: mesh-seg-g-l1-p7-p11; }
+@keyframes mesh-seg-g-l1-p7-p5  { 0%,22%,26%,100%{opacity:0} 23%,25%{opacity:1}
+  0%,22%{transform:translate(447px,193px)} 25%,100%{transform:translate(282px,168px)} }
+@keyframes mesh-seg-g-l1-p7-p8  { 0%,22%,26%,100%{opacity:0} 23%,25%{opacity:1}
+  0%,22%{transform:translate(447px,193px)} 25%,100%{transform:translate(487px,223px)} }
+@keyframes mesh-seg-g-l1-p7-p9  { 0%,22%,26%,100%{opacity:0} 23%,25%{opacity:1}
+  0%,22%{transform:translate(447px,193px)} 25%,100%{transform:translate(522px,183px)} }
+@keyframes mesh-seg-g-l1-p7-p11 { 0%,22%,26%,100%{opacity:0} 23%,25%{opacity:1}
+  0%,22%{transform:translate(447px,193px)} 25%,100%{transform:translate(402px,58px)} }
+/* L2: P4,P6,P10 (via P5); P12 (via P8 or P9); P3 (via P11) */
+.mesh-animation .mesh-seg-g-l2-p5-p4  { animation-name: mesh-seg-g-l2-p5-p4; }
+.mesh-animation .mesh-seg-g-l2-p5-p6  { animation-name: mesh-seg-g-l2-p5-p6; }
+.mesh-animation .mesh-seg-g-l2-p5-p10 { animation-name: mesh-seg-g-l2-p5-p10; }
+.mesh-animation .mesh-seg-g-l2-p8-p12 { animation-name: mesh-seg-g-l2-p8-p12; }
+.mesh-animation .mesh-seg-g-l2-p11-p3 { animation-name: mesh-seg-g-l2-p11-p3; }
+@keyframes mesh-seg-g-l2-p5-p4  { 0%,26%,30%,100%{opacity:0} 27%,29%{opacity:0.7}
+  0%,26%{transform:translate(282px,168px)} 29%,100%{transform:translate(247px,128px)} }
+@keyframes mesh-seg-g-l2-p5-p6  { 0%,26%,30%,100%{opacity:0} 27%,29%{opacity:0.7}
+  0%,26%{transform:translate(282px,168px)} 29%,100%{transform:translate(322px,113px)} }
+@keyframes mesh-seg-g-l2-p5-p10 { 0%,26%,30%,100%{opacity:0} 27%,29%{opacity:0.7}
+  0%,26%{transform:translate(282px,168px)} 29%,100%{transform:translate(187px,218px)} }
+@keyframes mesh-seg-g-l2-p8-p12 { 0%,26%,30%,100%{opacity:0} 27%,29%{opacity:0.7}
+  0%,26%{transform:translate(487px,223px)} 29%,100%{transform:translate(552px,98px)} }
+@keyframes mesh-seg-g-l2-p11-p3 { 0%,26%,30%,100%{opacity:0} 27%,29%{opacity:0.7}
+  0%,26%{transform:translate(402px,58px)} 29%,100%{transform:translate(142px,60px)} }
+/* L3: P1,P2 (via P3) */
+.mesh-animation .mesh-seg-g-l3-p3-p1 { animation-name: mesh-seg-g-l3-p3-p1; }
+.mesh-animation .mesh-seg-g-l3-p3-p2 { animation-name: mesh-seg-g-l3-p3-p2; }
+@keyframes mesh-seg-g-l3-p3-p1 { 0%,30%,34%,100%{opacity:0} 31%,33%{opacity:0.45}
+  0%,30%{transform:translate(142px,60px)} 33%,100%{transform:translate(72px,58px)} }
+@keyframes mesh-seg-g-l3-p3-p2 { 0%,30%,34%,100%{opacity:0} 31%,33%{opacity:0.45}
+  0%,30%{transform:translate(142px,60px)} 33%,100%{transform:translate(107px,93px)} }
 
 /* Reduced-motion fallback: kill animations, park one dot per color on its
-   source node so a still graph still communicates "4 different messages,
+   source node so a still graph still communicates "7 different messages,
    different colors, multiple origins". */
 @media (prefers-reduced-motion: reduce) {
   .mesh-animation .mesh-msg { animation: none; opacity: 0; }
@@ -229,6 +454,9 @@
   .mesh-animation .mesh-orig--b { opacity: 1; transform: translate(487px, 223px); }
   .mesh-animation .mesh-orig--c { opacity: 1; transform: translate(187px, 218px); }
   .mesh-animation .mesh-orig--d { opacity: 1; transform: translate(552px, 98px);  }
+  .mesh-animation .mesh-orig--e { opacity: 1; transform: translate(247px, 128px); }
+  .mesh-animation .mesh-orig--f { opacity: 1; transform: translate(142px, 60px);  }
+  .mesh-animation .mesh-orig--g { opacity: 1; transform: translate(447px, 193px); }
 }
 
 /* Phone-chat hero animation — stylized phone frame + Forest squad messages

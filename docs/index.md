@@ -188,7 +188,7 @@ The little device connects via Bluetooth to your phone and lets you send message
 ---
 
 <div class="mesh-animation" aria-hidden="true">
-<svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mesh network animation: 12 phones connected by dashed lines, with four differently-colored messages flood-routing through the camp — each message fans out from every relay node into multiple branches at once, the way Meshtastic actually broadcasts.">
+<svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mesh network animation: 12 phones connected by dashed lines, with seven differently-colored messages flood-routing through the camp — each message fans out from every relay node into multiple branches at once and travels 7+ hops, the way Meshtastic actually broadcasts.">
   <defs>
     <symbol id="phone" viewBox="0 0 24 36">
       <rect x="2" y="2" width="20" height="32" rx="3" ry="3" fill="#2e1d4d" stroke="#a78bfa" stroke-width="1.5"/>
@@ -209,14 +209,22 @@ The little device connects via Bluetooth to your phone and lets you send message
     <line x1="447" y1="193" x2="487" y2="223"/>
     <line x1="487" y1="223" x2="522" y2="183"/>
     <line x1="447" y1="193" x2="522" y2="183"/>
-    <!-- Bridges between clusters + outliers -->
-    <line x1="142" y1="60"  x2="402" y2="58"/>
-    <line x1="402" y1="58"  x2="322" y2="113"/>
-    <line x1="107" y1="93"  x2="187" y2="218"/>
-    <line x1="187" y1="218" x2="282" y2="168"/>
-    <line x1="322" y1="113" x2="552" y2="98"/>
-    <line x1="552" y1="98"  x2="522" y2="183"/>
-    <line x1="282" y1="168" x2="447" y2="193"/>
+    <!-- Bridges between clusters + outliers (v2: denser so floods fan 7+ hops) -->
+    <line x1="142" y1="60"  x2="402" y2="58"/>  <!-- P3-P11 -->
+    <line x1="402" y1="58"  x2="322" y2="113"/> <!-- P11-P6 -->
+    <line x1="107" y1="93"  x2="187" y2="218"/> <!-- P2-P10 -->
+    <line x1="187" y1="218" x2="282" y2="168"/> <!-- P10-P5 -->
+    <line x1="322" y1="113" x2="552" y2="98"/>  <!-- P6-P12 -->
+    <line x1="552" y1="98"  x2="522" y2="183"/> <!-- P12-P9 -->
+    <line x1="282" y1="168" x2="447" y2="193"/> <!-- P5-P7 -->
+    <!-- v2 added edges -->
+    <line x1="72"  y1="58"  x2="187" y2="218"/> <!-- P1-P10 -->
+    <line x1="142" y1="60"  x2="322" y2="113"/> <!-- P3-P6 -->
+    <line x1="247" y1="128" x2="187" y2="218"/> <!-- P4-P10 -->
+    <line x1="247" y1="128" x2="402" y2="58"/>  <!-- P4-P11 -->
+    <line x1="402" y1="58"  x2="447" y2="193"/> <!-- P11-P7 -->
+    <line x1="487" y1="223" x2="552" y2="98"/>  <!-- P8-P12 -->
+    <line x1="402" y1="58"  x2="552" y2="98"/>  <!-- P11-P12 -->
   </g>
   <g class="mesh-nodes">
     <!-- Cluster A — upper-left main camp (tight, 3 phones) -->
@@ -236,41 +244,101 @@ The little device connects via Bluetooth to your phone and lets you send message
     <use href="#phone" x="390" y="40"  width="24" height="36"/>
     <use href="#phone" x="540" y="80"  width="24" height="36"/>
   </g>
-  <!-- Flood-routing packet dots. Each message gets a distinct color and an
-       origin-pulse plus per-hop fan-out dots (see extra.css for design intent
-       + per-keyframe schedule). Stroke is white so each dot stays legible
-       on both light and dark themes. -->
+  <!-- Flood-routing packet dots. Each message has its own color + origin-pulse
+       circle + per-hop fan-out circles (L1, L2, L3 = 3 hop levels reaching
+       7-12 distinct nodes per message). See extra.css for the timing schedule.
+       Stroke is white so each dot stays legible on both light and dark themes. -->
   <g class="mesh-msgs" stroke="#fff" stroke-width="1.5">
-    <!-- Source A — cyan, origin P1 -->
-    <circle class="mesh-msg mesh-msg--a mesh-orig--a"   r="6"/>
-    <circle class="mesh-msg mesh-msg--a mesh-seg-a-p1-p2" r="5"/>
-    <circle class="mesh-msg mesh-msg--a mesh-seg-a-p1-p3" r="5"/>
-    <circle class="mesh-msg mesh-msg--a mesh-seg-a-p2-p10" r="5"/>
-    <circle class="mesh-msg mesh-msg--a mesh-seg-a-p3-p11" r="5"/>
+    <!-- Source A — cyan, origin P1 (reaches all 12 nodes via 3 hops) -->
+    <circle class="mesh-msg mesh-msg--a mesh-orig--a"        r="6"/>
+    <circle class="mesh-msg mesh-msg--a mesh-seg-a-l1-p1-p2"  r="5"/>
+    <circle class="mesh-msg mesh-msg--a mesh-seg-a-l1-p1-p3"  r="5"/>
+    <circle class="mesh-msg mesh-msg--a mesh-seg-a-l1-p1-p10" r="5"/>
+    <circle class="mesh-msg mesh-msg--a mesh-seg-a-l2-p3-p6"  r="5"/>
+    <circle class="mesh-msg mesh-msg--a mesh-seg-a-l2-p3-p11" r="5"/>
+    <circle class="mesh-msg mesh-msg--a mesh-seg-a-l2-p10-p4" r="5"/>
+    <circle class="mesh-msg mesh-msg--a mesh-seg-a-l2-p10-p5" r="5"/>
+    <circle class="mesh-msg mesh-msg--a mesh-seg-a-l3-p5-p7"  r="5"/>
+    <circle class="mesh-msg mesh-msg--a mesh-seg-a-l3-p6-p12" r="5"/>
     <!-- Source B — magenta, origin P8 -->
-    <circle class="mesh-msg mesh-msg--b mesh-orig--b"   r="6"/>
-    <circle class="mesh-msg mesh-msg--b mesh-seg-b-p8-p7" r="5"/>
-    <circle class="mesh-msg mesh-msg--b mesh-seg-b-p8-p9" r="5"/>
-    <circle class="mesh-msg mesh-msg--b mesh-seg-b-p7-p5" r="5"/>
-    <circle class="mesh-msg mesh-msg--b mesh-seg-b-p9-p12" r="5"/>
+    <circle class="mesh-msg mesh-msg--b mesh-orig--b"        r="6"/>
+    <circle class="mesh-msg mesh-msg--b mesh-seg-b-l1-p8-p7"  r="5"/>
+    <circle class="mesh-msg mesh-msg--b mesh-seg-b-l1-p8-p9"  r="5"/>
+    <circle class="mesh-msg mesh-msg--b mesh-seg-b-l1-p8-p12" r="5"/>
+    <circle class="mesh-msg mesh-msg--b mesh-seg-b-l2-p7-p5"  r="5"/>
+    <circle class="mesh-msg mesh-msg--b mesh-seg-b-l2-p7-p11" r="5"/>
+    <circle class="mesh-msg mesh-msg--b mesh-seg-b-l2-p12-p6" r="5"/>
+    <circle class="mesh-msg mesh-msg--b mesh-seg-b-l3-p5-p4"  r="5"/>
+    <circle class="mesh-msg mesh-msg--b mesh-seg-b-l3-p5-p10" r="5"/>
+    <circle class="mesh-msg mesh-msg--b mesh-seg-b-l3-p6-p3"  r="5"/>
     <!-- Source C — lime, origin P10 -->
-    <circle class="mesh-msg mesh-msg--c mesh-orig--c"   r="6"/>
-    <circle class="mesh-msg mesh-msg--c mesh-seg-c-p10-p2" r="5"/>
-    <circle class="mesh-msg mesh-msg--c mesh-seg-c-p10-p5" r="5"/>
-    <circle class="mesh-msg mesh-msg--c mesh-seg-c-p2-p1"  r="5"/>
-    <circle class="mesh-msg mesh-msg--c mesh-seg-c-p2-p3"  r="5"/>
-    <circle class="mesh-msg mesh-msg--c mesh-seg-c-p5-p4"  r="5"/>
-    <circle class="mesh-msg mesh-msg--c mesh-seg-c-p5-p6"  r="5"/>
+    <circle class="mesh-msg mesh-msg--c mesh-orig--c"        r="6"/>
+    <circle class="mesh-msg mesh-msg--c mesh-seg-c-l1-p10-p1" r="5"/>
+    <circle class="mesh-msg mesh-msg--c mesh-seg-c-l1-p10-p2" r="5"/>
+    <circle class="mesh-msg mesh-msg--c mesh-seg-c-l1-p10-p4" r="5"/>
+    <circle class="mesh-msg mesh-msg--c mesh-seg-c-l1-p10-p5" r="5"/>
+    <circle class="mesh-msg mesh-msg--c mesh-seg-c-l2-p1-p3"  r="5"/>
+    <circle class="mesh-msg mesh-msg--c mesh-seg-c-l2-p4-p6"  r="5"/>
+    <circle class="mesh-msg mesh-msg--c mesh-seg-c-l2-p4-p11" r="5"/>
+    <circle class="mesh-msg mesh-msg--c mesh-seg-c-l2-p5-p7"  r="5"/>
+    <circle class="mesh-msg mesh-msg--c mesh-seg-c-l3-p6-p12" r="5"/>
+    <circle class="mesh-msg mesh-msg--c mesh-seg-c-l3-p7-p8"  r="5"/>
+    <circle class="mesh-msg mesh-msg--c mesh-seg-c-l3-p7-p9"  r="5"/>
     <!-- Source D — gold, origin P12 -->
-    <circle class="mesh-msg mesh-msg--d mesh-orig--d"   r="6"/>
-    <circle class="mesh-msg mesh-msg--d mesh-seg-d-p12-p6" r="5"/>
-    <circle class="mesh-msg mesh-msg--d mesh-seg-d-p12-p9" r="5"/>
-    <circle class="mesh-msg mesh-msg--d mesh-seg-d-p6-p4"  r="5"/>
-    <circle class="mesh-msg mesh-msg--d mesh-seg-d-p6-p11" r="5"/>
-    <circle class="mesh-msg mesh-msg--d mesh-seg-d-p9-p7"  r="5"/>
+    <circle class="mesh-msg mesh-msg--d mesh-orig--d"        r="6"/>
+    <circle class="mesh-msg mesh-msg--d mesh-seg-d-l1-p12-p6"  r="5"/>
+    <circle class="mesh-msg mesh-msg--d mesh-seg-d-l1-p12-p8"  r="5"/>
+    <circle class="mesh-msg mesh-msg--d mesh-seg-d-l1-p12-p9"  r="5"/>
+    <circle class="mesh-msg mesh-msg--d mesh-seg-d-l1-p12-p11" r="5"/>
+    <circle class="mesh-msg mesh-msg--d mesh-seg-d-l2-p6-p3"   r="5"/>
+    <circle class="mesh-msg mesh-msg--d mesh-seg-d-l2-p6-p4"   r="5"/>
+    <circle class="mesh-msg mesh-msg--d mesh-seg-d-l2-p6-p5"   r="5"/>
+    <circle class="mesh-msg mesh-msg--d mesh-seg-d-l2-p8-p7"   r="5"/>
+    <circle class="mesh-msg mesh-msg--d mesh-seg-d-l3-p3-p1"   r="5"/>
+    <circle class="mesh-msg mesh-msg--d mesh-seg-d-l3-p3-p2"   r="5"/>
+    <circle class="mesh-msg mesh-msg--d mesh-seg-d-l3-p4-p10"  r="5"/>
+    <!-- Source E — coral, origin P4 -->
+    <circle class="mesh-msg mesh-msg--e mesh-orig--e"        r="6"/>
+    <circle class="mesh-msg mesh-msg--e mesh-seg-e-l1-p4-p5"  r="5"/>
+    <circle class="mesh-msg mesh-msg--e mesh-seg-e-l1-p4-p6"  r="5"/>
+    <circle class="mesh-msg mesh-msg--e mesh-seg-e-l1-p4-p10" r="5"/>
+    <circle class="mesh-msg mesh-msg--e mesh-seg-e-l1-p4-p11" r="5"/>
+    <circle class="mesh-msg mesh-msg--e mesh-seg-e-l2-p5-p7"  r="5"/>
+    <circle class="mesh-msg mesh-msg--e mesh-seg-e-l2-p6-p3"  r="5"/>
+    <circle class="mesh-msg mesh-msg--e mesh-seg-e-l2-p6-p12" r="5"/>
+    <circle class="mesh-msg mesh-msg--e mesh-seg-e-l2-p10-p1" r="5"/>
+    <circle class="mesh-msg mesh-msg--e mesh-seg-e-l2-p10-p2" r="5"/>
+    <circle class="mesh-msg mesh-msg--e mesh-seg-e-l3-p7-p8"  r="5"/>
+    <circle class="mesh-msg mesh-msg--e mesh-seg-e-l3-p7-p9"  r="5"/>
+    <!-- Source F — violet, origin P3 -->
+    <circle class="mesh-msg mesh-msg--f mesh-orig--f"        r="6"/>
+    <circle class="mesh-msg mesh-msg--f mesh-seg-f-l1-p3-p1"  r="5"/>
+    <circle class="mesh-msg mesh-msg--f mesh-seg-f-l1-p3-p2"  r="5"/>
+    <circle class="mesh-msg mesh-msg--f mesh-seg-f-l1-p3-p6"  r="5"/>
+    <circle class="mesh-msg mesh-msg--f mesh-seg-f-l1-p3-p11" r="5"/>
+    <circle class="mesh-msg mesh-msg--f mesh-seg-f-l2-p1-p10" r="5"/>
+    <circle class="mesh-msg mesh-msg--f mesh-seg-f-l2-p6-p4"  r="5"/>
+    <circle class="mesh-msg mesh-msg--f mesh-seg-f-l2-p6-p5"  r="5"/>
+    <circle class="mesh-msg mesh-msg--f mesh-seg-f-l2-p6-p12" r="5"/>
+    <circle class="mesh-msg mesh-msg--f mesh-seg-f-l2-p11-p7" r="5"/>
+    <circle class="mesh-msg mesh-msg--f mesh-seg-f-l3-p7-p8"  r="5"/>
+    <circle class="mesh-msg mesh-msg--f mesh-seg-f-l3-p7-p9"  r="5"/>
+    <!-- Source G — sky-blue, origin P7 -->
+    <circle class="mesh-msg mesh-msg--g mesh-orig--g"        r="6"/>
+    <circle class="mesh-msg mesh-msg--g mesh-seg-g-l1-p7-p5"  r="5"/>
+    <circle class="mesh-msg mesh-msg--g mesh-seg-g-l1-p7-p8"  r="5"/>
+    <circle class="mesh-msg mesh-msg--g mesh-seg-g-l1-p7-p9"  r="5"/>
+    <circle class="mesh-msg mesh-msg--g mesh-seg-g-l1-p7-p11" r="5"/>
+    <circle class="mesh-msg mesh-msg--g mesh-seg-g-l2-p5-p4"  r="5"/>
+    <circle class="mesh-msg mesh-msg--g mesh-seg-g-l2-p5-p6"  r="5"/>
+    <circle class="mesh-msg mesh-msg--g mesh-seg-g-l2-p5-p10" r="5"/>
+    <circle class="mesh-msg mesh-msg--g mesh-seg-g-l2-p8-p12" r="5"/>
+    <circle class="mesh-msg mesh-msg--g mesh-seg-g-l2-p11-p3" r="5"/>
+    <circle class="mesh-msg mesh-msg--g mesh-seg-g-l3-p3-p1"  r="5"/>
+    <circle class="mesh-msg mesh-msg--g mesh-seg-g-l3-p3-p2"  r="5"/>
   </g>
 </svg>
-<p class="mesh-caption">Four messages flood-routing in parallel — each relay rebroadcasts to every neighbor at once, no cell tower needed.</p>
+<p class="mesh-caption">Seven messages flood-routing in parallel, 7+ hops deep — each relay rebroadcasts to every neighbor at once, no cell tower needed.</p>
 </div>
 
 ---
