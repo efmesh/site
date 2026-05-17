@@ -226,56 +226,56 @@
 }
 .ef-chattitle { font-weight: 600; letter-spacing: 0.01em; }
 .ef-chatbody {
+  /* Visible window — `overflow:hidden` clips the much-taller `.ef-chat-track`
+     to this viewport. The track is what animates (translateY), simulating
+     a chat-app's scroll behavior: oldest messages visible first at the top,
+     newer ones scroll IN from the bottom while older ones scroll OUT the
+     top. Nothing ever fades or disappears in place — every message is
+     permanently rendered, just transformed off-screen as the stack scrolls.
+     Explicit height so the keyframe's calc() can reference --ef-win-h to
+     compute the exact end position (track bottom anchored at window bottom).
+     The phone is aspect-ratio: 240/480 → at 260px wide → ~520px tall;
+     after statusbar (~24px) and chatheader (~24px) the visible chat body
+     is roughly 380-420px. 400px is the design target. */
   position: relative;
   flex: 1;
-  padding: 0.5rem 0.55rem 0.55rem 0.55rem;
-  display: flex;
-  /* Bottom-up chat stacking — newest message anchors at the bottom, older
-     messages push UP as new ones arrive (standard chat-app feel).
-     overflow:hidden + flex-end clips older messages off the TOP of the
-     visible area as the stack grows.
-     Note: NO `gap` here — would apply to all 40 flex children including
-     collapsed (0fr) ones, contributing phantom space that breaks the
-     bottom anchor. Spacing lives on `.ef-msg__inner` instead so it only
-     contributes when the slot is actually open. */
-  flex-direction: column;
-  justify-content: flex-end;
+  min-height: 0;
+  height: 400px;
+  --ef-win-h: 400px;
   overflow: hidden;
-  animation: ef-chat-loop 63s linear infinite;
+}
+.ef-chat-track {
+  /* All 40 messages live in here permanently (no per-message animation, no
+     opacity:0, no height:0). The TRACK is taller than the window (~2600px
+     for 40 messages with multi-line wrapping). It starts at translateY(0)
+     (track top aligned with window top → msg #1 visible at top of chat),
+     then scrolls UP linearly over 60s until translateY equals
+     -(track_height - window_height) so the track BOTTOM aligns with the
+     window BOTTOM (msg #40 anchored at bottom of chat — the "scrolled to
+     newest" state). The loop snaps back to msg #1 at top; the snap reads
+     as the conversation restarting. */
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.5rem 0.55rem 0.55rem 0.55rem;
+  will-change: transform;
+  animation: ef-chat-scroll 60s linear infinite;
 }
 .ef-msg {
-  /* Slot wrapper: animates open/closed via grid-template-rows 0fr → 1fr,
-     which is the only CSS technique that animates between collapsed (0) and
-     intrinsic (`auto`) height without clamping content. Safari 17+, Chrome
-     117+, Firefox 121+ all support it. The single grid row holds the
-     inner `.ef-msg__inner` flex container — when the row resolves to `1fr`
-     the inner content takes its natural height (1, 2, or 3 lines of text).
-     `minmax(0, 0fr)` instead of bare `0fr` forces WebKit to size the row
-     track to literal 0 in the closed state (bare `0fr` resolves to min-
-     content height, which leaks the inner's padding-bottom as phantom
-     space and breaks the bottom anchor). */
-  display: grid;
-  grid-template-rows: minmax(0, 0fr);
+  /* No animation, no opacity tricks — just static layout. Each message is
+     always rendered at its natural multi-line height. The container's
+     translate does the scrolling work. */
   max-width: 78%;
-  opacity: 0;
   flex: 0 0 auto;
-  transform: translateY(14px);
-  /* `both` fill-mode holds the 0%/100% collapsed state when paused. */
-  animation: ef-msg-in 63s linear infinite both;
+  display: flex;
+  flex-direction: column;
 }
 .ef-msg__inner {
   display: flex;
   flex-direction: column;
-  min-height: 0;
-  overflow: hidden;
-  /* Bottom padding only contributes height when the slot is open (1fr),
-     because grid-template-rows: minmax(0, 0fr) collapses the entire row
-     to literal 0. Replaces the parent `gap` that would have phantom-
-     spaced collapsed slots and broken the bottom anchor. */
-  padding-bottom: 0.35rem;
 }
-.ef-msg--in { align-self: flex-start; }
-.ef-msg--out { align-self: flex-end; }
+.ef-msg--in { align-self: flex-start; align-items: flex-start; }
+.ef-msg--out { align-self: flex-end; align-items: flex-end; }
 .ef-msg--in .ef-msg__inner { align-items: flex-start; }
 .ef-msg--out .ef-msg__inner { align-items: flex-end; }
 .ef-name {
@@ -305,82 +305,31 @@
   border-bottom-right-radius: 3px;
 }
 
-/* Per-message slide-in delays: 40 messages over 60s on a 63s loop, then ~3s
-   breath before restart. 1.5s cadence per message — brisk Forest chat pace
-   spanning all 4 days. Each msg animation runs the same 63s loop with its
-   own negative delay so its "in" window aligns at the right moment. */
-.ef-msg--1  { animation-delay: 0s; }
-.ef-msg--2  { animation-delay: -61.5s; }  /* +1.5s */
-.ef-msg--3  { animation-delay: -60s; }    /* +3s */
-.ef-msg--4  { animation-delay: -58.5s; }  /* +4.5s */
-.ef-msg--5  { animation-delay: -57s; }    /* +6s */
-.ef-msg--6  { animation-delay: -55.5s; }  /* +7.5s */
-.ef-msg--7  { animation-delay: -54s; }    /* +9s */
-.ef-msg--8  { animation-delay: -52.5s; }  /* +10.5s */
-.ef-msg--9  { animation-delay: -51s; }    /* +12s */
-.ef-msg--10 { animation-delay: -49.5s; }  /* +13.5s */
-.ef-msg--11 { animation-delay: -48s; }    /* +15s */
-.ef-msg--12 { animation-delay: -46.5s; }  /* +16.5s */
-.ef-msg--13 { animation-delay: -45s; }    /* +18s */
-.ef-msg--14 { animation-delay: -43.5s; }  /* +19.5s */
-.ef-msg--15 { animation-delay: -42s; }    /* +21s */
-.ef-msg--16 { animation-delay: -40.5s; }  /* +22.5s */
-.ef-msg--17 { animation-delay: -39s; }    /* +24s */
-.ef-msg--18 { animation-delay: -37.5s; }  /* +25.5s */
-.ef-msg--19 { animation-delay: -36s; }    /* +27s */
-.ef-msg--20 { animation-delay: -34.5s; }  /* +28.5s */
-.ef-msg--21 { animation-delay: -33s; }    /* +30s */
-.ef-msg--22 { animation-delay: -31.5s; }  /* +31.5s */
-.ef-msg--23 { animation-delay: -30s; }    /* +33s */
-.ef-msg--24 { animation-delay: -28.5s; }  /* +34.5s */
-.ef-msg--25 { animation-delay: -27s; }    /* +36s */
-.ef-msg--26 { animation-delay: -25.5s; }  /* +37.5s */
-.ef-msg--27 { animation-delay: -24s; }    /* +39s */
-.ef-msg--28 { animation-delay: -22.5s; }  /* +40.5s */
-.ef-msg--29 { animation-delay: -21s; }    /* +42s */
-.ef-msg--30 { animation-delay: -19.5s; }  /* +43.5s */
-.ef-msg--31 { animation-delay: -18s; }    /* +45s */
-.ef-msg--32 { animation-delay: -16.5s; }  /* +46.5s */
-.ef-msg--33 { animation-delay: -15s; }    /* +48s */
-.ef-msg--34 { animation-delay: -13.5s; }  /* +49.5s */
-.ef-msg--35 { animation-delay: -12s; }    /* +51s */
-.ef-msg--36 { animation-delay: -10.5s; }  /* +52.5s */
-.ef-msg--37 { animation-delay: -9s; }     /* +54s */
-.ef-msg--38 { animation-delay: -7.5s; }   /* +55.5s */
-.ef-msg--39 { animation-delay: -6s; }     /* +57s */
-.ef-msg--40 { animation-delay: -4.5s; }   /* +58.5s */
+/* Continuous container-scroll keyframes — the whole track scrolls up
+   linearly over 60s.
 
-@keyframes ef-msg-in {
-  /* Each message lives ~10.5s out of the 63s loop — roughly 7 messages
-     visible at once. With 40 msgs at 1.5s cadence the streaming feel
-     comes from a SHORT visible window per message; if the window covers
-     most of the loop (as the prior version did, 0.5%-98%), every message
-     is in its "visible plateau" at any given instant and the stack
-     appears statically full — the bug Will reported on iOS Safari.
+   START (0%): translateY(0) — track top aligned with window top. The
+   first ~7 messages (msg #1 onward) are visible; the rest of the
+   stack is clipped below the window.
 
-     Life of one message (63s loop = 100%):
-       0%   – 1.2%   slide in    (~0.75s)
-       1.2% – 15.5%  hold visible (~9s)
-       15.5%–16.7%  collapse out (~0.75s, rows + opacity)
-       16.7%–100%   collapsed/idle (waits for next loop)
+   END (100%): translateY(calc(-1 * (100% - var(--ef-win-h))))
+   = the track has moved UP by (track_height - window_height) so its
+   BOTTOM edge now aligns with the window bottom. The last ~7 messages
+   (msg #40 anchored at the bottom) are visible; everything earlier
+   has scrolled off the top.
 
-     `grid-template-rows: 0fr → 1fr` lets each slot grow to its intrinsic
-     content height — 1 line for short messages, 2-3 lines for longer ones —
-     instead of being clamped to a fixed pixel height. Multi-line bubbles
-     are no longer truncated mid-sentence (the bug Will reported 2026-05-16). */
-  0%    { opacity: 0; grid-template-rows: minmax(0, 0fr); transform: translateY(14px); }
-  0.4%  { opacity: 0; grid-template-rows: minmax(0, 0fr); transform: translateY(14px); }
-  1.2%  { opacity: 1; grid-template-rows: minmax(0, 1fr); transform: translateY(0); }
-  15.5% { opacity: 1; grid-template-rows: minmax(0, 1fr); transform: translateY(0); }
-  16.3% { opacity: 0; grid-template-rows: minmax(0, 1fr); transform: translateY(-6px); }
-  16.7% { opacity: 0; grid-template-rows: minmax(0, 0fr); transform: translateY(-6px); }
-  100%  { opacity: 0; grid-template-rows: minmax(0, 0fr); transform: translateY(-6px); }
-}
+   The 100% inside the calc refers to the TRACK's own height (since it
+   modifies translateY); subtracting the window height gives exactly
+   the offset needed to anchor the track's bottom at the window's
+   bottom.
 
-/* Body-level loop: clean breath at end-of-loop so restart isn't jarring */
-@keyframes ef-chat-loop {
-  0%, 96%   { background: transparent; }
-  96%, 100% { background: transparent; }
+   Linear timing keeps the scroll steady (real chat marquee feel).
+   The loop reset at 100% → 0% snaps msg #40-area back to msg #1-area
+   in a single frame; visually it reads as the conversation looping
+   back to the start. */
+@keyframes ef-chat-scroll {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(calc(-100% + var(--ef-win-h, 400px))); }
 }
 
 .ef-phone-caption {
@@ -391,20 +340,15 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  /* Disable looping animations + render all 40 messages as a static stack.
-     Prior version killed animations but left .ef-msg at grid-template-rows: 0fr
-     / opacity:0 (the base-rule defaults), so reduced-motion viewers — common
-     on iOS — saw an empty chat body. Restore intrinsic row height + full
-     opacity so the stack is fully visible without motion. */
-  .ef-chatbody, .ef-msg { animation: none !important; }
-  .ef-msg {
-    opacity: 1 !important;
+  /* Kill the scroll animation. Park the track at its END position so the
+     last few messages (the most recent) are visible — same as a real chat
+     app opened to "scrolled to bottom". The chat body becomes a normal
+     native scroll surface so reduced-motion viewers can still browse
+     older messages by hand if they want. */
+  .ef-chat-track {
+    animation: none !important;
     transform: none !important;
-    grid-template-rows: 1fr !important;
   }
-  .ef-msg__inner { overflow: visible !important; }
-  /* With 40 msgs visible, scroll older ones off the top of the visible
-     window rather than crushing the phone frame. */
   .ef-chatbody { overflow-y: auto; }
 }
 

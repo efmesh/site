@@ -52,6 +52,7 @@ This is the community guide for using it at Electric Forest.
         <span class="ef-chattitle">Squad Chat</span>
       </div>
       <div class="ef-chatbody">
+        <div class="ef-chat-track">
         <div class="ef-msg ef-msg--in ef-msg--1"><div class="ef-msg__inner"><span class="ef-name">alex</span><span class="ef-bubble">happy forest &#127795; made it through the gate!</span></div></div>
         <div class="ef-msg ef-msg--in ef-msg--2"><div class="ef-msg__inner"><span class="ef-name">sam</span><span class="ef-bubble">in line at trading post, brb</span></div></div>
         <div class="ef-msg ef-msg--out ef-msg--3"><div class="ef-msg__inner"><span class="ef-name">you</span><span class="ef-bubble">set up at camp K3, look for the orange flag</span></div></div>
@@ -92,6 +93,7 @@ This is the community guide for using it at Electric Forest.
         <div class="ef-msg ef-msg--in ef-msg--38"><div class="ef-msg__inner"><span class="ef-name">sam</span><span class="ef-bubble">sunset at the carousel?</span></div></div>
         <div class="ef-msg ef-msg--out ef-msg--39"><div class="ef-msg__inner"><span class="ef-name">you</span><span class="ef-bubble">yes! bring the totem</span></div></div>
         <div class="ef-msg ef-msg--in ef-msg--40"><div class="ef-msg__inner"><span class="ef-name">jess</span><span class="ef-bubble">happy forest &#128156;&#127795;</span></div></div>
+        </div>
       </div>
     </div>
   </div>
