@@ -226,53 +226,68 @@
 }
 .ef-chattitle { font-weight: 600; letter-spacing: 0.01em; }
 .ef-chatbody {
-  /* Visible window — `overflow:hidden` clips the much-taller `.ef-chat-track`
-     to this viewport. The track is what animates (translateY), simulating
-     a chat-app's scroll behavior: oldest messages visible first at the top,
-     newer ones scroll IN from the bottom while older ones scroll OUT the
-     top. Nothing ever fades or disappears in place — every message is
-     permanently rendered, just transformed off-screen as the stack scrolls.
-     Explicit height so the keyframe's calc() can reference --ef-win-h to
-     compute the exact end position (track bottom anchored at window bottom).
-     The phone is aspect-ratio: 240/480 → at 260px wide → ~520px tall;
-     after statusbar (~24px) and chatheader (~24px) the visible chat body
-     is roughly 380-420px. 400px is the design target. */
+  /* Visible window — fills remaining phone screen height. Itself a flex
+     column with `justify-content: flex-end` so the inner `.ef-chat-track`
+     is pinned to the BOTTOM. Overflow:hidden clips the older messages
+     once the stack outgrows the visible window — they vanish above the
+     top edge while the newest stays anchored at the bottom (real chat
+     app feel). */
   position: relative;
   flex: 1;
   min-height: 0;
-  height: 400px;
-  --ef-win-h: 400px;
   overflow: hidden;
-}
-.ef-chat-track {
-  /* All 40 messages live in here permanently (no per-message animation, no
-     opacity:0, no height:0). The TRACK is taller than the window (~2600px
-     for 40 messages with multi-line wrapping). It starts at translateY(0)
-     (track top aligned with window top → msg #1 visible at top of chat),
-     then scrolls UP linearly over 60s until translateY equals
-     -(track_height - window_height) so the track BOTTOM aligns with the
-     window BOTTOM (msg #40 anchored at bottom of chat — the "scrolled to
-     newest" state). The loop snaps back to msg #1 at top; the snap reads
-     as the conversation restarting. */
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
-  padding: 0.5rem 0.55rem 0.55rem 0.55rem;
-  will-change: transform;
-  animation: ef-chat-scroll 60s linear infinite;
+  justify-content: flex-end;
 }
-.ef-msg {
-  /* No animation, no opacity tricks — just static layout. Each message is
-     always rendered at its natural multi-line height. The container's
-     translate does the scrolling work. */
-  max-width: 78%;
+.ef-chat-track {
+  /* All 40 messages live in here permanently. Each `.ef-msg` is its own
+     CSS-grid container that animates `grid-template-rows: 0fr → 1fr` from
+     its per-message keyframe `ef-msg-arrive-N` — so until its scheduled
+     arrival time the row has zero height and the message contributes
+     nothing to layout. When the message animates in (opacity 0→1, slide
+     up 20px, row expand 0fr→1fr) it grows into its natural multi-line
+     height and the flex column shifts older messages UP to make room.
+     `flex: 0 0 auto` keeps the track sized exactly to its current
+     content (so a half-filled stack hugs the bottom of the body rather
+     than stretching). Once the stack exceeds body height it overflows
+     UPWARD (older msgs scroll off the top, clipped by body overflow).
+     No translateY-on-the-track, no negative delays, no mid-cycle
+     collapse — each msg is invisible OR visible, never partially hidden
+     in place. */
   flex: 0 0 auto;
   display: flex;
   flex-direction: column;
+  padding: 0.5rem 0.55rem 0.55rem 0.55rem;
+}
+/* Inter-message spacing lives on the INNER element so collapsed (height:0)
+   messages contribute zero spacing too. Using gap on the track would leave
+   ghost gaps for every invisible msg, blowing up the track's height. */
+.ef-msg__inner { padding-top: 0.35rem; }
+.ef-msg:first-child .ef-msg__inner { padding-top: 0; }
+.ef-msg {
+  /* Grid container so `grid-template-rows: 0fr → 1fr` animation can
+     expand/collapse the content row. `.ef-msg__inner` sits in that row
+     with `min-height: 0` so it can be clipped while collapsed.
+     animation-duration is the FULL loop length (65s = 40 msgs × 1.5s
+     cadence + ~5s hold). Each `.ef-msg--N` rule below picks its own
+     keyframe `ef-msg-arrive-N` whose timeline collapses everywhere except
+     a thin slice at its arrival time, then holds visible until ~99.9%
+     and snaps back to invisible at 100% for the loop reset. */
+  max-width: 78%;
+  display: grid;
+  grid-template-rows: minmax(0, 0fr);
+  overflow: hidden;
+  opacity: 0;
+  animation-duration: 65s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
 }
 .ef-msg__inner {
   display: flex;
   flex-direction: column;
+  min-height: 0;
 }
 .ef-msg--in { align-self: flex-start; align-items: flex-start; }
 .ef-msg--out { align-self: flex-end; align-items: flex-end; }
@@ -305,32 +320,100 @@
   border-bottom-right-radius: 3px;
 }
 
-/* Continuous container-scroll keyframes — the whole track scrolls up
-   linearly over 60s.
+/* Per-message arrival keyframes — Approach B from spec.
+   Each `.ef-msg--N` runs `ef-msg-arrive-N` on a 65s infinite loop.
+   The keyframe holds the message collapsed/invisible until its scheduled
+   arrival time (= (N-1) * 1.5s = (N-1) * 2.3077% of 65s), then animates
+   in over 0.7s (= 1.077% of 65s) to natural height + opacity 1, then
+   HOLDS visible until 99.9%, then snaps back to invisible at 100% for
+   the loop reset. Loop reset is a single keyframe step (~0.1% = ~65ms,
+   roughly 4 frames at 60fps) which reads as a clean blink rather than
+   any per-message fade-out.
 
-   START (0%): translateY(0) — track top aligned with window top. The
-   first ~7 messages (msg #1 onward) are visible; the rest of the
-   stack is clipped below the window.
-
-   END (100%): translateY(calc(-1 * (100% - var(--ef-win-h))))
-   = the track has moved UP by (track_height - window_height) so its
-   BOTTOM edge now aligns with the window bottom. The last ~7 messages
-   (msg #40 anchored at the bottom) are visible; everything earlier
-   has scrolled off the top.
-
-   The 100% inside the calc refers to the TRACK's own height (since it
-   modifies translateY); subtracting the window height gives exactly
-   the offset needed to anchor the track's bottom at the window's
-   bottom.
-
-   Linear timing keeps the scroll steady (real chat marquee feel).
-   The loop reset at 100% → 0% snaps msg #40-area back to msg #1-area
-   in a single frame; visually it reads as the conversation looping
-   back to the start. */
-@keyframes ef-chat-scroll {
-  0%   { transform: translateY(0); }
-  100% { transform: translateY(calc(-100% + var(--ef-win-h, 400px))); }
-}
+   Per-msg animation-name bindings + the 40 keyframe definitions are
+   generated mechanically — see docs/index.md cadence values and
+   knowledge of (N-1)*1.5s arrival schedule. */
+/* Per-msg animation-name binding (one keyframe each, arrival pct = (N-1)*1.5s / 65s) */
+.ef-msg--1{animation-name:ef-msg-arrive-1}
+.ef-msg--2{animation-name:ef-msg-arrive-2}
+.ef-msg--3{animation-name:ef-msg-arrive-3}
+.ef-msg--4{animation-name:ef-msg-arrive-4}
+.ef-msg--5{animation-name:ef-msg-arrive-5}
+.ef-msg--6{animation-name:ef-msg-arrive-6}
+.ef-msg--7{animation-name:ef-msg-arrive-7}
+.ef-msg--8{animation-name:ef-msg-arrive-8}
+.ef-msg--9{animation-name:ef-msg-arrive-9}
+.ef-msg--10{animation-name:ef-msg-arrive-10}
+.ef-msg--11{animation-name:ef-msg-arrive-11}
+.ef-msg--12{animation-name:ef-msg-arrive-12}
+.ef-msg--13{animation-name:ef-msg-arrive-13}
+.ef-msg--14{animation-name:ef-msg-arrive-14}
+.ef-msg--15{animation-name:ef-msg-arrive-15}
+.ef-msg--16{animation-name:ef-msg-arrive-16}
+.ef-msg--17{animation-name:ef-msg-arrive-17}
+.ef-msg--18{animation-name:ef-msg-arrive-18}
+.ef-msg--19{animation-name:ef-msg-arrive-19}
+.ef-msg--20{animation-name:ef-msg-arrive-20}
+.ef-msg--21{animation-name:ef-msg-arrive-21}
+.ef-msg--22{animation-name:ef-msg-arrive-22}
+.ef-msg--23{animation-name:ef-msg-arrive-23}
+.ef-msg--24{animation-name:ef-msg-arrive-24}
+.ef-msg--25{animation-name:ef-msg-arrive-25}
+.ef-msg--26{animation-name:ef-msg-arrive-26}
+.ef-msg--27{animation-name:ef-msg-arrive-27}
+.ef-msg--28{animation-name:ef-msg-arrive-28}
+.ef-msg--29{animation-name:ef-msg-arrive-29}
+.ef-msg--30{animation-name:ef-msg-arrive-30}
+.ef-msg--31{animation-name:ef-msg-arrive-31}
+.ef-msg--32{animation-name:ef-msg-arrive-32}
+.ef-msg--33{animation-name:ef-msg-arrive-33}
+.ef-msg--34{animation-name:ef-msg-arrive-34}
+.ef-msg--35{animation-name:ef-msg-arrive-35}
+.ef-msg--36{animation-name:ef-msg-arrive-36}
+.ef-msg--37{animation-name:ef-msg-arrive-37}
+.ef-msg--38{animation-name:ef-msg-arrive-38}
+.ef-msg--39{animation-name:ef-msg-arrive-39}
+.ef-msg--40{animation-name:ef-msg-arrive-40}
+@keyframes ef-msg-arrive-1{0%,0.000%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}1.077%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-2{0%,2.308%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}3.385%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-3{0%,4.615%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}5.692%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-4{0%,6.923%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}8.000%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-5{0%,9.231%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}10.308%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-6{0%,11.538%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}12.615%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-7{0%,13.846%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}14.923%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-8{0%,16.154%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}17.231%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-9{0%,18.462%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}19.538%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-10{0%,20.769%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}21.846%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-11{0%,23.077%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}24.154%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-12{0%,25.385%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}26.462%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-13{0%,27.692%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}28.769%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-14{0%,30.000%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}31.077%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-15{0%,32.308%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}33.385%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-16{0%,34.615%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}35.692%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-17{0%,36.923%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}38.000%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-18{0%,39.231%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}40.308%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-19{0%,41.538%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}42.615%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-20{0%,43.846%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}44.923%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-21{0%,46.154%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}47.231%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-22{0%,48.462%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}49.538%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-23{0%,50.769%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}51.846%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-24{0%,53.077%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}54.154%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-25{0%,55.385%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}56.462%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-26{0%,57.692%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}58.769%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-27{0%,60.000%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}61.077%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-28{0%,62.308%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}63.385%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-29{0%,64.615%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}65.692%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-30{0%,66.923%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}68.000%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-31{0%,69.231%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}70.308%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-32{0%,71.538%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}72.615%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-33{0%,73.846%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}74.923%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-34{0%,76.154%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}77.231%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-35{0%,78.462%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}79.538%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-36{0%,80.769%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}81.846%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-37{0%,83.077%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}84.154%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-38{0%,85.385%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}86.462%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-39{0%,87.692%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}88.769%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
+@keyframes ef-msg-arrive-40{0%,90.000%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}91.077%,99.9%{opacity:1;transform:translateY(0);grid-template-rows:minmax(0,1fr)}100%{opacity:0;transform:translateY(20px);grid-template-rows:minmax(0,0fr)}}
 
 .ef-phone-caption {
   font-size: 0.85rem;
@@ -340,14 +423,16 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  /* Kill the scroll animation. Park the track at its END position so the
-     last few messages (the most recent) are visible — same as a real chat
-     app opened to "scrolled to bottom". The chat body becomes a normal
-     native scroll surface so reduced-motion viewers can still browse
-     older messages by hand if they want. */
-  .ef-chat-track {
+  /* Kill the per-message arrival animations. Show every message as a
+     static stack with most-recent (msg #40) at the bottom — same as a
+     real chat opened to "scrolled to bottom". The chat body becomes
+     a native scroll surface so reduced-motion viewers can browse the
+     older messages by hand. */
+  .ef-msg {
     animation: none !important;
+    opacity: 1 !important;
     transform: none !important;
+    grid-template-rows: minmax(0, 1fr) !important;
   }
   .ef-chatbody { overflow-y: auto; }
 }
