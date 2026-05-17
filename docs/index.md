@@ -49,7 +49,7 @@ This is the community guide for using it at Electric Forest.
         <span class="ef-meshicon" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#b6f0a8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><line x1="5" y1="6" x2="19" y2="6"/><line x1="5" y1="6" x2="12" y2="18"/><line x1="19" y1="6" x2="12" y2="18"/></svg>
         </span>
-        <span class="ef-chattitle">Squad Chat</span>
+        <span class="ef-chattitle">best-ef-crew</span>
       </div>
       <div class="ef-chatbody">
         <div class="ef-chat-track">
