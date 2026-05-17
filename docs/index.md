@@ -57,7 +57,7 @@ This is the community guide for using it at Electric Forest.
         <div class="ef-msg ef-msg--in ef-msg--2"><div class="ef-msg__inner"><span class="ef-name">sam</span><span class="ef-bubble">in line at trading post, brb</span></div></div>
         <div class="ef-msg ef-msg--out ef-msg--3"><div class="ef-msg__inner"><span class="ef-name">you</span><span class="ef-bubble">set up at camp K3, look for the orange flag</span></div></div>
         <div class="ef-msg ef-msg--in ef-msg--4"><div class="ef-msg__inner"><span class="ef-name">jess</span><span class="ef-bubble">happy forest fam! 30min out from gate</span></div></div>
-        <div class="ef-msg ef-msg--in ef-msg--5"><div class="ef-msg__inner"><span class="ef-name">alex</span><span class="ef-bubble">sherwood opens at sundown, we rolling?</span></div></div>
+        <div class="ef-msg ef-msg--in ef-msg--5"><div class="ef-msg__inner"><span class="ef-name">alex</span><span class="ef-bubble">sherwood opens at sundown, we heading in?</span></div></div>
         <div class="ef-msg ef-msg--in ef-msg--6"><div class="ef-msg__inner"><span class="ef-name">sam</span><span class="ef-bubble">battery dying, finding power &#128267;</span></div></div>
         <div class="ef-msg ef-msg--out ef-msg--7"><div class="ef-msg__inner"><span class="ef-name">you</span><span class="ef-bubble">vibe check &#10024; everyone good?</span></div></div>
         <div class="ef-msg ef-msg--in ef-msg--8"><div class="ef-msg__inner"><span class="ef-name">jess</span><span class="ef-bubble">all good! kandi for days &#127752;</span></div></div>
