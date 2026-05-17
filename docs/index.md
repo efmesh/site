@@ -177,18 +177,12 @@ This is the community guide for using it at Electric Forest.
 
 ## What is Meshtastic?
 
-It's a little 915 MHz radio (about the size of a deck of cards or smaller) that:
-
-- **Pairs to your phone over Bluetooth** so you can type messages on your phone screen
-- **Sends texts + GPS locations to your squad** without any cell service or wifi
-- **Meshes** — every node in the Forest extends the range for everyone else. The more of us, the better it works.
-
-The little device connects via Bluetooth to your phone and lets you send messages and see each other's locations **without cell service**.
+[Meshtastic](https://meshtastic.org){ target=_blank } is free messaging on tiny radios that talk directly to each other — your message hops phone-to-phone through everyone nearby until it reaches your friend, no cell service needed.
 
 ---
 
 <div class="mesh-animation" aria-hidden="true">
-<svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mesh network animation: 12 phones connected by dashed lines, with dozens of differently-colored messages constantly flood-routing through the camp — each phone is always rebroadcasting, the way a busy Meshtastic mesh actually feels with 100 people talking at once.">
+<svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animation of 12 phones across the Forest, with colored messages hopping phone-to-phone — each phone passes every message along to its neighbors, so a single text reaches the whole crowd in a few quick jumps.">
   <defs>
     <symbol id="phone" viewBox="0 0 24 36">
       <rect x="2" y="2" width="20" height="32" rx="3" ry="3" fill="#2e1d4d" stroke="#a78bfa" stroke-width="1.5"/>
@@ -788,7 +782,7 @@ The little device connects via Bluetooth to your phone and lets you send message
     <circle class="mesh-msg mesh-msg--cyan mesh-seg-g-l3-p3-p2"  r="5" style="animation-delay:-29.286s"/>
   </g>
 </svg>
-<p class="mesh-caption">Dozens of messages flood-routing in parallel across the camp — every phone constantly relays, the way a real Meshtastic mesh feels when 100 people are chatting at once.</p>
+<p class="mesh-caption">Each phone passes the message along to every phone nearby — so even from the far side of the Forest, your message can hop through the crowd until it reaches your crew.</p>
 </div>
 
 ---
