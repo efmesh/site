@@ -29,7 +29,7 @@ A community favorite. E-ink screen (like a Kindle) so it's readable in direct Mi
 |:--|:--|
 | **Pros** | Screen to read messages without your phone &middot; More range than card-style nodes due to external antenna &middot; Ready out of the box &middot; Bluetooth + GPS &middot; Antenna can be upgraded for more range |
 | **Cons** | A bit chunky &middot; The reset button is easy to press accidentally (Etsy has cases that cover it) |
-| **Where to buy** | [Rokland (US, fast shipping)](https://store.rokland.com/products/lilygo-ttgo-meshtastic-t-echo-white-lora-sx1262-wireless-module-915mhz-nrf52840-gps-for-arduino){ target=_blank } &middot; [AliExpress (LILYGO official, ships from China)](https://www.aliexpress.com/item/1005003026107533.html){ target=_blank } |
+| **Where to buy** | [Rokland (~$65, US shipping)](https://store.rokland.com/products/lilygo-ttgo-meshtastic-t-echo-white-lora-sx1262-wireless-module-915mhz-nrf52840-gps-for-arduino){ target=_blank } &middot; [AliExpress (~$60, LILYGO official, ships from China)](https://www.aliexpress.com/item/1005003026107533.html){ target=_blank } |
 | **Antenna upgrade** | [Muzi 17cm Whip](https://muzi.works/products/whip-antenna-17cm){ target=_blank } — biggest range boost for $12 |
 
 ---
@@ -44,7 +44,7 @@ Cheapest option that works out of the box. About the size of a credit card, clip
 |:--|:--|
 | **Pros** | Cheap &middot; Compact, clips to a backpack &middot; Ready to go &middot; Bluetooth + GPS &middot; Better battery than the T-1000e &middot; IP66 waterproof |
 | **Cons** | No external antenna, so shorter range than the T-Echo &middot; Recharges via a magnetic pin cable (proprietary) &middot; No screen means you can't easily tell if it's online without checking your phone |
-| **Where to buy** | [RAKwireless](https://store.rakwireless.com/products/wismesh-tag-meshtastic-gps-lora-tracker-ip66){ target=_blank } &middot; [Amazon](https://www.amazon.com/RAKwireless-MOKOSmart-Meshtastic-Compatible-Waterproof/dp/B0FYHPTPZD){ target=_blank } |
+| **Where to buy** | [Rokland ($50, US shipping)](https://store.rokland.com/products/wismesh-tag-from-rakwireless-mokosmart-meshtastic-compatible-card-sized-node-us915-mhz){ target=_blank } &middot; [RAKwireless (~$30)](https://store.rakwireless.com/products/wismesh-tag-meshtastic-gps-lora-tracker-ip66){ target=_blank } &middot; [Amazon ($50)](https://www.amazon.com/RAKwireless-MOKOSmart-Meshtastic-Compatible-Waterproof/dp/B0FYHPTPZD){ target=_blank } |
 
 ---
 
@@ -61,7 +61,7 @@ Similar form factor to the WisMesh Tag. Most of us prefer the WisMesh Tag — be
 |:--|:--|
 | **Pros** | Cheap &middot; Compact, clips to a pack &middot; Ready to go &middot; Bluetooth + GPS &middot; Available on Amazon for last-minute buys |
 | **Cons** | No external antenna &middot; Proprietary magnetic charging &middot; No screen |
-| **Where to buy** | [Seeed Studio (official)](https://www.seeedstudio.com/SenseCAP-Card-Tracker-T1000-E-for-Meshtastic-p-5913.html){ target=_blank } &middot; [Amazon](https://www.amazon.com/SenseCAP-Card-Tracker-T1000-Meshtastic/dp/B0DJ6KGXKB){ target=_blank } |
+| **Where to buy** | [Atlavox (~$42, US shipping)](https://atlavox.com/products/t1000-e-meshtastic-radio){ target=_blank } &middot; [Seeed Studio (~$39, official)](https://www.seeedstudio.com/SenseCAP-Card-Tracker-T1000-E-for-Meshtastic-p-5913.html){ target=_blank } &middot; [Amazon (~$59)](https://www.amazon.com/SenseCAP-Card-Tracker-T1000-Meshtastic/dp/B0DJ6KGXKB){ target=_blank } |
 
 ---
 
@@ -75,7 +75,7 @@ If you want a phone-shaped Meshtastic device with no extra parts to source, T-De
 |:--|:--|
 | **Pros** | Physical QWERTY keyboard &middot; 2.8" color touchscreen &middot; **On-board GPS** (no external module needed) &middot; **Built-in 18650 battery slot + charger** &middot; ESP32-S3 + LoRa SX1262 &middot; Bluetooth + Wifi &middot; Runs standalone without your phone |
 | **Cons** | No external antenna &middot; Bigger and heavier than a card-style tracker &middot; Map setup is fiddly (you upload your own map files) |
-| **Where to buy** | [LILYGO (manufacturer)](https://lilygo.cc/en-us/products/t-deck-plus-1){ target=_blank } &middot; [Amazon](https://amzn.to/4nz0EUF){ target=_blank } |
+| **Where to buy** | [LILYGO (~$70, manufacturer)](https://lilygo.cc/en-us/products/t-deck-plus-1){ target=_blank } &middot; [Amazon (~$70)](https://amzn.to/4nz0EUF){ target=_blank } |
 
 ---
 
@@ -104,6 +104,22 @@ Higher antenna = more range for everyone. If you've got camp infrastructure (a f
 
 - For base station nodes, use a quality SMA or N-type cable — and **keep it short**. Every foot of cable adds some signal loss.
 - "More dB" doesn't always mean "more coverage." A directional high-dB antenna in the wrong orientation can have *less* useful coverage than a modest omni.
+
+---
+
+## :material-cart-outline: Purchasing Tips
+
+!!! warning "Tariffs & Pricing in 2026"
+    Most Meshtastic hardware is manufactured in China. Ongoing tariffs on Chinese electronics imports mean **prices can fluctuate** and shipments from overseas may face delays or extra customs fees. Keep this in mind when ordering.
+
+**Buy from US-based dealers when you can.** Shops like [Rokland](https://store.rokland.com){ target=_blank } and [Atlavox](https://atlavox.com){ target=_blank } stock inventory domestically — you get faster shipping, no surprise customs charges, and you're supporting smaller businesses in the Meshtastic community. Prices may be a few dollars more than ordering direct from China, but you skip the 2–4 week wait and tariff uncertainty.
+
+**Tips:**
+
+- **Order early.** Don't wait until the week before Forest. Shipping delays happen, stock sells out, and you'll want time to set up and test your radio.
+- **US dealers have already absorbed tariff costs** into their listed prices — what you see is what you pay (plus normal shipping/tax).
+- **Direct-from-China sellers** (AliExpress, Seeed Studio) are usually cheaper up front, but delivery takes 2–4 weeks and your package may get hit with import duties at customs.
+- **Amazon** is convenient for last-minute buys, but double-check the seller — some listings are resellers charging a premium or shipping knock-off accessories.
 
 ---
 
