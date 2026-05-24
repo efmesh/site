@@ -29,7 +29,7 @@ A community favorite. E-ink screen (like a Kindle) so it's readable in direct Mi
 |:--|:--|
 | **Pros** | Screen to read messages without your phone &middot; More range than card-style nodes due to external antenna &middot; Ready out of the box &middot; Bluetooth + GPS &middot; Antenna can be upgraded for more range |
 | **Cons** | A bit chunky &middot; The reset button is easy to press accidentally (Etsy has cases that cover it) |
-| **Where to buy** | [Rokland (~$, US shipping)](https://store.rokland.com/products/lilygo-ttgo-meshtastic-t-echo-white-lora-sx1262-wireless-module-915mhz-nrf52840-gps-for-arduino){ target=_blank } &middot; [AliExpress (~$60, LILYGO official, ships from China)](https://www.aliexpress.com/item/1005003026107533.html){ target=_blank } |
+| **Where to buy** | [Rokland (~$65, US shipping)](https://store.rokland.com/products/lilygo-ttgo-meshtastic-t-echo-white-lora-sx1262-wireless-module-915mhz-nrf52840-gps-for-arduino){ target=_blank } &middot; [AliExpress (~$60, LILYGO official, ships from China)](https://www.aliexpress.com/item/1005003026107533.html){ target=_blank } |
 | **Antenna upgrade** | [Muzi 17cm Whip](https://muzi.works/products/whip-antenna-17cm){ target=_blank } — biggest range boost for $12 |
 
 ---
