@@ -47,36 +47,46 @@ Newer and more available than the Station G2. Same 1W output. Open-source friend
 
 ### RAK Wireless WisBlock Starter Kit
 
-Most flexible DIY option. Pick your case, battery, antenna, modules. Super power-efficient — great base for solar nodes.
+Most flexible DIY option. Pick your case, battery, antenna, modules. Super power-efficient — great base for solar nodes. **And it's the cheapest path to a 1W node** if you're willing to swap the radio module for a 1W booster (more on that below).
 
 ![RAK Wireless WisBlock Starter Kit — base board with RAK4631 core module unsocketed alongside](../assets/img/advanced/rak-wisblock-starter.jpg){ .ef-advanced-img }
 
 |  |  |
 |:--|:--|
-| **Pros** | Cheaper than a pre-built &middot; Massively customizable &middot; Super power-efficient (great for solar) |
+| **Pros** | Cheaper than a pre-built &middot; Massively customizable &middot; Super power-efficient (great for solar) &middot; Can be built as a 1W node with a booster module |
 | **Cons** | Requires time, patience, and some technical chops &middot; Need to source case, battery, antenna separately |
 | **Buy the kit** | [RAK Wireless (international)](https://store.rakwireless.com/products/wisblock-meshtastic-starter-kit){ target=_blank } &middot; [Rokland (US distributor)](https://store.rokland.com/products/rak-wireless-wisblock-meshtastic-starter-kit){ target=_blank } |
 | **Case options** | [Etsy — Sentinel case](https://www.etsy.com/listing/1705600327/sentinel-rak-wisblock-rak4631-meshtastic){ target=_blank } &middot; [Etsy — mini box](https://www.etsy.com/listing/1671316836/rak-wireless-wisblock-mini-box-for){ target=_blank } &middot; [3D printable](https://www.yeggi.com/q/rak+wisblock/){ target=_blank } |
 | **Antenna guide** | [Meshtastic antenna docs](https://meshtastic.org/docs/hardware/antennas/){ target=_blank } |
 | **Build guide** | [RAK WisBlock devices on Meshtastic docs](https://meshtastic.org/docs/hardware/devices/rak/){ target=_blank } |
 
+#### Why add a 1W booster?
+
+The default LoRa radio on most handhelds and starter kits transmits around **22 dBm (~160 mW)** — and in the US/AU 915 MHz band, regulation caps a stock node well under a watt. A 1W booster module pushes that to **30 dBm = 1000 mW**, roughly **6× the radiated power** of a stock node.
+
+Because free-space range scales with the square root of power, **~6× the power gets you roughly 2–2.5× usable range** in the real world (more in clean line-of-sight, less through bodies and trees).
+
+At the Forest specifically, this is the difference between **in-mesh and off-mesh** for venue-fringe campers — camp-to-stage hops can stretch 0.5–1.5 miles with bodies, RVs, and tree cover in the way. A 1W node + a decent whip + a few feet of elevation (totem, pole, roof of a van) is the high-leverage stack.
+
+The KDHD Stuff scratch-build walkthrough is a great reference if you want to see a WisBlock + booster + solar repeater built end-to-end: [Scratch Build Repeater for Meshtastic and MeshCore](https://youtu.be/97d0KVdXgGQ){ target=_blank } (~50 min, parts list in the description).
+
+If you don't want to assemble anything, **skip to the [WisMesh Station](#rak-wismesh-station-plug-and-play-1w) below** — same 1W output, plug-and-play.
+
 ---
 
-### LILYGO TTGO T-Beam
+### RAK WisMesh Station (plug-and-play 1W)
 
-Cheaper than a pre-built, classic DIY option. Pairs well with an 18650 battery.
-
-![How to identify your T-Beam model — NEO-6M uses SMA antenna connector, NEO-M8N uses u.FL connector, model number printed on the GPS module](../assets/img/advanced/t-beam-models.jpg){ .ef-advanced-img }
+The plug-and-play 1W camp node — same power class as the WisBlock + booster build above, but assembled, configured, and ready to run out of the box. If "spend a Sunday soldering" sounds like a chore, this is the easy button.
 
 |  |  |
 |:--|:--|
-| **Pros** | Cheap &middot; Customizable with extras (bigger battery, wifi, etc.) |
-| **Cons** | Requires time and patience &middot; Needs a case and 18650 battery |
-| **Variants** | T-Beam with M8N GPS &middot; T-Beam with M8N + SX1262 (better radio chip — get this one) |
-| **Where to buy** | [AliExpress (international)](https://www.aliexpress.com/item/4001287221970.html){ target=_blank } &middot; [Rokland (US)](https://store.rokland.com/products/lilygo-t-beam-v1-1-neo-m8n-gnss-ipex-lora-sx1262-915mhz-wireless-module-wifi-bluetooth-board-q215){ target=_blank } |
-| **Cases** | [Etsy NEO-6M case](https://www.etsy.com/listing/1170859229/t-beam-case-neo-6m-for-meshtastic){ target=_blank } &middot; [Etsy NEO-M8N case](https://www.etsy.com/listing/1173559418/t-beam-case-neo-m8n-for-meshtastic){ target=_blank } &middot; [Thingiverse 3D prints](https://www.thingiverse.com/search?q=ttgo+t-beam){ target=_blank } |
-| **Batteries** | [Sanyo NCR18650GA 3450mAh 10A — via Rokland](https://store.rokland.com/products/sanyo-ncr18650ga-3450mah-10a-battery-lilygo-ttgo-meshtastic-t-beam){ target=_blank } |
-| **Setup video** | [LILYGO T-Beam V1.1 setup on YouTube](https://www.youtube.com/watch?v=mj8yAi7D688){ target=_blank } |
+| **Pros** | True 1W (30 dBm) on the HP variant &middot; Pre-installed meshtasticd, MQTT broker, Node-RED, Grafana &middot; Full metal enclosure &middot; Runs on a Raspberry Pi 4 — wifi + ethernet + USB built-in &middot; Includes LoRa antenna, GPS antenna, power adapter, 16GB SD card |
+| **Cons** | More expensive than rolling your own (~$170+) &middot; AC powered (no built-in battery — wire it to a USB battery bank or AC at camp) &middot; Heavier than a handheld (~630g) |
+| **Variants** | **WisMesh Station** (RAK8622) — 22 dBm / ~160 mW, ~$169.99 &middot; **WisMesh Station HP** (RAK8623) — 30 dBm / 1W, ~$175.99 (get this one if you want the range boost) |
+| **What's in the box** | WisMesh Station unit &middot; LoRa antenna &middot; GPS antenna &middot; Power adapter &middot; 16GB SD card |
+| **Where to buy** | [RAK Wireless store](https://store.rakwireless.com/products/meshtastic-gateway-raspberry-pi-wismesh-station){ target=_blank } |
+
+**Why this is the easiest path to 1W coverage**: every other 1W option on this page either ships as a board you have to case + power + antenna yourself (Station G2, Heltec V4), or requires you to swap radio modules and source parts (WisBlock + booster). The WisMesh Station HP arrives assembled, in a metal enclosure, with antennas in the box and the software pre-flashed. Plug in USB-C, screw on the antenna, you're a 1W node.
 
 ---
 
@@ -128,13 +138,13 @@ A T-Echo mounted to a [3D-printed bracket](https://makerworld.com/en/models/5194
 
 A Station G2 powered via USB-C, with an SMA cable running out to a roof-mounted antenna on a vehicle. Functions as a mobile base station that follows you to and from camp.
 
-### Test Setup (T-Echo + T-Beam)
+### Test Setup (T-Echo + 1W Base)
 
-1× T-Echo handheld + 1× T-Beam base station = easily 1+ mile range hip-height. Dead spots at sharp elevation drops or through dense tree cover. Two-node minimum to start seeing real benefit.
+1× T-Echo handheld + 1× 1W base station (Station G2, Heltec V4, or a WisBlock with booster) = easily 1+ mile range hip-height. Dead spots at sharp elevation drops or through dense tree cover. Two-node minimum to start seeing real benefit.
 
 ![Tall fiberglass antenna pole erected in a backyard garden serving as the test base station](../assets/img/advanced/test-setup-pole.jpg){ .ef-advanced-img }
 
-![Screenshot of the Meshtastic app showing the portable T-Beam node "Prize Cart Router" mapped 0.955 miles away from base — clean signal through suburban terrain](../assets/img/advanced/test-setup-range-map.jpg){ .ef-advanced-img }
+![Screenshot of the Meshtastic app showing a portable node mapped 0.955 miles away from base — clean signal through suburban terrain](../assets/img/advanced/test-setup-range-map.jpg){ .ef-advanced-img }
 
 ---
 
