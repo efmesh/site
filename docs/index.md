@@ -197,7 +197,7 @@ hide:
 <p class="ef-phone-caption">Real chats from your squad &mdash; no cell tower needed.</p>
 </div>
 
-<div class="ef-hero__text" markdown>
+<div class="ef-hero__intro" markdown>
 
 <h1>Find Your Squad at Electric Forest — Without Cell Service.</h1>
 
@@ -207,7 +207,7 @@ This is the community guide for using it at Electric Forest.
 
 </div>
 
-</div>
+<div class="ef-hero__cta" markdown>
 
 <div class="stats-row" markdown>
 <div class="stat"><span class="stat-num">120+</span><span class="stat-label">nodes last year</span></div>
@@ -215,12 +215,16 @@ This is the community guide for using it at Electric Forest.
 <div class="stat"><span class="stat-num">4</span><span class="stat-label">days of Forest</span></div>
 </div>
 
-<span style="display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; margin: 1.5rem 0;">
+<span class="ef-cta-buttons">
     [:fontawesome-brands-discord: Join EF Meshtastic on Discord](https://discord.com/channels/260909643574935553/1111482301730271232){ .md-button .md-button--primary target="_blank"}
     [:material-information-outline: New here? Start with How to Connect](docs/how-to-connect.md){ .md-button }
 </span>
 
 *Not in the Discord? Join at [discord.gg/electricforest](https://discord.gg/electricforest){ target=_blank } first.*{ .discord-helper }
+
+</div>
+
+</div>
 
 ---
 

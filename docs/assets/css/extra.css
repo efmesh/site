@@ -842,52 +842,94 @@
 }
 
 /* ---------------------------------------------------------------------------
-   Home hero layout (v1.11.0)
-   The home hero wraps the phone-chat animation + the intro headline/copy in
-   `.ef-hero`. In the DOM the phone (.ef-phone-anim) comes FIRST and the text
-   (.ef-hero__text) second so that on desktop we can `float: right` the phone
-   and let the headline + copy wrap down its LEFT side (a true text-wrap, not a
-   rigid two-column grid — copy flows under the phone when it runs long).
+   Home hero layout (v1.12.0 — stats/CTA pulled into the left column + balance)
+   The home hero now groups everything that used to live below the hero (the
+   stats row, the CTA buttons, and the Discord helper sub-text) INTO the left
+   text column alongside the headline + intro. Desktop reads as a true two-
+   column layout: LEFT = headline → intro → stats → CTA → sub-text, RIGHT =
+   the phone-chat animation, vertically centered against the (taller) left
+   stack so neither column is pinned to the top with a hole beneath it.
 
-   Mobile (< 76.25em): zero visual change vs. the old stacked layout. `.ef-hero`
-   is a column flexbox that re-orders the text ABOVE the phone, so the rendered
-   order (headline → copy → phone, both full-width, phone auto-centered) is
-   byte-identical in effect to the previous source order. No float on mobile.
+   DOM (flat, three children of .ef-hero, in source/mobile order):
+     1. .ef-hero__intro  — headline + intro copy
+     2. .ef-phone-anim   — the phone animation (+ caption)
+     3. .ef-hero__cta    — stats row + CTA buttons + Discord helper
+
+   Mobile (< 76.25em): .ef-hero is `display: contents`, so it dissolves and the
+   three children flow in plain document order: intro → phone → cta. That is
+   byte-identical in effect to the previous stacked layout (headline → copy →
+   phone → caption → stats → buttons → helper). No grid, no reordering, no float
+   on mobile.
+
+   Desktop (>= 76.25em): CSS Grid with a 2-row x 2-col template. The intro and
+   cta blocks occupy the left column (row 1 + row 2); the phone spans BOTH rows
+   in the right column and is vertically centered (`align-self: center` +
+   `align-items: center`), giving the balance Will asked for. ~60/40 split via a
+   flexible left column and a fixed-width phone column. The phone's own internal
+   sizing/keyframes are untouched (they key off the phone element's own width).
 
    Breakpoint mirrors Material's own drawer<->sidebar boundary (76.1875em /
    76.25em), matching the convention used by the sidebar fix above. */
 .ef-hero {
-  display: flex;
-  flex-direction: column;
+  display: contents;
 }
-.ef-hero > .ef-phone-anim { order: 2; }
-.ef-hero > .ef-hero__text { order: 1; }
 
 @media screen and (min-width: 76.25em) {
-  /* Desktop: drop the flex column so normal block flow + float take over. */
   .ef-hero {
-    display: block;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 260px;
+    /* One content-sized row per left block, no row-span height distribution
+       games: the intro nestles at the BOTTOM of the top row and the cta at the
+       TOP of the bottom row, so the two left blocks meet at the grid's vertical
+       midpoint with their own tight, even rhythm (no gap injected between
+       them). The phone spans both rows and is vertically centered on that same
+       midpoint. The phone width is trimmed so its height ~= the left stack's,
+       keeping the centered overhang small and even top & bottom — the balanced
+       look Will asked for, with the headline sitting comfortably (not pinned)
+       under the nav. */
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "intro phone"
+      "cta   phone";
+    align-content: center;
+    column-gap: 2.5rem;
+    margin: 0.6rem 0 1.5rem 0;
   }
-  /* Phone floats to the right; headline + copy wrap down its left side. The
-     fixed max-width keeps the left-hand text column comfortably readable, and
-     the float doesn't touch the phone's internal sizing/keyframes (those key
-     off the phone's own width, which is unchanged). */
-  .ef-hero > .ef-phone-anim {
-    float: right;
-    width: 280px;
-    max-width: 40%;
-    margin: 0.2rem 0 1rem 2rem;
-  }
-  .ef-hero > .ef-hero__text {
-    /* Text is a normal in-flow block; it naturally wraps around the float. */
+  .ef-hero > .ef-hero__intro {
+    grid-area: intro;
+    align-self: end;
     overflow: visible;
   }
-  /* Clear the float so the stats row / buttons / first section below the hero
-     don't ride up beside a tall phone in an odd way. */
-  .ef-hero::after {
-    content: "";
-    display: block;
-    clear: both;
+  .ef-hero > .ef-hero__cta {
+    grid-area: cta;
+    align-self: start;
+  }
+  /* Phone: right column, spans both rows, vertically centered. Fixed 230px so
+     the left column flexes to ~60% (the ~60/40 split) and the phone height
+     stays close to the left stack's, minimizing the centered overhang. */
+  .ef-hero > .ef-phone-anim {
+    grid-area: phone;
+    align-self: center;
+    width: 230px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+
+/* CTA button row — was an inline-styled <span>; now a class so the left-column
+   context can left-bias it on desktop while staying centered on mobile. */
+.ef-cta-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 1.5rem 0;
+}
+@media screen and (min-width: 76.25em) {
+  .ef-cta-buttons {
+    justify-content: flex-start;
+    margin: 1.4rem 0 0.6rem 0;
   }
 }
 
@@ -900,6 +942,20 @@
   flex-wrap: wrap;
   margin: 1.4rem auto 1.8rem auto;
   max-width: 720px;
+}
+/* Desktop: stats live in the left hero column — left-align + drop the auto
+   centering so they sit under the intro copy, and tighten the gap between
+   them and the CTA below for an even vertical rhythm. */
+@media screen and (min-width: 76.25em) {
+  .ef-hero__cta .stats-row {
+    justify-content: flex-start;
+    margin: 0 0 0.4rem 0;
+    max-width: none;
+  }
+  .ef-hero__cta .stats-row .stat {
+    flex: 0 0 auto;
+    min-width: 0;
+  }
 }
 .stats-row .stat {
   display: flex;
@@ -961,4 +1017,12 @@
   opacity: 0.8;
   margin-top: -0.5rem;
   margin-bottom: 1rem;
+}
+/* Desktop: left-align the helper under the left-biased CTA buttons. */
+@media screen and (min-width: 76.25em) {
+  .ef-hero__cta .discord-helper {
+    text-align: left;
+    margin-top: 0.2rem;
+    margin-bottom: 0;
+  }
 }
