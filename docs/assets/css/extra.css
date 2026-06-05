@@ -928,7 +928,12 @@
 }
 @media screen and (min-width: 76.25em) {
   .ef-cta-buttons {
-    justify-content: flex-start;
+    /* Will: center the Join-the-Discord + New-Here buttons within their
+       section. Centered (not left-biased) so the buttons sit in the middle of
+       the left hero column; stats + helper below are centered to match so the
+       whole cta block reads as one coherent, centered section (see notes by
+       .stats-row and .discord-helper). */
+    justify-content: center;
     margin: 1.4rem 0 0.6rem 0;
   }
 }
@@ -948,7 +953,9 @@
    them and the CTA below for an even vertical rhythm. */
 @media screen and (min-width: 76.25em) {
   .ef-hero__cta .stats-row {
-    justify-content: flex-start;
+    /* Centered to match the centered CTA buttons below, so the left-column
+       cta block reads as one coherent centered section (not lopsided). */
+    justify-content: center;
     margin: 0 0 0.4rem 0;
     max-width: none;
   }
@@ -1021,7 +1028,8 @@
 /* Desktop: left-align the helper under the left-biased CTA buttons. */
 @media screen and (min-width: 76.25em) {
   .ef-hero__cta .discord-helper {
-    text-align: left;
+    /* Centered under the now-centered CTA buttons for a coherent block. */
+    text-align: center;
     margin-top: 0.2rem;
     margin-bottom: 0;
   }
