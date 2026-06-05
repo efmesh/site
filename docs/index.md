@@ -41,11 +41,7 @@ hide:
 }
 </style>
 
-<h1>Find Your Squad at Electric Forest — Without Cell Service.</h1>
-
-[Meshtastic](https://meshtastic.org){ target=_blank } is a tiny radio that clips to your pack and lets you text your friends across the Forest **even when cell service is dead**. No subscription. No SIM card. No monthly fee. About $30 to get on the mesh.
-
-This is the community guide for using it at Electric Forest.
+<div class="ef-hero" markdown>
 
 <div class="ef-phone-anim" aria-hidden="true">
   <div class="ef-phone">
@@ -175,6 +171,18 @@ This is the community guide for using it at Electric Forest.
     </div>
   </div>
   <p class="ef-phone-caption">Real chats from your squad &mdash; no cell tower needed.</p>
+</div>
+
+<div class="ef-hero__text" markdown>
+
+<h1>Find Your Squad at Electric Forest — Without Cell Service.</h1>
+
+[Meshtastic](https://meshtastic.org){ target=_blank } is a tiny radio that clips to your pack and lets you text your friends across the Forest **even when cell service is dead**. No subscription. No SIM card. No monthly fee. About $30 to get on the mesh.
+
+This is the community guide for using it at Electric Forest.
+
+</div>
+
 </div>
 
 <div class="stats-row" markdown>

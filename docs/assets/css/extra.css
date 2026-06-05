@@ -841,6 +841,56 @@
   .ef-phone-anim { max-width: 280px; }
 }
 
+/* ---------------------------------------------------------------------------
+   Home hero layout (v1.11.0)
+   The home hero wraps the phone-chat animation + the intro headline/copy in
+   `.ef-hero`. In the DOM the phone (.ef-phone-anim) comes FIRST and the text
+   (.ef-hero__text) second so that on desktop we can `float: right` the phone
+   and let the headline + copy wrap down its LEFT side (a true text-wrap, not a
+   rigid two-column grid — copy flows under the phone when it runs long).
+
+   Mobile (< 76.25em): zero visual change vs. the old stacked layout. `.ef-hero`
+   is a column flexbox that re-orders the text ABOVE the phone, so the rendered
+   order (headline → copy → phone, both full-width, phone auto-centered) is
+   byte-identical in effect to the previous source order. No float on mobile.
+
+   Breakpoint mirrors Material's own drawer<->sidebar boundary (76.1875em /
+   76.25em), matching the convention used by the sidebar fix above. */
+.ef-hero {
+  display: flex;
+  flex-direction: column;
+}
+.ef-hero > .ef-phone-anim { order: 2; }
+.ef-hero > .ef-hero__text { order: 1; }
+
+@media screen and (min-width: 76.25em) {
+  /* Desktop: drop the flex column so normal block flow + float take over. */
+  .ef-hero {
+    display: block;
+  }
+  /* Phone floats to the right; headline + copy wrap down its left side. The
+     fixed max-width keeps the left-hand text column comfortably readable, and
+     the float doesn't touch the phone's internal sizing/keyframes (those key
+     off the phone's own width, which is unchanged). */
+  .ef-hero > .ef-phone-anim {
+    float: right;
+    width: 280px;
+    max-width: 40%;
+    margin: 0.2rem 0 1rem 2rem;
+  }
+  .ef-hero > .ef-hero__text {
+    /* Text is a normal in-flow block; it naturally wraps around the float. */
+    overflow: visible;
+  }
+  /* Clear the float so the stats row / buttons / first section below the hero
+     don't ride up beside a tall phone in an odd way. */
+  .ef-hero::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
 /* Social-proof stats row */
 .stats-row {
   display: flex;
