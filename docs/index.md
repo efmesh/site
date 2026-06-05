@@ -19,8 +19,25 @@ hide:
 .md-nav--primary .md-nav__item--active > input#__toc {
   display: none !important;
 }
-.md-nav--primary .md-nav__item--active > a.md-nav__link {
-  display: flex !important;
+
+/* v1.10.1: The anchor-restore above was unscoped, so at the desktop breakpoint
+   (>=76.25em, where md-nav--primary becomes the left sidebar) it forced a lone,
+   redundant "Home" row into the sidebar — the Home tab is a leaf with no
+   children and its page TOC is hidden via `hide: [toc]`, so that anchor was the
+   only thing left, reading as a stray orphan item. Will reported it on desktop.
+   Fix: restore the active anchor ONLY inside the mobile drawer (where the row
+   is the meaningful active-page label), and on desktop hide it so the Home
+   tab's left sidebar collapses to empty. Breakpoint mirrors Material's own
+   drawer<->sidebar boundary. Home-only via this inline <style>. */
+@media screen and (max-width: 76.1875em) {
+  .md-nav--primary .md-nav__item--active > a.md-nav__link {
+    display: flex !important;
+  }
+}
+@media screen and (min-width: 76.25em) {
+  .md-nav--primary .md-nav__item--active > a.md-nav__link {
+    display: none !important;
+  }
 }
 </style>
 
