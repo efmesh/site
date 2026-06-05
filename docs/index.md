@@ -39,6 +39,30 @@ hide:
     display: none !important;
   }
 }
+
+/* v1.11.1: Centering follow-up to the 700eb4d sidebar fix. Hiding the stray
+   "Home" anchor above emptied the Home tab's left sidebar, but Material's
+   `.md-main__inner` is a flexbox and `.md-sidebar--primary` (12.1rem) is a
+   live flex sibling — an empty-but-present column still RESERVES its full
+   width, so the content column sat right of center on desktop. It also pushes
+   content over via `.md-sidebar--primary:not([hidden]) ~ .md-content >
+   .md-content__inner { margin-left: 1.2rem }` (that `:not([hidden])` still
+   matches us — we use display:none, not the [hidden] attribute). The secondary
+   ToC sidebar already collapses on Home via the `hidden` attribute (page sets
+   `hide: [toc]`), so only the PRIMARY column needs reclaiming. Fix, Home-only
+   via this inline <style> at the desktop breakpoint: drop the empty primary
+   sidebar out of flex flow and zero the now-orphaned content margin so the
+   content recenters in `.md-grid`. Sub-pages, the mobile drawer, the right
+   ToC, and the .ef-hero float (a266d43) are untouched — none key off these
+   exact selectors at this scope. */
+@media screen and (min-width: 76.25em) {
+  .md-sidebar--primary {
+    display: none !important;
+  }
+  .md-sidebar--primary:not([hidden]) ~ .md-content > .md-content__inner {
+    margin-left: 0 !important;
+  }
+}
 </style>
 
 <div class="ef-hero" markdown>
