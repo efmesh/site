@@ -87,6 +87,9 @@ For camp nodes, your antenna is **more important than the radio itself**. A $400
 - [ALFA 915 MHz 5dBi N-Type Outdoor](https://atlavox.com/products/antenna-for-meshtastic-915mhz-n-type-outdoor-7-5dbi-alfa-aoa-915-5acm){ target=_blank } — built for outdoor permanent mounts
 - [Rokland 5.8 dBi N-Male Omni Outdoor](https://store.rokland.com/collections/802-11ah-wi-fi-halow/products/5-8-dbi-n-male-omni-outdoor-915-mhz-antenna-large-profile-32-height-for-helium-rak-miner-2-nebra-indoor-bobcat){ target=_blank } — for permanent rooftop or pole mounts
 
+!!! warning "Beware fake ALFA 5dBi antennas"
+    The ALFA 915 MHz 5dBi is one of the most counterfeited antennas out there — Amazon and eBay are flooded with knock-offs that look identical but perform terribly (or are tuned to the wrong frequency entirely). **Only buy from a reputable source** like [Atlavox](https://atlavox.com/products/antenna-for-meshtastic-915mhz-n-type-outdoor-7-5dbi-alfa-aoa-915-5acm){ target=_blank } or directly from ALFA. A fake antenna will quietly tank your range and you'll never know why.
+
 **Cable tips:**
 
 - Use quality SMA or N-type cable

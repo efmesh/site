@@ -79,6 +79,25 @@ If you want a phone-shaped Meshtastic device with no extra parts to source, T-De
 
 ---
 
+## :material-radio-tower: Base Station Radios (run these at camp)
+
+A base station is a node you set up at camp and leave running all weekend — ideally mounted high with a good antenna so it extends the mesh for everyone around you. Unlike the handhelds above, these are built to stay put and stay powered.
+
+### PeakMesh (Etsy)
+
+Hand-built Meshtastic base station nodes from a maker on Etsy. A solid option if you want something assembled and ready to mount at camp rather than sourcing boards and enclosures yourself.
+
+|  |  |
+|:--|:--|
+| **Pros** | Pre-assembled, no soldering &middot; Built for stationary camp use &middot; Supports an external antenna for real range |
+| **Cons** | Build options and lead times vary — check the listing |
+| **Where to buy** | [PeakMesh on Etsy](https://www.etsy.com/shop/PeakMesh){ target=_blank } |
+
+!!! tip "Pair it with a good antenna and some height"
+    The radio matters less than where you mount it. Get the antenna up high and use a short, quality cable. See [Camp Nodes](camp-nodes.md) for the full rundown.
+
+---
+
 ## :material-tower-fire: Want to Help the Mesh? Build a Camp Node.
 
 Higher antenna = more range for everyone. If you've got camp infrastructure (a flag pole, a totem, a tall structure), you can host a node up high and dramatically extend the mesh for the whole community.
