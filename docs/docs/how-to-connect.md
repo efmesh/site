@@ -72,6 +72,19 @@ This is the easy way to load all the Forest-compatible settings to your radio at
 Open this link on the phone that's paired to your radio. It loads four channels — the Meshtastic default Primary, a `chgme-squad` placeholder for your squad (customize in Step 8), the public `forest-chat`, and `Weather` — all on the **Medium Range - Fast** preset.
 </div>
 
+!!! note "QR code not working? Enter the channels manually"
+    If the QR or link won't load, you can add each channel by hand in the Meshtastic app (**Channels → +**). Enter the name and paste the matching key below exactly as shown.
+
+    | Channel | Key | Notes |
+    |:--------|:----|:------|
+    | **Primary** | `AQ==` | This is the default Meshtastic public channel |
+    | **chgme-squad** | TBD | Your squad's private channel which you need to generate the key for |
+    | **forest-chat** | `oU03W9b8s0vpL0IjhBIIHZtuW/sHui3QDhmlaOLflkk=` | Community forest chat channel |
+    | **Weather** | `Ww==` | Weather updates channel |
+
+    !!! warning "Channel names must match exactly"
+        The channel name — including capitalization, spelling, and punctuation is just as important as the key. `forest-chat` and `Forest-Chat` are **not** the same channel. If anything is even slightly off, you won't be on the same channel as everyone else. Type the names exactly as shown above.
+
 !!! info "Stuck? Ask in Discord"
     Post in the [EF Meshtastic Discord thread](https://discord.com/channels/260909643574935553/1111482301730271232){ target=_blank } (not in the Discord? join at [discord.gg/electricforest](https://discord.gg/electricforest){ target=_blank } first) — someone in the community is usually around and happy to walk you through it on a quick voice chat.
 
