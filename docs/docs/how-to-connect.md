@@ -86,7 +86,7 @@ Open this link on the phone that's paired to your radio. It loads four channels 
         The channel name — including capitalization, spelling, and punctuation is just as important as the key. `forest-chat` and `Forest-Chat` are **not** the same channel. If anything is even slightly off, you won't be on the same channel as everyone else. Type the names exactly as shown above.
 
 !!! info "Stuck? Ask in Discord"
-    Post in the [EF Meshtastic Discord thread](https://discord.com/channels/260909643574935553/1111482301730271232){ target=_blank } (not in the Discord? join at [discord.gg/electricforest](https://discord.gg/electricforest){ target=_blank } first) — someone in the community is usually around and happy to walk you through it on a quick voice chat.
+    Post in the [EF Meshtastic Discord thread](https://discord.com/channels/260909643574935553/1514411058066882671){ target=_blank } (not in the Discord? join at [discord.gg/electricforest](https://discord.gg/electricforest){ target=_blank } first) — someone in the community is usually around and happy to walk you through it on a quick voice chat.
 
 ---
 
@@ -115,7 +115,7 @@ Here's exactly what to change. Anything not mentioned, leave alone.
 - Rebroadcast Mode: `ALL` *(leave it)*
 
 !!! warning "Do NOT set your role to Router or Repeater"
-    This is the **#1 way to break the Forest mesh for everyone**. Stick to `Client`. If you've got an awesome setup at camp and you want to help carry the network, message the [EF Discord](https://discord.com/channels/260909643574935553/1111482301730271232){ target=_blank } (not in the Discord? join at [discord.gg/electricforest](https://discord.gg/electricforest){ target=_blank } first) before changing this.
+    This is the **#1 way to break the Forest mesh for everyone**. Stick to `Client`. If you've got an awesome setup at camp and you want to help carry the network, message the [EF Discord](https://discord.com/channels/260909643574935553/1514411058066882671){ target=_blank } (not in the Discord? join at [discord.gg/electricforest](https://discord.gg/electricforest){ target=_blank } first) before changing this.
 
 ### Position
 
@@ -216,7 +216,7 @@ Send a "hello world" message in the squad channel. If you all see it, you're gol
 The EF Meshtastic crew lives in the official Electric Forest Discord. We're friendly, we love getting more people on the mesh, and there are no dumb questions.
 
 <span style="display: flex; justify-content: center; margin: 1.5rem 0;">
-    [:fontawesome-brands-discord: Get Help in the EF Discord](https://discord.com/channels/260909643574935553/1111482301730271232){ .md-button .md-button--primary target="_blank"}
+    [:fontawesome-brands-discord: Get Help in the EF Discord](https://discord.com/channels/260909643574935553/1514411058066882671){ .md-button .md-button--primary target="_blank"}
 </span>
 
 *Not in the Discord? Join at [discord.gg/electricforest](https://discord.gg/electricforest){ target=_blank } first.*{ .discord-helper }

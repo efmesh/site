@@ -147,7 +147,7 @@ Higher antenna = more range for everyone. If you've got camp infrastructure (a f
 Drop a message in the EF Discord Meshtastic thread — we're happy to talk through what fits your setup and budget.
 
 <span style="display: flex; justify-content: center; margin: 1.5rem 0;">
-    [:fontawesome-brands-discord: Ask the EF Discord](https://discord.com/channels/260909643574935553/1111482301730271232){ .md-button .md-button--primary target="_blank"}
+    [:fontawesome-brands-discord: Ask the EF Discord](https://discord.com/channels/260909643574935553/1514411058066882671){ .md-button .md-button--primary target="_blank"}
 </span>
 
 *Not in the Discord? Join at [discord.gg/electricforest](https://discord.gg/electricforest){ target=_blank } first.*{ .discord-helper }

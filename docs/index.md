@@ -216,7 +216,7 @@ This is the community guide for using it at Electric Forest.
 </div>
 
 <span class="ef-cta-buttons">
-    [:fontawesome-brands-discord: Join EF Meshtastic on Discord](https://discord.com/channels/260909643574935553/1111482301730271232){ .md-button .md-button--primary target="_blank"}
+    [:fontawesome-brands-discord: Join EF Meshtastic on Discord](https://discord.com/channels/260909643574935553/1514411058066882671){ .md-button .md-button--primary target="_blank"}
     [:material-information-outline: New here? Start with How to Connect](docs/how-to-connect.md){ .md-button }
 </span>
 
@@ -1413,7 +1413,7 @@ This is the community guide for using it at Electric Forest.
 The EF Meshtastic crew lives in the official Electric Forest Discord, in the dedicated Meshtastic thread. Setup questions, troubleshooting, "is my node working?" — drop in.
 
 <span style="display: flex; justify-content: center; margin: 1.5rem 0;">
-    [:fontawesome-brands-discord: Ask in the EF Discord Meshtastic Thread](https://discord.com/channels/260909643574935553/1111482301730271232){ .md-button .md-button--primary target="_blank"}
+    [:fontawesome-brands-discord: Ask in the EF Discord Meshtastic Thread](https://discord.com/channels/260909643574935553/1514411058066882671){ .md-button .md-button--primary target="_blank"}
 </span>
 
 *Not in the Discord? Join at [discord.gg/electricforest](https://discord.gg/electricforest){ target=_blank } first.*{ .discord-helper }

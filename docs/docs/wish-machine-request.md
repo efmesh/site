@@ -8,7 +8,7 @@ title: Wish Machine Request — Letter to Electric Forest
 
 This is a community-led open letter from Forest attendees to the staff of Electric Forest. We're asking for permission and support to expand Meshtastic infrastructure on-grounds — specifically, a single high-elevation repeater node at the **Observatory Stage** that would provide line-of-sight coverage across the entire Forest site.
 
-This letter is **not affiliated with or endorsed by Electric Forest, Insomniac, or Madison House Presents**. It is sent on behalf of attendees organized through the [EF Meshtastic Discord thread](https://discord.com/channels/260909643574935553/1111482301730271232){ target=_blank } (not in the Discord? join at [discord.gg/electricforest](https://discord.gg/electricforest){ target=_blank } first) and represents a community request — not an official partnership.
+This letter is **not affiliated with or endorsed by Electric Forest, Insomniac, or Madison House Presents**. It is sent on behalf of attendees organized through the [EF Meshtastic Discord thread](https://discord.com/channels/260909643574935553/1514411058066882671){ target=_blank } (not in the Discord? join at [discord.gg/electricforest](https://discord.gg/electricforest){ target=_blank } first) and represents a community request — not an official partnership.
 
 ---
 
@@ -65,7 +65,7 @@ We bring our own hardware. We handle setup and tear-down. We follow whatever pla
 - **Spread the word.** Share this page with your Forest friends.
 
 <span style="display: flex; justify-content: center; margin: 1.5rem 0;">
-    [:fontawesome-brands-discord: Join the EF Meshtastic Discord](https://discord.com/channels/260909643574935553/1111482301730271232){ .md-button .md-button--primary target="_blank"}
+    [:fontawesome-brands-discord: Join the EF Meshtastic Discord](https://discord.com/channels/260909643574935553/1514411058066882671){ .md-button .md-button--primary target="_blank"}
     [:material-tower-fire: Camp Nodes Guide](camp-nodes.md){ .md-button }
     [:material-home: Back to Home](../index.md){ .md-button }
 </span>

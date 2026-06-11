@@ -6,7 +6,7 @@ title: Troubleshooting
 
 # :material-help-circle: Troubleshooting
 
-Common gotchas and fixes. Still stuck after this? Drop in the [EF Discord](https://discord.com/channels/260909643574935553/1111482301730271232){ target=_blank } (not in the Discord? join at [discord.gg/electricforest](https://discord.gg/electricforest){ target=_blank } first) — we're happy to help.
+Common gotchas and fixes. Still stuck after this? Drop in the [EF Discord](https://discord.com/channels/260909643574935553/1514411058066882671){ target=_blank } (not in the Discord? join at [discord.gg/electricforest](https://discord.gg/electricforest){ target=_blank } first) — we're happy to help.
 
 ---
 
@@ -81,7 +81,7 @@ If you really borked things, factory-reset the radio (long-press button or via t
 
 Mesh propagation depends on density. **Before** the festival kicks off, the mesh is sparse. As more people arrive and turn on radios, the network grows organically. Don't panic if Wednesday afternoon is quiet — by Friday night it'll be lively.
 
-Drop into the [EF Discord Meshtastic thread](https://discord.com/channels/260909643574935553/1111482301730271232){ target=_blank } (not in the Discord? join at [discord.gg/electricforest](https://discord.gg/electricforest){ target=_blank } first) to find folks who are already on-grounds.
+Drop into the [EF Discord Meshtastic thread](https://discord.com/channels/260909643574935553/1514411058066882671){ target=_blank } (not in the Discord? join at [discord.gg/electricforest](https://discord.gg/electricforest){ target=_blank } first) to find folks who are already on-grounds.
 
 ---
 
@@ -105,7 +105,7 @@ Drop into the [EF Discord Meshtastic thread](https://discord.com/channels/260909
 ## Still Stuck?
 
 <span style="display: flex; justify-content: center; margin: 1.5rem 0;">
-    [:fontawesome-brands-discord: Ask in the EF Discord](https://discord.com/channels/260909643574935553/1111482301730271232){ .md-button .md-button--primary target="_blank"}
+    [:fontawesome-brands-discord: Ask in the EF Discord](https://discord.com/channels/260909643574935553/1514411058066882671){ .md-button .md-button--primary target="_blank"}
 </span>
 
 *Not in the Discord? Join at [discord.gg/electricforest](https://discord.gg/electricforest){ target=_blank } first.*{ .discord-helper }

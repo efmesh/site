@@ -32,7 +32,7 @@ mkdocs build --strict
 ## Contributing
 
 Open a pull request, or drop suggestions in the
-[EF Meshtastic Discord thread](https://discord.com/channels/260909643574935553/1111482301730271232).
+[EF Meshtastic Discord thread](https://discord.com/channels/260909643574935553/1514411058066882671).
 
 ## License
 
