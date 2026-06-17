@@ -69,21 +69,35 @@ This is the easy way to load all the Forest-compatible settings to your radio at
 
 *Or scan this from a second phone to bring it into the mesh.*
 
-Open this link on the phone that's paired to your radio. It loads four channels — the Meshtastic default Primary, a `chgme-squad` placeholder for your squad (customize in Step 8), the public `forest-chat`, and `Weather` — all on the **Medium Range - Fast** preset.
+Open this link on the phone that's paired to your radio. It loads four channels — the Meshtastic default primary channel (left **unnamed** on purpose — see the note below), a `chgme-squad` placeholder for your squad (customize in Step 8), the public `forest-chat`, and `Weather` — all on the **Medium Range - Fast** preset.
 </div>
 
 !!! note "QR code not working? Enter the channels manually"
     If the QR or link won't load, you can add each channel by hand in the Meshtastic app (**Channels → +**). Enter the name and paste the matching key below exactly as shown.
 
-    | Channel | Key | Notes |
-    |:--------|:----|:------|
-    | **Primary** | `AQ==` | This is the default Meshtastic public channel |
-    | **chgme-squad** | TBD | Your squad's private channel which you need to generate the key for |
-    | **forest-chat** | `oU03W9b8s0vpL0IjhBIIHZtuW/sHui3QDhmlaOLflkk=` | Community forest chat channel |
-    | **Weather** | `Ww==` | Weather updates channel |
+    | Channel | Name | Key | Notes |
+    |:--------|:-----|:----|:------|
+    | **Primary (channel 0)** | *leave the name **blank*** | `AQ==` | The default Meshtastic public channel. See the note below about naming. |
+    | **chgme-squad** | `chgme-squad` (then rename to your crew) | TBD | Your squad's private channel which you need to generate the key for |
+    | **forest-chat** | `forest-chat` | `oU03W9b8s0vpL0IjhBIIHZtuW/sHui3QDhmlaOLflkk=` | Community forest chat channel |
+    | **Weather** | `Weather` | `Ww==` | Weather updates channel |
 
     !!! warning "Channel names must match exactly"
-        The channel name — including capitalization, spelling, and punctuation is just as important as the key. `forest-chat` and `Forest-Chat` are **not** the same channel. If anything is even slightly off, you won't be on the same channel as everyone else. Type the names exactly as shown above.
+        The channel name — including capitalization, spelling, and punctuation is just as important as the key. `forest-chat` and `Forest-Chat` are **not** the same channel. Two channels with different names will **not** see each other, even if they share the same key. If anything is even slightly off, you won't be on the same channel as everyone else. Type the names exactly as shown above.
+
+    !!! danger "Naming the primary channel: leave it BLANK"
+        For the **primary channel (channel 0)**, the right move is to **leave the name field blank** — exactly like the QR does. A blank primary is what everyone interoperates on.
+
+        Here's the part that trips people up. When the name is blank, the two apps *display* a label for you, and they don't agree:
+
+        - **iOS** shows it as **"Primary channel"**
+        - **Android** shows it as **"MediumFast"**
+
+        Those are just display labels for the same blank/default channel — they interoperate fine. The blank name is what matters, **not** the label your phone draws.
+
+        - ✅ **Recommended:** leave the name blank.
+        - ✅ If you insist on typing a name, type exactly **`MediumFast`** (no space, exact capitalization) — this is what Android shows, so it stays compatible.
+        - ❌ **Do NOT** type **`Primary`** or **`Primary Channel`**. Those are *not* the channel name — they're just what iOS draws on top of a blank one. Typing them gives your channel a real, non-blank name that will **not** connect to the rest of the Forest mesh.
 
 !!! info "Stuck? Ask in Discord"
     Post in the [EF Meshtastic Discord thread](https://discord.com/channels/260909643574935553/1514411058066882671){ target=_blank } (not in the Discord? join at [discord.gg/electricforest](https://discord.gg/electricforest){ target=_blank } first) — someone in the community is usually around and happy to walk you through it on a quick voice chat.
@@ -155,10 +169,10 @@ Hit **Save** in the app. Your radio **will reboot every time you save**. Wait fo
 
 You should now see four channels in the Channels tab:
 
-1. **Primary Channel** — leave it alone, this is the default Meshtastic channel
+1. **The primary channel (channel 0)** — leave it alone, this is the default Meshtastic channel. It has **no name set**, so your phone shows you an auto-generated label: **iOS displays "Primary channel"**, **Android displays "MediumFast"**. Both are the same blank/default channel and they interoperate fine — don't "fix" the label by typing a name.
 2. **chgme-squad** — placeholder for your squad (you'll customize in Step 8)
 3. **forest-chat** — public EF community chat — leave it alone
-4. **Weather** — posts the current weather every hour and a forecast at the beginning of every day. Major weather warnings go to the Primary channel.
+4. **Weather** — posts the current weather every hour and a forecast at the beginning of every day. Major weather warnings go to the primary channel.
 
 ---
 
