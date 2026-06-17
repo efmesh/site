@@ -24,7 +24,7 @@ Unlike some Meshtastic communities, the EF community shares its channel settings
 
 *Or scan this from a second phone to bring it into the mesh.*
 
-This loads four channels on the **Medium Range - Fast** preset: the Meshtastic default `Primary`, a `chgme-squad` placeholder for your squad (you'll customize), the public `forest-chat`, and the `Weather` channel.
+This loads four channels on the **Medium Range - Fast** preset: the Meshtastic default primary channel (left **unnamed** — see [the naming note below](#channel-0-primary)), a `chgme-squad` placeholder for your squad (you'll customize), the public `forest-chat`, and the `Weather` channel.
 </div>
 
 ---
@@ -35,7 +35,7 @@ These are the PSKs (pre-shared keys) for each EF Mesh channel. If you scanned th
 
 | Channel | Name | Key |
 |:--|:--|:--|
-| 0 | Primary (Meshtastic default) | `AQ==` |
+| 0 | *(blank — Meshtastic default; [see naming note](#channel-0-primary))* | `AQ==` |
 | 1 | Your Squad | *[generate your own](#channel-1-your-squad)* |
 | 2 | forest-chat | `oU03W9b8s0vpL0IjhBIIHZtuW/sHui3QDhmlaOLflkk=` |
 | 3 | Weather | `Ww==` |
@@ -62,13 +62,22 @@ These are channel PSKs, not device keys — they're already embedded in the publ
 
 | Setting | Value | Notes |
 |:--|:--|:--|
-| Name | *(leave default)* | This is the Meshtastic-wide default channel |
+| Name | *(leave **blank**)* | This is the Meshtastic-wide default channel. Leave the name field empty — see the naming note below. |
 | Key | `AQ==` | Default Meshtastic key, leave as-is |
-| Channel Role | `Primary` | Don't change |
+| Channel Role | `Primary` | Don't change. (This is the channel *role* field, not the name — it's fine that it says "Primary" here.) |
 | **Position** | `Disabled` | **Important** — see note below |
 | MQTT Uplink / Downlink | `Disabled` | Don't change |
 
 **Encryption Key:** `AQ==`
+
+!!! danger "Leave the primary channel's NAME blank — don't type 'Primary'"
+    Channels with different *names* will not see each other, even on the same key. The compatible primary is the one with a **blank name** (that's exactly what the EF QR loads).
+
+    With a blank name, each app auto-displays a label and they don't match: **iOS shows "Primary channel"**, **Android shows "MediumFast"**. Same blank/default channel, different label — they interoperate fine.
+
+    - ✅ **Recommended:** leave the name blank.
+    - ✅ If you must type a name, type exactly **`MediumFast`** (no space, exact caps) — matches Android's label and stays compatible.
+    - ❌ Do **not** type **`Primary`** or **`Primary Channel`** — those are just iOS's display label, not the channel name. Typing them gives the channel a real name that won't connect to the Forest mesh.
 
 !!! info "Why turn off position on Channel 0?"
     On Meshtastic firmware 2.7+, your radio shares your GPS position from whatever channel is **first in the list**. By disabling position on Channel 0 (the public default), your precise location only goes to your **squad channel** — not the world.
