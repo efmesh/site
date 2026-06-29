@@ -210,7 +210,7 @@ This is the community guide for using it at Electric Forest.
 <div class="ef-hero__cta" markdown>
 
 <div class="stats-row" markdown>
-<div class="stat"><span class="stat-num">120+</span><span class="stat-label">nodes last year</span></div>
+<div class="stat"><span class="stat-num">400+</span><span class="stat-label">nodes last year</span></div>
 <div class="stat"><span class="stat-num">15,000+</span><span class="stat-label">messages last year</span></div>
 <div class="stat"><span class="stat-num">4</span><span class="stat-label">days of Forest</span></div>
 </div>
