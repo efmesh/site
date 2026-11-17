@@ -6,7 +6,7 @@ title: Advanced Options
 
 # :material-tools: Advanced Options
 
-For folks who want to roll their own hardware, push more power, or experiment with mesh-monitoring software. **Most people don't need this.** A WisMesh Tag or T-Echo and you're set for the Forest.
+For folks who want to roll their own hardware, push more power, or experiment with mesh-monitoring software. **Most people don't need this.** A [MeshTracker X1](recommended-hardware.md) and you're set for the Forest.
 
 ---
 

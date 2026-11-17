@@ -35,7 +35,7 @@ A few things to check:
 - **Give it time.** The mesh takes a few minutes to "settle" and find optimal paths. Be patient on a fresh setup.
 - **Recheck your settings.** Make sure they actually saved — your radio might have been disconnected from the app when you hit Save. Confirm by reopening the settings.
 - **Drive around.** If you're testing at home, drive a few blocks and see what nodes pop up. Stationary at home you might just be in a dead spot.
-- **Get a second node.** Two-node testing is the minimum to actually verify your setup. Buy a cheap second WisMesh Tag and have a friend take it for a walk.
+- **Get a second node.** Two-node testing is the minimum to actually verify your setup. Get a cheap second node (a WisMesh Tag or T-1000-E works) and have a friend take it for a walk.
 
 ---
 

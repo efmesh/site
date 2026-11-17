@@ -6,101 +6,62 @@ title: Camp Nodes
 
 # :material-tower-fire: Setting Up a Camp Node
 
-Want to go big? A high-up node at your camp helps everyone — especially folks with smaller, less-powerful handhelds. **Height is might.** The higher you can mount your antenna, the more of the Forest gets reliable mesh coverage.
+A camp node is a solar radio you mount up high at camp and leave running all weekend. It helps everyone around you, especially people on small handhelds. **Height is might:** the higher it goes, the more of the Forest it covers.
 
-!!! warning "Stick to Client role unless you've been told otherwise"
-    Even if your node is up high and powered all weekend, **do not set it to Repeater or Router** unless someone in the [EF Discord](https://discord.com/channels/260909643574935553/1514411058066882671){ target=_blank } (not in the Discord? join at [discord.gg/electricforest](https://discord.gg/electricforest){ target=_blank } first) has explicitly given you the OK. Misconfigured Router/Repeater nodes break the mesh for the entire Forest. Default `Client` mode still helps a ton at elevation.
-
----
-
-## Pre-Built Options (Easy Mode)
-
-Want to plug-and-play? Here are pre-built nodes that work well as camp infrastructure. No soldering, no firmware drama.
-
-### SenseCAP Solar Node P1 Pro
-
-Self-contained solar node. Plant it, point the panel at the sky, walk away for the weekend.
-
-|  |  |
-|:--|:--|
-| **Pros** | Built-in solar panel + battery &middot; Built-in GPS &middot; Panel adjustable independently from antenna &middot; Reasonably priced |
-| **Cons** | No wifi |
-| **Where to buy** | [Seeed Studio (official)](https://www.seeedstudio.com/SenseCAP-Solar-Node-P1-Pro-for-Meshtastic-LoRa-p-6412.html){ target=_blank } |
+!!! warning "Leave it on the Client role"
+    Even if your node is up high and running all weekend, **do not set it to Repeater or Router** unless someone in the [EF Discord](https://discord.com/channels/260909643574935553/1514411058066882671){ target=_blank } (not in the Discord? join at [discord.gg/electricforest](https://discord.gg/electricforest){ target=_blank } first) has told you it's OK. Misconfigured Router or Repeater nodes break the mesh for the whole Forest. The default `Client` role still helps a ton when it's mounted high.
 
 ---
 
-### WisMesh Repeater Mini
+## :material-star: Our Pick: PeakMesh High-Power Solar Node
 
-Discreet enough to stash on top of a tall structure without drawing attention. Lots of mounting options including magnets.
+PeakMesh makes solar Meshtastic nodes in the US that come **assembled and tested**. Charge it, screw on the antenna, mount it up high, and leave it for the weekend. The **High Power** version has a 1-watt radio, so it reaches much further than a regular node.
 
-|  |  |
-|:--|:--|
-| **Pros** | Looks unassuming (good for unsupervised mounts) &middot; Tons of mounting options including magnets &middot; Built-in solar + battery &middot; Built-in GPS &middot; Cheap |
-| **Cons** | No wifi &middot; Solar panel not adjustable |
-| **Where to buy** | [RAKwireless](https://store.rakwireless.com/products/wismesh-meshtastic-solar-repeater-mini){ target=_blank } |
+!!! tip "When you order, pick these options"
+    - **Radio:** **RAK High Power Kit**. Not "Standard" and not "DIY No Radio Module".
+    - **Antenna:** pick one of the Alfa antennas unless you already have one.
+    - **Color:** whatever you like.
 
----
+Pick the model that fits how you'll mount it at camp:
 
-### Atlavox Beacon (Pre-Configured)
+| Model | Mounts on | Price with High Power |
+|:--|:--|:--|
+| [PeakMesh Ultimate](https://www.etsy.com/listing/1776412240/peakmesh-ultimate-solar-meshtastic-radio){ target=_blank } | Pole, wall, or gutter | ~$180 |
+| [PeakMesh Summit](https://www.etsy.com/listing/4593412275/peakmesh-summit-new-extra-power-pole){ target=_blank } | Pole (extra power) | ~$205 |
+| [PeakMesh Altitude](https://www.etsy.com/listing/4331277320/peakmesh-altitude-tree-hanging-solar){ target=_blank } | Hangs from a tree | ~$185 |
+| [PeakMesh Magnet Mover](https://www.etsy.com/listing/1795541518/peakmesh-magnet-mover-solar-meshtastic){ target=_blank } | Magnet, lies flat (car or trailer roof) | ~$185 |
+| [PeakMesh Magnet Climber](https://www.etsy.com/listing/1795573484/peakmesh-magnet-climber-solar-meshtastic){ target=_blank } | Magnet, stands upright | ~$185 |
 
-If money is no object and you want something insanely rugged — strap it to a flag pole, a truck roof, a tree. This thing is a tank.
-
-|  |  |
-|:--|:--|
-| **Pros** | Built-in solar + battery &middot; Built-in GPS &middot; Panel adjustable independently from antenna &middot; Best-of-the-best components pre-selected |
-| **Cons** | Expensive &middot; No wifi |
-| **Where to buy** | [Atlavox (pre-configured "Outpost" config)](https://atlavox.com/products/atlavox-beacon-solar-meshtastic-node-outpost-config){ target=_blank } &middot; [Customizable version](https://atlavox.com/products/atlavox-beacon-solar-meshtastic-node){ target=_blank } |
-
----
-
-### Heltec V4 Pre-Built (Etsy)
-
-Want wifi so you can connect via a hotspot? This is probably the best pre-built option with wifi support. Needs constant power, so only good if you've got a reliable hookup at camp.
-
-|  |  |
-|:--|:--|
-| **Pros** | Wifi &middot; Configure and go |
-| **Cons** | Expensive &middot; No built-in GPS (you have to manually set coordinates) &middot; Requires constant power (no solar) |
-| **Where to buy** | [Etsy listing](https://www.etsy.com/listing/1877304075/meshcoremeshtastic-outdoor-repeater?ref=user_profile){ target=_blank } |
+*Prices are from PeakMesh's Etsy shop and can change. See the [full PeakMesh shop](https://www.etsy.com/shop/PeakMesh?section_id=50809195){ target=_blank }.*
 
 ---
 
-### Harbor Freight Solar Light Hack
+## :material-wrench: High Power Sold Out? Build It Yourself
 
-Comfortable with a screwdriver and some cable connections? Convert a $30 Harbor Freight solar light into a fully solar Meshtastic node. Great DIY project.
+If the High Power option is sold out, it's easy to put together yourself:
 
-|  |  |
-|:--|:--|
-| **Pros** | Built-in solar + battery &middot; Dirt cheap |
-| **Cons** | No built-in GPS (manual coordinate entry) |
-| **How to build** | [Official Meshtastic guide](https://meshtastic.org/docs/community/enclosures/rak/harbor-breeze-solar-hack/){ target=_blank } &middot; [Ben Jordan's YouTube video](https://youtu.be/W_F4rEaRduk?t=180){ target=_blank } |
+1. Order the same PeakMesh model with the **"DIY No Radio Module"** option. That gets you the case, solar panel and battery, ready for a radio.
+2. Order the [RAK WisMesh High Power Booster Starter Kit](https://store.rakwireless.com/products/meshtastic-1w-lora-booster-kit-rak3401?variant=46639158689990){ target=_blank } (~$39). Choose **Battery Powered / 900MHz (US915)**. The 800MHz version won't work in the US.
+3. Put the kit in the case. The modules plug together, and PeakMesh's listing photos show the cable routing.
+
+!!! danger "Always connect the antenna before powering it on"
+    Running a radio without its antenna attached can damage it.
+
+Stuck? Ask in the Discord. Someone has built one.
 
 ---
 
-## Antennas Matter More Than the Node
+## :material-arrow-up-bold: Mounting Tips
 
-For camp nodes, your antenna is **more important than the radio itself**. A $400 radio with a stock antenna will be outperformed by a $100 radio with a good external antenna mounted high.
-
-**Top picks for camp base stations:**
-
-- [Muzi 17cm Whip](https://muzi.works/products/whip-antenna-17cm){ target=_blank } — ~$12, great upgrade over any handheld stock antenna
-- [ALFA 915 MHz 5dBi N-Type Outdoor](https://atlavox.com/products/antenna-for-meshtastic-915mhz-n-type-outdoor-7-5dbi-alfa-aoa-915-5acm){ target=_blank } — built for outdoor permanent mounts
-- [Rokland 5.8 dBi N-Male Omni Outdoor](https://store.rokland.com/collections/802-11ah-wi-fi-halow/products/5-8-dbi-n-male-omni-outdoor-915-mhz-antenna-large-profile-32-height-for-helium-rak-miner-2-nebra-indoor-bobcat){ target=_blank } — for permanent rooftop or pole mounts
-
-!!! warning "Beware fake ALFA 5dBi antennas"
-    The ALFA 915 MHz 5dBi is one of the most counterfeited antennas out there — Amazon and eBay are flooded with knock-offs that look identical but perform terribly (or are tuned to the wrong frequency entirely). **Only buy from a reputable source** like [Atlavox](https://atlavox.com/products/antenna-for-meshtastic-915mhz-n-type-outdoor-7-5dbi-alfa-aoa-915-5acm){ target=_blank } or directly from ALFA. A fake antenna will quietly tank your range and you'll never know why.
-
-**Cable tips:**
-
-- Use quality SMA or N-type cable
-- **Keep the cable short.** Every foot adds signal loss.
-- For long runs, you'll want LMR-400 or better
+- **Higher beats everything.** A flag pole, a totem, or the top of a tall structure helps far more than any upgrade.
+- **Point the solar panel at open sky,** away from tent shade.
+- **If you use an antenna cable, keep it short.** Every foot loses some signal.
 
 ---
 
 ## The Observatory Stage Letter
 
-The EF Meshtastic community has drafted an open letter to Electric Forest staff requesting permission to host a single, high-elevation Meshtastic node at the **Observatory Stage** — a backbone repeater that would give the entire grounds line-of-sight coverage.
+The EF Meshtastic community has drafted an open letter to Electric Forest staff asking permission to host a single high-elevation Meshtastic node at the **Observatory Stage**. It would act as a backbone repeater with line-of-sight coverage over the whole grounds.
 
 It's a community-led ask, not endorsed by EF.
 
@@ -108,13 +69,13 @@ It's a community-led ask, not endorsed by EF.
 
 ---
 
-## More Advanced Options?
+## Want to Roll Your Own?
 
-If you want to roll your own — pick your own boards, antennas, batteries, cases — check the [Advanced Options](advanced.md) page.
+If you'd rather pick your own boards, antennas, batteries and cases, check the [Advanced Options](advanced.md) page.
 
 ---
 
-## Need Help Picking a Camp Node?
+## Need Help With a Camp Node?
 
 <span style="display: flex; justify-content: center; margin: 1.5rem 0;">
     [:fontawesome-brands-discord: Ask in the EF Discord](https://discord.com/channels/260909643574935553/1514411058066882671){ .md-button .md-button--primary target="_blank"}

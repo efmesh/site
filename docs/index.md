@@ -1386,7 +1386,7 @@ This is the community guide for using it at Electric Forest.
 
     ---
 
-    The easiest path is the **RAK WisMesh Tag** (~$30) or **LILYGO T-Echo** (~$60). See our full picks.
+    The easiest pick is the **SenseCAP MeshTracker X1** (~$50). It charges over USB-C. See our full picks.
 
     [Recommended Hardware](docs/recommended-hardware.md){ .md-button }
 

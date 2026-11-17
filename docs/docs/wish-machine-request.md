@@ -42,7 +42,7 @@ A handful of practical reasons the Observatory was chosen as the ask:
 
 - **Elevation.** The single biggest factor in Meshtastic range is line-of-sight. Height beats wattage. The Observatory's elevation would put a node above the tree canopy that blocks most ground-level traffic in Sherwood.
 - **One node, massive impact.** Adding more low-elevation camp nodes helps the mesh incrementally. A single high-elevation backbone node helps the mesh **exponentially**.
-- **Low operational footprint.** Solar-powered repeaters like the [WisMesh Repeater Mini](https://store.rakwireless.com/products/wismesh-meshtastic-solar-repeater-mini){ target=_blank } or [SenseCAP Solar Node P1 Pro](https://www.seeedstudio.com/SenseCAP-Solar-Node-P1-Pro-for-Meshtastic-LoRa-p-6412.html){ target=_blank } don't need power runs, network drops, or maintenance during the weekend. Mount it, leave it, retrieve it Sunday night.
+- **Low operational footprint.** Solar-powered nodes like the [PeakMesh high-power solar radios](https://www.etsy.com/shop/PeakMesh?section_id=50809195){ target=_blank } don't need power runs, network drops, or maintenance during the weekend. Mount it, leave it, retrieve it Sunday night.
 - **Festival-friendly.** Meshtastic is text-only, low-power, and uses unlicensed ISM-band radio (the same 915 MHz band as cordless phones and baby monitors). It doesn't interfere with stage gear, comms, or licensed festival operations.
 
 ---
