@@ -13,6 +13,19 @@ A camp node is a solar radio you mount up high at camp and leave running all wee
 
 ---
 
+## :material-lightning-bolt: Why We Only Recommend 1W (or Stronger) Camp Nodes
+
+There are lots of solar "repeater" and "base station" nodes for sale, but **most of them use the same small radio as a pocket tracker**: about 22 dBm, or roughly 0.16 watts. Mounted up high they still help a little, but not much more than a handheld would.
+
+A **1-watt** radio (30 dBm) sends about **6 times the power**. In the real world that's roughly **2 to 2.5 times the range**: more with a clear line of sight, less through trees, RVs and crowds. At the Forest, that's often the difference between reaching the rest of the mesh and not.
+
+**How to tell when you're shopping:** look for **"1W"**, **"30 dBm"**, **"High Power"** or **"booster"** in the specs. If it says 22 dBm, or doesn't mention power at all, it's a regular-power node.
+
+!!! note "Power isn't everything"
+    Extra power helps your node **send** further. How well it **hears** other nodes still comes down to antenna and height. A 1W node mounted high on a pole beats a 1W node sitting on a cooler.
+
+---
+
 ## :material-star: Our Pick: PeakMesh High-Power Solar Node
 
 PeakMesh makes solar Meshtastic nodes in the US that come **assembled and tested**. Charge it, screw on the antenna, mount it up high, and leave it for the weekend. The **High Power** version has a 1-watt radio, so it reaches much further than a regular node.
@@ -69,9 +82,9 @@ It's a community-led ask, not endorsed by EF.
 
 ---
 
-## Want to Roll Your Own?
+## Want WiFi or Your Own Antenna?
 
-If you'd rather pick your own boards, antennas, batteries and cases, check the [Advanced Options](advanced.md) page.
+If you want a camp node you can reach over WiFi, and you'd rather pick your own antenna and cable, we recommend the **B&Q Station G3**. It's more advanced: no battery, case or solar, so you handle power and mounting yourself. See [Advanced Options](advanced.md#camp-node-with-wifi-bq-station-g3).
 
 ---
 

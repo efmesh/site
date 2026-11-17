@@ -10,83 +10,18 @@ For folks who want to roll their own hardware, push more power, or experiment wi
 
 ---
 
-## High-Power Nodes
+## Camp Node With WiFi: B&Q Station G3
 
-### B&Q Station G2
-
-The most powerful consumer Meshtastic radio available. Most handhelds put out ~0.25–0.5 watts. The Station G2 puts out **1 watt**, so it reaches dramatically further. Fantastic base station / static node.
-
-![B&Q Station G2 with a whip antenna attached, sitting upright on a desk](../assets/img/advanced/station-g2.jpg){ .ef-advanced-img }
+For people who want a camp node they can reach over WiFi, and who'd rather pick their own antenna and cable. This is a **more advanced** node than the [PeakMesh camp nodes](camp-nodes.md): it's a bare radio, so you supply the power, mounting and antenna setup yourself.
 
 |  |  |
 |:--|:--|
-| **Pros** | 1W transmit power (vs ~0.5W for most) &middot; Modular — can add GPS, etc. &middot; Wifi (accessible over your local network) &middot; Excellent for a base station |
-| **Cons** | Sells out fast &middot; 2–3 week lead time &middot; Power-hungry, no built-in battery &middot; Known to "talk loud, be deaf" (great TX, weaker RX) &middot; Expensive |
-| **What you need** | An antenna (upgrade from stock) |
-| **Where to buy** | [B&Q Consulting (official)](https://shop.uniteng.com/product/meshtastic-mesh-device-station-edition/){ target=_blank } |
-| **Guide** | [Uniteng wiki](https://wiki.uniteng.com/en/meshtastic/station-g2){ target=_blank } |
-
----
-
-### Heltec V4
-
-Newer and more available than the Station G2. Same 1W output. Open-source friendly.
-
-![Heltec WiFi LoRa 32 V4 board with built-in OLED display and USB-C](../assets/img/advanced/heltec-v4.jpg){ .ef-advanced-img }
-
-|  |  |
-|:--|:--|
-| **Pros** | Newer, easier to find than Station G2 &middot; 1W transmit power &middot; Modular — add GPS, accessories &middot; Wifi &middot; Great base station &middot; Some folks turn these into solar nodes (with effort) |
-| **Cons** | Newer = some early bugs still &middot; Power-hungry, no built-in battery (you have to add one) |
-| **What you need** | Antenna (upgrade from stock) &middot; A case &middot; Battery (if portable) |
-| **Where to buy** | [Rokland](https://store.rokland.com/products/heltec-wifi-lora-32v4-esp32s3-sx1262-lora-node-meshtastic-lorawan){ target=_blank } &middot; [Etsy (cases & prebuilt)](https://www.etsy.com/search?q=heltec%20v4&ref=search_bar){ target=_blank } |
-
----
-
-## DIY Build Kits
-
-### RAK Wireless WisBlock Starter Kit
-
-Most flexible DIY option. Pick your case, battery, antenna, modules. Super power-efficient — great base for solar nodes. **And it's the cheapest path to a 1W node** if you're willing to swap the radio module for a 1W booster (more on that below).
-
-![RAK Wireless WisBlock Starter Kit — base board with RAK4631 core module unsocketed alongside](../assets/img/advanced/rak-wisblock-starter.jpg){ .ef-advanced-img }
-
-|  |  |
-|:--|:--|
-| **Pros** | Cheaper than a pre-built &middot; Massively customizable &middot; Super power-efficient (great for solar) &middot; Can be built as a 1W node with a booster module |
-| **Cons** | Requires time, patience, and some technical chops &middot; Need to source case, battery, antenna separately |
-| **Buy the kit** | [RAK Wireless (international)](https://store.rakwireless.com/products/wisblock-meshtastic-starter-kit){ target=_blank } &middot; [Rokland (US distributor)](https://store.rokland.com/products/rak-wireless-wisblock-meshtastic-starter-kit){ target=_blank } |
-| **Case options** | [Etsy — Sentinel case](https://www.etsy.com/listing/1705600327/sentinel-rak-wisblock-rak4631-meshtastic){ target=_blank } &middot; [Etsy — mini box](https://www.etsy.com/listing/1671316836/rak-wireless-wisblock-mini-box-for){ target=_blank } &middot; [3D printable](https://www.yeggi.com/q/rak+wisblock/){ target=_blank } |
-| **Antenna guide** | [Meshtastic antenna docs](https://meshtastic.org/docs/hardware/antennas/){ target=_blank } |
-| **Build guide** | [RAK WisBlock devices on Meshtastic docs](https://meshtastic.org/docs/hardware/devices/rak/){ target=_blank } |
-
-#### Why add a 1W booster?
-
-The default LoRa radio on most handhelds and starter kits transmits around **22 dBm (~160 mW)** — and in the US/AU 915 MHz band, regulation caps a stock node well under a watt. A 1W booster module pushes that to **30 dBm = 1000 mW**, roughly **6× the radiated power** of a stock node.
-
-Because free-space range scales with the square root of power, **~6× the power gets you roughly 2–2.5× usable range** in the real world (more in clean line-of-sight, less through bodies and trees).
-
-At the Forest specifically, this is the difference between **in-mesh and off-mesh** for venue-fringe campers — camp-to-stage hops can stretch 0.5–1.5 miles with bodies, RVs, and tree cover in the way. A 1W node + a decent whip + a few feet of elevation (totem, pole, roof of a van) is the high-leverage stack.
-
-The KDHD Stuff scratch-build walkthrough is a great reference if you want to see a WisBlock + booster + solar repeater built end-to-end: [Scratch Build Repeater for Meshtastic and MeshCore](https://youtu.be/97d0KVdXgGQ){ target=_blank } (~50 min, parts list in the description).
-
-If you don't want to assemble anything, **skip to the [WisMesh Station](#rak-wismesh-station-plug-and-play-1w) below** — same 1W output, plug-and-play.
-
----
-
-### RAK WisMesh Station (plug-and-play 1W)
-
-The plug-and-play 1W camp node — same power class as the WisBlock + booster build above, but assembled, configured, and ready to run out of the box. If "spend a Sunday soldering" sounds like a chore, this is the easy button.
-
-|  |  |
-|:--|:--|
-| **Pros** | True 1W (30 dBm) on the HP variant &middot; Pre-installed meshtasticd, MQTT broker, Node-RED, Grafana &middot; Full metal enclosure &middot; Runs on a Raspberry Pi 4 — wifi + ethernet + USB built-in &middot; Includes LoRa antenna, GPS antenna, power adapter, 16GB SD card |
-| **Cons** | More expensive than rolling your own (~$170+) &middot; AC powered (no built-in battery — wire it to a USB battery bank or AC at camp) &middot; Heavier than a handheld (~630g) |
-| **Variants** | **WisMesh Station** (RAK8622) — 22 dBm / ~160 mW, ~$169.99 &middot; **WisMesh Station HP** (RAK8623) — 30 dBm / 1W, ~$175.99 (get this one if you want the range boost) |
-| **What's in the box** | WisMesh Station unit &middot; LoRa antenna &middot; GPS antenna &middot; Power adapter &middot; 16GB SD card |
-| **Where to buy** | [RAK Wireless store](https://store.rakwireless.com/products/meshtastic-gateway-raspberry-pi-wismesh-station){ target=_blank } |
-
-**Why this is the easiest path to 1W coverage**: every other 1W option on this page either ships as a board you have to case + power + antenna yourself (Station G2, Heltec V4), or requires you to swap radio modules and source parts (WisBlock + booster). The WisMesh Station HP arrives assembled, in a metal enclosure, with antennas in the box and the software pre-flashed. Plug in USB-C, screw on the antenna, you're a 1W node.
+| **Pros** | More than 1W transmit power (31 dBm by default) &middot; WiFi, so you can manage it over your camp hotspot or local network &middot; SMA antenna jack, so you can use any antenna and cable you like &middot; Modular, with add-on sockets for GPS and sensors |
+| **Cons** | No battery, case, solar or built-in GPS &middot; Needs a strong power source: a USB-C PD supply that does 15V (25W+) or a 9–19V DC barrel plug &middot; Ships from China and sometimes sells out |
+| **In the box** | The radio and a stock 915 MHz antenna. No USB cable. |
+| **What you need** | A good outdoor antenna and a **short** quality cable &middot; A power supply or power bank that can deliver 15V USB-C PD &middot; Something to mount it on, up high |
+| **Where to buy** | [BQ Voyage store (official, ~$139, pick US915MHz)](https://store.bqvoy.com/product/mesh-device-station-edition/){ target=_blank } |
+| **Guide** | [Meshtastic Station Series docs](https://meshtastic.org/docs/hardware/devices/b-and-q-consulting/station-series/){ target=_blank } |
 
 ---
 
@@ -140,7 +75,7 @@ A Station G2 powered via USB-C, with an SMA cable running out to a roof-mounted 
 
 ### Test Setup (T-Echo + 1W Base)
 
-1× T-Echo handheld + 1× 1W base station (Station G2, Heltec V4, or a WisBlock with booster) = easily 1+ mile range hip-height. Dead spots at sharp elevation drops or through dense tree cover. Two-node minimum to start seeing real benefit.
+1× T-Echo handheld + 1× 1W base station = easily 1+ mile range hip-height. Dead spots at sharp elevation drops or through dense tree cover. Two-node minimum to start seeing real benefit.
 
 ![Tall fiberglass antenna pole erected in a backyard garden serving as the test base station](../assets/img/advanced/test-setup-pole.jpg){ .ef-advanced-img }
 
