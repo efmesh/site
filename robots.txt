@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://efmesh.com/sitemap.xml
