@@ -1034,3 +1034,86 @@
     margin-bottom: 0;
   }
 }
+
+/* ── Featured product pick (X1 on Hardware, Station G3 on Advanced) ── */
+.ef-pick {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  margin: 1rem 0 0.5rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 12px;
+  background: var(--md-code-bg-color);
+}
+.ef-pick__img {
+  flex: 0 0 38%;
+  text-align: center;
+}
+.ef-pick__img img {
+  max-width: 100%;
+  max-height: 280px;
+  height: auto;
+  border-radius: 8px;
+}
+.ef-pick__body { flex: 1 1 auto; min-width: 0; }
+.ef-pick__body h3 { margin-top: 0; }
+.ef-pick__price {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: var(--md-accent-fg-color);
+}
+.ef-pick__body ul { margin-top: 0.5rem; }
+.ef-pick__body .md-button { margin-top: 0.5rem; }
+@media screen and (max-width: 44.9375em) {
+  .ef-pick { flex-direction: column; padding: 1rem; gap: 0.75rem; }
+  .ef-pick__img { flex-basis: auto; }
+  .ef-pick__img img { max-height: 220px; }
+}
+[data-md-color-scheme="default"] .ef-pick__img img.ef-cutout {
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.2));
+}
+[data-md-color-scheme="slate"] .ef-pick__img img.ef-cutout {
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.6));
+}
+
+/* Small "also works" note under a featured pick */
+.ef-footnote {
+  font-size: 0.82em;
+  line-height: 1.55;
+  opacity: 0.85;
+  padding: 0 0.25rem;
+  margin: 0.75rem 0 0;
+}
+
+/* Product photo cards (PeakMesh models on Camp Nodes) */
+.md-typeset .grid.cards.ef-product-cards > ul > li,
+.md-typeset .grid.ef-product-cards > .card {
+  padding: 0 0 0.8rem;
+  overflow: hidden;
+}
+.md-typeset .ef-product-cards img.ef-card-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  margin: 0 0 0.6rem;
+}
+.md-typeset .ef-product-cards li > p,
+.md-typeset .ef-product-cards li > hr { margin-left: 0.8rem; margin-right: 0.8rem; }
+.md-typeset .ef-product-cards .ef-card-meta {
+  font-size: 0.85em;
+  opacity: 0.85;
+}
+.md-typeset .ef-product-cards li > p:first-child { margin: 0; }
+.md-typeset .grid.ef-product-cards {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media screen and (max-width: 44.9375em) {
+  .md-typeset .grid.ef-product-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+  .md-typeset .ef-product-cards li > p,
+  .md-typeset .ef-product-cards li > hr { margin-left: 0.6rem; margin-right: 0.6rem; }
+}

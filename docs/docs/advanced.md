@@ -12,15 +12,33 @@ For folks who want to roll their own hardware, push more power, or experiment wi
 
 ## Camp Node With WiFi: B&Q Station G3
 
-For people who want a camp node they can reach over WiFi, and who'd rather pick their own antenna and cable. This is a **more advanced** node than the [PeakMesh camp nodes](camp-nodes.md): it's a bare radio, so you supply the power, mounting and antenna setup yourself.
+For people who want a camp node they can reach over WiFi, and who'd rather pick their own antenna and cable. This is a **more advanced** node than the [PeakMesh camp nodes](camp-nodes.md): it's a bare radio, so you handle the power, mounting and antenna yourself.
+
+<div class="ef-pick" markdown>
+<div class="ef-pick__img" markdown>
+![B&Q Station G3 circuit board with a black whip antenna attached](../assets/img/advanced/bq-station-g3.jpg)
+</div>
+<div class="ef-pick__body" markdown>
+
+### B&Q Station G3
+
+<span class="ef-pick__price">~$139</span>
+
+- **More than 1W** transmit power (31 dBm by default)
+- **WiFi**, so you can manage it over your camp hotspot or local network
+- **SMA antenna jack**, so you can use any antenna and cable you like
+- Modular, with add-on sockets for GPS and sensors
+
+[Buy from BQ Voyage :material-open-in-new:](https://store.bqvoy.com/product/mesh-device-station-edition/){ .md-button .md-button--primary target=_blank }
+
+</div>
+</div>
 
 |  |  |
 |:--|:--|
-| **Pros** | More than 1W transmit power (31 dBm by default) &middot; WiFi, so you can manage it over your camp hotspot or local network &middot; SMA antenna jack, so you can use any antenna and cable you like &middot; Modular, with add-on sockets for GPS and sensors |
-| **Cons** | No battery, case, solar or built-in GPS &middot; Needs a strong power source: a USB-C PD supply that does 15V (25W+) or a 9–19V DC barrel plug &middot; Ships from China and sometimes sells out |
-| **In the box** | The radio and a stock 915 MHz antenna. No USB cable. |
-| **What you need** | A good outdoor antenna and a **short** quality cable &middot; A power supply or power bank that can deliver 15V USB-C PD &middot; Something to mount it on, up high |
-| **Where to buy** | [BQ Voyage store (official, ~$139, pick US915MHz)](https://store.bqvoy.com/product/mesh-device-station-edition/){ target=_blank } |
+| **In the box** | The radio and a stock 915 MHz antenna. No USB cable, case or battery. Pick **US915MHz** when you order. |
+| **What you need** | A good outdoor antenna and a **short** quality cable &middot; Power: a USB-C PD supply or power bank that does 15V (25W+), or a 9–19V DC barrel plug &middot; Something to mount it on, up high |
+| **Heads up** | No battery, case, solar or built-in GPS &middot; Ships from China and sometimes sells out |
 | **Guide** | [Meshtastic Station Series docs](https://meshtastic.org/docs/hardware/devices/b-and-q-consulting/station-series/){ target=_blank } |
 
 ---

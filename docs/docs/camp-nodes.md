@@ -37,15 +37,56 @@ PeakMesh makes solar Meshtastic nodes in the US that come **assembled and tested
 
 Pick the model that fits how you'll mount it at camp:
 
-| Model | Mounts on | Price with High Power |
-|:--|:--|:--|
-| [PeakMesh Ultimate](https://www.etsy.com/listing/1776412240/peakmesh-ultimate-solar-meshtastic-radio){ target=_blank } | Pole, wall, or gutter | ~$180 |
-| [PeakMesh Summit](https://www.etsy.com/listing/4593412275/peakmesh-summit-new-extra-power-pole){ target=_blank } | Pole (extra power) | ~$205 |
-| [PeakMesh Altitude](https://www.etsy.com/listing/4331277320/peakmesh-altitude-tree-hanging-solar){ target=_blank } | Hangs from a tree | ~$185 |
-| [PeakMesh Magnet Mover](https://www.etsy.com/listing/1795541518/peakmesh-magnet-mover-solar-meshtastic){ target=_blank } | Magnet, lies flat (car or trailer roof) | ~$185 |
-| [PeakMesh Magnet Climber](https://www.etsy.com/listing/1795573484/peakmesh-magnet-climber-solar-meshtastic){ target=_blank } | Magnet, stands upright | ~$185 |
+<div class="grid cards ef-product-cards" markdown>
 
-*Prices are from PeakMesh's Etsy shop and can change. See the [full PeakMesh shop](https://www.etsy.com/shop/PeakMesh?section_id=50809195){ target=_blank }.*
+-   ![PeakMesh Ultimate, solar node mounted on a wooden fence](../assets/img/camp/peakmesh-ultimate.jpg){ .ef-card-img loading=lazy }
+
+    **PeakMesh Ultimate**
+
+    ~$180 &middot; Pole, wall, or gutter
+    { .ef-card-meta }
+
+    [View on Etsy :material-open-in-new:](https://www.etsy.com/listing/1776412240/peakmesh-ultimate-solar-meshtastic-radio){ target=_blank }
+
+-   ![PeakMesh Summit, solar node mounted on a tall white pole](../assets/img/camp/peakmesh-summit.jpg){ .ef-card-img loading=lazy }
+
+    **PeakMesh Summit**
+
+    ~$205 &middot; Pole mount, extra power
+    { .ef-card-meta }
+
+    [View on Etsy :material-open-in-new:](https://www.etsy.com/listing/4593412275/peakmesh-summit-new-extra-power-pole){ target=_blank }
+
+-   ![PeakMesh Altitude, solar node hanging from a tree branch](../assets/img/camp/peakmesh-altitude.jpg){ .ef-card-img loading=lazy }
+
+    **PeakMesh Altitude**
+
+    ~$185 &middot; Hangs from a tree
+    { .ef-card-meta }
+
+    [View on Etsy :material-open-in-new:](https://www.etsy.com/listing/4331277320/peakmesh-altitude-tree-hanging-solar){ target=_blank }
+
+-   ![PeakMesh Magnet Mover, flat solar node on a vehicle roof](../assets/img/camp/peakmesh-magnet-mover.jpg){ .ef-card-img loading=lazy }
+
+    **PeakMesh Magnet Mover**
+
+    ~$185 &middot; Magnet, lies flat (car or trailer roof)
+    { .ef-card-meta }
+
+    [View on Etsy :material-open-in-new:](https://www.etsy.com/listing/1795541518/peakmesh-magnet-mover-solar-meshtastic){ target=_blank }
+
+-   ![PeakMesh Magnet Climber, upright solar node on a post](../assets/img/camp/peakmesh-magnet-climber.jpg){ .ef-card-img loading=lazy }
+
+    **PeakMesh Magnet Climber**
+
+    ~$185 &middot; Magnet, stands upright
+    { .ef-card-meta }
+
+    [View on Etsy :material-open-in-new:](https://www.etsy.com/listing/1795573484/peakmesh-magnet-climber-solar-meshtastic){ target=_blank }
+
+</div>
+
+*Prices are with the High Power option, from PeakMesh's Etsy shop, and can change. See the [full PeakMesh shop](https://www.etsy.com/shop/PeakMesh?section_id=50809195){ target=_blank }.*
 
 ---
 
